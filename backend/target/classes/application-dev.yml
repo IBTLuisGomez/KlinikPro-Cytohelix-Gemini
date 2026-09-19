@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:klinikpro_db}
+    username: ${DB_USER:klinikpro}
+    password: ${DB_PASSWORD:klinikpro_dev_password}
+    hikari:
+      connection-timeout: 5000
+  jpa:
+    show-sql: true
+  flyway:
+    # Solo en dev: agrega el tenant/usuario de prueba (ver V2 en db/seed-dev).
+    # application.yml (perfil por defecto / produccion) NO incluye esta carpeta.
+    locations: classpath:db/migration,classpath:db/seed-dev
+
+logging:
+  level:
+    systems.cytohelix.klinikpro: DEBUG
+    org.hibernate.SQL: DEBUG

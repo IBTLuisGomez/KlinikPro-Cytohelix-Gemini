@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KlinikPro | Consola</title>
+  <style>
+    :root {
+      --ink: #17232b;
+      --muted: #64737a;
+      --paper: #f4f1ea;
+      --panel: #fffdf8;
+      --teal: #0f7774;
+      --teal-dark: #075451;
+      --coral: #d56b50;
+      --line: #d9ded8;
+      --ok: #24764b;
+      --bad: #a43f36;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background: radial-gradient(circle at 10% 0%, #d5e8df 0, transparent 34%),
+                  linear-gradient(135deg, var(--paper), #e7ece7);
+      font-family: Georgia, 'Times New Roman', serif;
+    }
+    main { width: min(1040px, calc(100% - 40px)); margin: 0 auto; padding: 56px 0; }
+    header { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 38px; }
+    .eyebrow { margin: 0 0 10px; color: var(--coral); font: 700 12px/1.2 Arial, sans-serif; letter-spacing: 2px; text-transform: uppercase; }
+    h1 { margin: 0; font-size: clamp(40px, 7vw, 76px); line-height: .95; font-weight: 400; }
+    .lede { max-width: 330px; margin: 0; color: var(--muted); font: 15px/1.6 Arial, sans-serif; }
+    .layout { display: grid; grid-template-columns: 1.2fr .8fr; gap: 18px; }
+    section { background: color-mix(in srgb, var(--panel) 90%, transparent); border: 1px solid var(--line); padding: 28px; box-shadow: 0 18px 45px rgba(23, 35, 43, .08); }
+    h2 { margin: 0 0 22px; font-size: 25px; font-weight: 400; }
+    .status { display: flex; align-items: center; gap: 10px; margin-bottom: 24px; font: 700 13px Arial, sans-serif; }
+    .dot { width: 11px; height: 11px; border-radius: 50%; background: var(--muted); }
+    .dot.ok { background: var(--ok); }
+    .dot.bad { background: var(--bad); }
+    form { display: grid; gap: 14px; }
+    label { display: grid; gap: 7px; color: var(--muted); font: 700 11px Arial, sans-serif; letter-spacing: .8px; text-transform: uppercase; }
+    input { width: 100%; padding: 13px 14px; border: 1px solid var(--line); background: #fff; color: var(--ink); font: 16px Georgia, serif; }
+    input:focus { outline: 2px solid #a7d2c8; border-color: var(--teal); }
+    button { padding: 14px 18px; border: 0; background: var(--teal); color: white; cursor: pointer; font: 700 12px Arial, sans-serif; letter-spacing: 1px; text-transform: uppercase; }
+    button:hover { background: var(--teal-dark); }
+    .message { min-height: 22px; margin: 4px 0 0; color: var(--bad); font: 13px/1.4 Arial, sans-serif; }
+    .message.success { color: var(--ok); }
+    .links { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+    a { color: var(--teal-dark); font: 700 14px Arial, sans-serif; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+    .note { margin: 28px 0 0; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font: 12px/1.55 Arial, sans-serif; }
+    @media (max-width: 700px) { main { width: min(100% - 28px, 520px); padding: 30px 0; } header { display: block; } .lede { margin-top: 18px; } .layout { grid-template-columns: 1fr; } section { padding: 22px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div><p class="eyebrow">Cytohelix Systems</p><h1>KlinikPro</h1></div>
+      <p class="lede">Consola de acceso para la API multi-tenant de gestion clinica.</p>
+    </header>
+    <div class="layout">
+      <section>
+        <h2>Entrar al sistema</h2>
+        <div class="status"><span id="status-dot" class="dot"></span><span id="status-text">Comprobando API...</span></div>
+        <form id="login-form">
+          <label>Tenant <input name="tenantSlug" value="demo" autocomplete="organization" required></label>
+          <label>Email <input name="email" type="email" value="admin@demo.klinikpro" autocomplete="username" required></label>
+          <label>Contrasena <input name="password" type="password" value="klinikpro123" autocomplete="current-password" required></label>
+          <button type="submit">Iniciar sesion</button>
+          <p id="message" class="message" role="status"></p>
+        </form>
+      </section>
+      <section>
+        <h2>Estado y API</h2>
+        <ul class="links">
+          <li><a href="/actuator/health" target="_blank" rel="noreferrer">Health check</a></li>
+          <li><a href="/fhir/metadata" target="_blank" rel="noreferrer">FHIR metadata</a></li>
+        </ul>
+        <p class="note">El acceso devuelve un token JWT para consumir los endpoints protegidos. Esta pantalla usa el perfil de desarrollo y no sustituye el frontend de produccion.</p>
+      </section>
+    </div>
+  </main>
+  <script>
+    const statusDot = document.getElementById('status-dot');
+    const statusText = document.getElementById('status-text');
+    const message = document.getElementById('message');
+    fetch('/actuator/health')
+      .then(response => { if (!response.ok) throw new Error('API no disponible'); return response.json(); })
+      .then(data => { statusDot.className = 'dot ok'; statusText.textContent = data.status === 'UP' ? 'API disponible' : 'API con incidencias'; })
+      .catch(error => { statusDot.className = 'dot bad'; statusText.textContent = error.message; });
+    document.getElementById('login-form').addEventListener('submit', async event => {
+      event.preventDefault();
+      message.className = 'message';
+      message.textContent = 'Validando acceso...';
+      const payload = Object.fromEntries(new FormData(event.currentTarget));
+      try {
+        const response = await fetch('/auth/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.message || data.error || 'No se pudo iniciar sesion');
+        sessionStorage.setItem('klinikpro.token', data.token);
+        message.className = 'message success';
+        message.textContent = `Acceso correcto para ${data.fullName || data.tenantSlug}. Token guardado en esta pestaña.`;
+      } catch (error) { message.textContent = error.message; }
+    });
+  </script>
+</body>
+</html>
