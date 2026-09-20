@@ -1,0 +1,109 @@
+{
+  "info": {
+    "name": "KlinikPro SaaS API Tests",
+    "description": "Colección de pruebas automáticas para validar endpoints FHIR y el aislamiento RLS del backend.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Crear Paciente (Tenant A)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "X-Tenant-ID", "value": "aaaaa111-1111-1111-1111-111111111111" }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/fhir/Patient",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["fhir", "Patient"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"resourceType\": \"Patient\",\n  \"active\": true,\n  \"name\": [{ \"use\": \"official\", \"text\": \"Carlos API Test\" }]\n}"
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "2. Listar Pacientes (Tenant A) - Debe ver a Carlos",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "X-Tenant-ID", "value": "aaaaa111-1111-1111-1111-111111111111" }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/fhir/Patient",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["fhir", "Patient"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "3. Listar Pacientes (Tenant B) - Debe estar VACIO (RLS OK)",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "X-Tenant-ID", "value": "aaaaa222-2222-2222-2222-222222222222" }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/fhir/Patient",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["fhir", "Patient"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "4. Crear Cita (Anti-colisiones Test 1)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "X-Tenant-ID", "value": "aaaaa111-1111-1111-1111-111111111111" }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/fhir/Appointment",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["fhir", "Appointment"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"resourceType\": \"Appointment\",\n  \"status\": \"booked\",\n  \"start\": \"2026-10-10T10:00:00Z\",\n  \"description\": \"Test Cita 1\",\n  \"participant\": [{ \"actor\": { \"reference\": \"Patient/123e4567-e89b-12d3-a456-426614174000\" }, \"status\": \"accepted\" }]\n}"
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "5. Crear Cita (Anti-colisiones Test 2 - Debe Fallar)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "X-Tenant-ID", "value": "aaaaa111-1111-1111-1111-111111111111" }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/fhir/Appointment",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["fhir", "Appointment"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"resourceType\": \"Appointment\",\n  \"status\": \"booked\",\n  \"start\": \"2026-10-10T10:00:00Z\",\n  \"description\": \"Test Cita 2 (Colisión)\",\n  \"participant\": [{ \"actor\": { \"reference\": \"Patient/123e4567-e89b-12d3-a456-426614174000\" }, \"status\": \"accepted\" }]\n}"
+        }
+      },
+      "response": []
+    }
+  ]
+}
