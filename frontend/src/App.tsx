@@ -4,6 +4,7 @@ import LoginPage from './pages/LoginPage';
 import MainLayout from './layouts/MainLayout';
 import AgendaPage from './pages/AgendaPage';
 import PatientsPage from './pages/PatientsPage';
+import PosPage from './pages/PosPage';
 
 function App() {
   return (
@@ -12,8 +13,10 @@ function App() {
         <Route path="/" element={<LoginPage />} />
         <Route path="/dashboard" element={<MainLayout />}>
           <Route index element={<AgendaPage />} />
+          <Route path="agenda" element={<AgendaPage />} />
           <Route path="patients" element={<PatientsPage />} />
-          <Route path="finances" element={<div className="p-8 text-center text-slate-500">Módulo Financiero (En desarrollo)</div>} />
+          <Route path="pos" element={<PosPage />} />
+          <Route path="finances" element={<PosPage />} />
         </Route>
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
