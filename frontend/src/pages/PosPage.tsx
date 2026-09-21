@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { DollarSign, Clock, User, Plus, FileText, Upload } from 'lucide-react';
+import { useState } from 'react';
+import { DollarSign, FileText, Upload } from 'lucide-react';
 
 export default function PosPage() {
   const [activeTab, setActiveTab] = useState('ingresos');

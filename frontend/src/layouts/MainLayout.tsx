@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { Home, Users, Calendar, DollarSign, TrendingUp, Settings } from 'lucide-react';
 

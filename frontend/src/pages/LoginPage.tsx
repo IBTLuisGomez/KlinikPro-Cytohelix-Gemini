@@ -1,71 +1,99 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Stethoscope } from 'lucide-react';
 
 export default function LoginPage() {
+  const [tenantSlug, setTenantSlug] = useState('demo');
+  const [email, setEmail] = useState('admin@demo.klinikpro');
+  const [password, setPassword] = useState('klinikpro123');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [tenantId, setTenantId] = useState('');
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate login & set tenant context
-    if (tenantId) {
-      localStorage.setItem('tenant_id', tenantId);
+    setError('');
+    setLoading(true);
+
+    try {
+      const response = await fetch('http://localhost:8080/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ tenantSlug, email, password })
+      });
+
+      if (!response.ok) {
+        throw new Error('Credenciales inválidas o clínica no encontrada');
+      }
+
+      const data = await response.json();
+      
+      // Guardar el JWT en local storage para que api/client.ts lo utilice
+      localStorage.setItem('klinikpro_jwt', data.token);
+
       navigate('/dashboard');
+    } catch (err: any) {
+      setError(err.message || 'Error de conexión con el servidor');
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-surface-dim">
-      <div className="bg-surface-lowest p-8 rounded-2xl shadow-xl w-full max-w-md">
-        <div className="flex flex-col items-center mb-8">
-          <div className="bg-primary p-3 rounded-full mb-4">
-            <Stethoscope className="w-8 h-8 text-white" />
+    <div className="min-h-screen flex items-center justify-center" style={{ background: 'var(--surface-container-low)' }}>
+      <div className="card w-full max-w-md p-8 shadow-xl">
+        <div className="text-center mb-8">
+          <div className="brand-logo-icon bg-primary rounded-full flex items-center justify-center mx-auto mb-4" style={{ width: 56, height: 56 }}>
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+            </svg>
           </div>
-          <h1 className="text-2xl font-bold text-primary">KlinikPro</h1>
-          <p className="text-sm text-slate-500">por CytoHelix Systems</p>
+          <h1 className="text-2xl font-bold text-primary mb-1">KlinikPro SaaS</h1>
+          <p className="text-sm text-slate-500">Acceso Seguro para Profesionales</p>
         </div>
 
+        {error && (
+          <div className="bg-error-container text-on-error-container p-3 rounded-md text-sm mb-6 text-center font-medium">
+            {error}
+          </div>
+        )}
+
         <form onSubmit={handleLogin} className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Clínica (Tenant ID)</label>
+          <div className="form-group">
+            <label>ID de Clínica (Tenant Slug)</label>
             <input 
               type="text" 
               required
-              value={tenantId}
-              onChange={(e) => setTenantId(e.target.value)}
-              placeholder="Ej: f47ac10b-58cc-4372-a567-0e02b2c3d479"
-              className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none"
+              value={tenantSlug} 
+              onChange={e => setTenantSlug(e.target.value)}
+              placeholder="Ej. demo"
             />
           </div>
-          <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Usuario</label>
+          <div className="form-group">
+            <label>Correo Electrónico</label>
             <input 
-              type="text" 
+              type="email" 
               required
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none"
+              value={email} 
+              onChange={e => setEmail(e.target.value)}
+              placeholder="usuario@clinica.com"
             />
           </div>
-          <div>
-            <label className="block text-sm font-medium text-slate-700 mb-1">Contraseña</label>
+          <div className="form-group">
+            <label>Contraseña</label>
             <input 
               type="password" 
               required
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none"
+              value={password} 
+              onChange={e => setPassword(e.target.value)}
             />
           </div>
-          
+
           <button 
             type="submit" 
-            className="w-full bg-primary hover:bg-primary-container text-white font-semibold py-2 px-4 rounded-lg transition-colors"
+            className="btn btn-secondary w-full mt-4" 
+            disabled={loading}
           >
-            Iniciar Sesión
+            {loading ? 'Validando...' : 'Iniciar Sesión Segura'}
           </button>
         </form>
       </div>

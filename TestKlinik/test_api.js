@@ -1,9 +1,7 @@
 const http = require('http');
 
-const TENANT_A = 'aaaaa111-1111-1111-1111-111111111111';
-const TENANT_B = 'aaaaa222-2222-2222-2222-222222222222';
-
-async function fetchApi(path, method = 'GET', body = null, tenantId = TENANT_A) {
+// Helper to make HTTP requests
+function httpRequest(path, method = 'GET', body = null, headers = {}) {
   return new Promise((resolve, reject) => {
     const options = {
       hostname: 'localhost',
@@ -12,7 +10,7 @@ async function fetchApi(path, method = 'GET', body = null, tenantId = TENANT_A) 
       method: method,
       headers: {
         'Content-Type': 'application/json',
-        'X-Tenant-ID': tenantId
+        ...headers
       }
     };
 
@@ -34,51 +32,80 @@ async function fetchApi(path, method = 'GET', body = null, tenantId = TENANT_A) 
   });
 }
 
+async function login(tenantSlug, email, password) {
+  const res = await httpRequest('/auth/login', 'POST', { tenantSlug, email, password });
+  if (res.status !== 200) throw new Error(`Login fallo: ${res.error}`);
+  return res.data.token;
+}
+
 async function runTests() {
-  console.log("=== INICIANDO PRUEBAS AUTOMATIZADAS KLINIKPRO API ===\n");
+  console.log("=== INICIANDO PRUEBAS AUTOMATIZADAS KLINIKPRO API (JWT) ===\n");
+
+  let tokenA, tokenB;
+  try {
+    tokenA = await login('t1', 'user@t1.com', 'klinikpro123');
+    tokenB = await login('t2', 'user@t2.com', 'klinikpro123');
+    console.log("✅ Login exitoso en ambos tenants.");
+  } catch (e) {
+    console.error("❌ Fallo en login previo a los tests:", e.message);
+    return;
+  }
+
+  const authA = { 'Authorization': `Bearer ${tokenA}` };
+  const authB = { 'Authorization': `Bearer ${tokenB}` };
 
   try {
-    console.log("Test 1: Creando paciente en Tenant A...");
-    const p1 = await fetchApi('/fhir/Patient', 'POST', {
+    console.log("\nTest 1: Creando paciente en Tenant A...");
+    const p1 = await httpRequest('/fhir/Patient', 'POST', {
       resourceType: 'Patient',
       active: true,
       name: [{ use: 'official', text: 'Automated Patient A' }]
-    }, TENANT_A);
-    console.log(p1.status === 200 ? "✅ Éxito" : `❌ Fallo: ${p1.error}`);
+    }, authA);
+    console.log(p1.status === 200 || p1.status === 201 ? "✅ Éxito" : `❌ Fallo: ${p1.error}`);
+    
+    // Obtener ID del paciente recién creado para evitar error 23503 (FK)
+    const patientId = p1.data && p1.data.id ? p1.data.id : '123e4567-e89b-12d3-a456-426614174000';
+
+    // Usamos el ID del especialista que acabamos de inyectar en la base de datos
+    const practitionerId = '333e4567-e89b-12d3-a456-426614174000';
 
     console.log("\nTest 2: Verificando aislamiento RLS en Tenant B...");
-    const p2 = await fetchApi('/fhir/Patient', 'GET', null, TENANT_B);
+    const p2 = await httpRequest('/fhir/Patient', 'GET', null, authB);
     let isIsolated = false;
     if (p2.status === 200) {
-       // Searchset bundle or array
        let items = p2.data.entry || p2.data || [];
        if (items.length === 0) isIsolated = true;
     }
     console.log(isIsolated ? "✅ Éxito: Tenant B no ve pacientes de Tenant A" : "❌ Fallo: Fuga de datos detectada o error de API");
 
     console.log("\nTest 3: Motor Anti-colisiones (Agendando Cita 1)...");
-    const d1 = await fetchApi('/fhir/Appointment', 'POST', {
+    const d1 = await httpRequest('/fhir/Appointment', 'POST', {
       resourceType: 'Appointment',
       status: 'booked',
       start: '2026-11-15T10:00:00Z',
       description: 'Test Cita',
-      participant: [{ actor: { reference: 'Patient/123e4567-e89b-12d3-a456-426614174000' }, status: 'accepted' }]
-    }, TENANT_A);
-    console.log(d1.status === 200 ? "✅ Éxito" : `❌ Fallo: ${d1.error}`);
+      participant: [
+        { actor: { reference: `Patient/${patientId}` }, status: 'accepted' },
+        { actor: { reference: `Practitioner/${practitionerId}` }, status: 'accepted' }
+      ]
+    }, authA);
+    console.log(d1.status === 200 || d1.status === 201 ? "✅ Éxito" : `❌ Fallo: ${d1.error}`);
 
     console.log("\nTest 4: Motor Anti-colisiones (Intentando Colisionar Cita 1)...");
-    const d2 = await fetchApi('/fhir/Appointment', 'POST', {
+    const d2 = await httpRequest('/fhir/Appointment', 'POST', {
       resourceType: 'Appointment',
       status: 'booked',
-      start: '2026-11-15T10:00:00Z', // Same time
+      start: '2026-11-15T10:00:00Z',
       description: 'Test Cita Colision',
-      participant: [{ actor: { reference: 'Patient/123e4567-e89b-12d3-a456-426614174000' }, status: 'accepted' }]
-    }, TENANT_A);
+      participant: [
+        { actor: { reference: `Patient/${patientId}` }, status: 'accepted' },
+        { actor: { reference: `Practitioner/${practitionerId}` }, status: 'accepted' }
+      ]
+    }, authA);
     console.log(d2.status >= 400 ? "✅ Éxito: El backend bloqueó la colisión correctamente." : "❌ Fallo: El backend permitió la colisión.");
 
   } catch (err) {
     console.error("Error crítico durante las pruebas:", err.message);
-    console.log("¿Está el contenedor backend (localhost:8080) corriendo?");
   }
 }
 
