@@ -23,3 +23,20 @@ SELECT t.id, b.id,
 FROM tenants t
 JOIN branches b ON b.tenant_id = t.id
 WHERE t.slug = 'demo';
+
+-- Segundo tenant para pruebas de RLS (aislamiento)
+INSERT INTO tenants (slug, name)
+VALUES ('demo2', 'Segunda Clinica de Prueba');
+
+INSERT INTO branches (tenant_id, name)
+SELECT id, 'Sucursal Norte' FROM tenants WHERE slug = 'demo2';
+
+INSERT INTO app_users (tenant_id, branch_id, email, password_hash, full_name, role)
+SELECT t.id, b.id,
+       'admin@demo2.klinikpro',
+       '$2b$10$53V/jZQStB7X52b8MYcYAOjSnWwRYf7UwhLZybKzOvn4NQwGrDjWi',
+       'Admin Demo 2',
+       'ADMIN'
+FROM tenants t
+JOIN branches b ON b.tenant_id = t.id
+WHERE t.slug = 'demo2';

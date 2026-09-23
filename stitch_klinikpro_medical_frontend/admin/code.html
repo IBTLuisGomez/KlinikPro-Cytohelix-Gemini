@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><title>KlinikPro - CytoHelix</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"outline-variant":"#bec8cd","inverse-primary":"#81d1f0","error":"#ba1a1a","on-tertiary-fixed":"#002113","on-secondary-container":"#006172","on-primary-container":"#d3f1ff","surface-container-low":"#f2f3ff","error-container":"#ffdad6","on-tertiary-container":"#a3ffd0","surface-tint":"#006781","surface-dim":"#d2d9f4","on-secondary-fixed-variant":"#004e5c","inverse-on-surface":"#eef0ff","on-error":"#ffffff","on-secondary":"#ffffff","on-secondary-fixed":"#001f26","surface-variant":"#dae2fd","on-tertiary":"#ffffff","primary-container":"#0e7490","on-surface":"#131b2e","primary-fixed":"#b9eaff","tertiary-fixed":"#6ffbbe","surface-container":"#eaedff","secondary-fixed":"#acedff","background":"#faf8ff","surface-bright":"#faf8ff","on-primary-fixed-variant":"#004d62","on-primary":"#ffffff","tertiary-fixed-dim":"#4edea3","on-background":"#131b2e","outline":"#6f787d","primary-fixed-dim":"#81d1f0","on-primary-fixed":"#001f29","secondary-container":"#57dffe","surface-container-lowest":"#ffffff","surface-container-high":"#e2e7ff","on-error-container":"#93000a","on-tertiary-fixed-variant":"#005236","surface":"#faf8ff","primary":"#005a71","surface-container-highest":"#dae2fd","on-surface-variant":"#3f484c","secondary-fixed-dim":"#4cd7f6","inverse-surface":"#283044","secondary":"#00687a","tertiary":"#005f40","tertiary-container":"#007a53"},borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},spacing:{"space-xs":"0.25rem","gutter-desktop":"1.5rem","space-sm":"0.5rem","space-xl":"2rem","margin":"1rem","space-lg":"1.25rem","margin-desktop":"2rem","gutter":"1rem","space-md":"0.75rem"},fontFamily:{"body-lg":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"display-lg":["Plus Jakarta Sans"],"display-lg-mobile":["Plus Jakarta Sans"],"metric-num":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"]},fontSize:{"body-lg":["15px",{lineHeight:"22px",fontWeight:"400"}],"label-sm":["11px",{lineHeight:"14px",letterSpacing:"0.03em",fontWeight:"600"}],"body-sm":["13px",{lineHeight:"18px",fontWeight:"400"}],"display-lg":["36px",{lineHeight:"44px",letterSpacing:"-0.02em",fontWeight:"700"}],"display-lg-mobile":["28px",{lineHeight:"36px",letterSpacing:"-0.02em",fontWeight:"700"}],"metric-num":["22px",{lineHeight:"26px",letterSpacing:"-0.01em",fontWeight:"700"}],"headline-sm":["16px",{lineHeight:"24px",letterSpacing:"-0.005em",fontWeight:"600"}],"headline-md":["20px",{lineHeight:"28px",letterSpacing:"-0.01em",fontWeight:"600"}],"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.02em",fontWeight:"600"}],"body-md":["14px",{lineHeight:"20px",fontWeight:"400"}],"headline-lg":["24px",{lineHeight:"32px",letterSpacing:"-0.015em",fontWeight:"600"}]}}}};</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest z-50 flex flex-col shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="p-space-lg flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="KlinikPro Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XgMAMo22t2nLCTiihS-UnBZwY49cnr5IAbcw9MdbfK_GR5I4qdP6jwxKsKWTs-wEh8B5arcm9kHcplC4ZWeDXpn3ZFoDCc2NQCodtbEMp56AkHndm7ETZ-VrwFa4-2y2i4hiZeIOOyt9t0E5sDZzhHnm0wSA96BUoVfdwju-cG_XAlVgiQiyyZP2WmTRCDyeneisAIMmvrxLUPeNlYNcxqWKUGfsQZnTvwCQvQtqsN3eBbA_CpMVuuzFs"/><div class="flex flex-col"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-on-surface">KlinikPro</span><span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded-full bg-surface-container-high text-primary">VF</span></div><span class="font-label-sm text-label-sm text-outline">by CytoHelix Enterprise</span></div></div></div><div class="px-space-md mb-space-md"><div class="p-space-sm rounded-xl bg-surface-container-low flex flex-col gap-1 cursor-pointer hover:bg-surface-container transition-colors"><div class="flex items-center justify-between text-outline"><span class="font-label-sm text-label-sm uppercase tracking-wider">Sede Activa Multi-Tenant</span><span class="material-symbols-outlined text-[16px]">expand_more</span></div><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-[18px] text-primary">domain</span><span class="font-headline-sm text-headline-sm text-on-surface truncate">Clínica Cytohelix</span></div><span class="font-body-sm text-body-sm text-on-surface-variant truncate">Sucursal Norte #01</span></div></div><nav class="flex-1 px-space-md flex flex-col gap-space-xs overflow-y-auto" data-active-classes="bg-primary-container text-on-primary font-headline-sm"><a class="px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-headline-sm text-headline-sm" data-path="dashboard" href="#">Dashboard</a><a class="px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-headline-sm text-headline-sm" data-path="pacientes" href="#">Pacientes</a><a class="px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-headline-sm text-headline-sm" data-path="agenda-y-citas" href="#">Agenda y Citas</a><a class="px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-headline-sm text-headline-sm" data-path="ficha-clinica" href="#">Ficha Clínica</a><a class="px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-headline-sm text-headline-sm" data-path="caja-y-facturacion" href="#">Caja y Facturación</a><a class="px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-headline-sm text-headline-sm" data-path="analitica-bi" href="#">Analítica &amp; BI</a><a class="px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-headline-sm text-headline-sm" data-path="configuracion-y-roles" href="#">Configuración y Roles</a></nav><div class="p-space-md mt-auto bg-surface-container-low"><div class="flex items-center justify-between p-space-sm rounded-xl bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] mb-space-xs"><div class="flex flex-col"><span class="font-label-sm text-label-sm text-outline uppercase">Nivel de Acceso</span><div class="flex items-center gap-1.5 mt-0.5"><span class="w-2 h-2 rounded-full bg-tertiary-container"></span><span class="font-headline-sm text-headline-sm text-on-surface">ADMIN / COORD</span></div></div><a class="p-space-xs rounded-lg hover:bg-surface-container text-outline hover:text-error transition-colors flex items-center justify-center" data-path="login" href="#" title="Cerrar sesión"><span class="material-symbols-outlined text-[20px]">logout</span></a></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl z-40 shadow-[0_1px_8px_rgba(0,0,0,0.04)] flex items-center justify-between px-space-xl gap-space-lg"><div class="flex-1 max-w-xl"><div class="relative flex items-center"><span class="material-symbols-outlined absolute left-space-md text-outline text-[20px]">search</span><input class="w-full h-9 pl-10 pr-space-md rounded-xl bg-surface-container-low text-on-surface placeholder-outline font-body-sm text-body-sm focus:outline-none focus:bg-surface-container transition-colors" placeholder="Buscar paciente por DNI, nombre o código #0000..." type="text"/></div></div><div class="flex items-center gap-space-md"><div class="hidden xl:flex items-center gap-2 px-space-md py-1 rounded-full bg-surface-container text-tertiary"><span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span><span class="font-label-md text-label-md">Sucursal Activa - Conexión CytoHelix OK</span></div><div class="flex items-center gap-space-xs"><button class="h-9 px-space-md rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-headline-sm text-headline-sm flex items-center gap-1 transition-colors" type="button"><span class="material-symbols-outlined text-[18px]">person_add</span><span>+ Paciente</span></button><button class="h-9 px-space-md rounded-xl bg-primary hover:bg-primary-container text-on-primary font-headline-sm text-headline-sm flex items-center gap-1 shadow-[0_1px_8px_rgba(0,0,0,0.04)] transition-colors" type="button"><span class="material-symbols-outlined text-[18px]">add_circle</span><span>+ Nueva Cita</span></button></div><div class="relative flex items-center"><button aria-label="Notificaciones" class="w-9 h-9 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest"></span></button></div><div class="flex items-center gap-space-sm pl-space-sm"><img alt="Dra. Sarah Jenkins" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUAXt3jGRPraXQotcH_lotg3nBB7mdzhgyjuqs5u8pA2IgTAx5i5FYloF0YC4SO_cV-eyJ-g2E-Dtorz-bN8LGcI8EE-xNI7ayx2QgXa5lJX53QL6IhD_Wrq-O7Wt-GTIksHxNwMHRWK_GPGo5EezZuH4Wdor7qzvMWSRtuip_LvrA_0_muDMI4sae8hRvEVlmH0y17Whmvzr5G8rqjQdeaQc8kcKJFy0Rydjf4b9ovcMBBYwVjTHM"/><div class="hidden md:flex flex-col"><span class="font-headline-sm text-headline-sm text-on-surface leading-tight">Dra. Sarah Jenkins</span><span class="font-label-sm text-label-sm text-outline leading-tight">Director Médico</span></div></div></div></header><main class="w-full pt-16 bg-surface min-h-screen px-space-xl py-space-xl"><div class="flex flex-col w-full">
+<!-- Cabecera de Página & Metadatos de Autenticación -->
+<div class="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-space-lg mb-space-xl">
+<div>
+<div class="flex items-center gap-space-sm mb-1.5">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-surface-container-high text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">shield</span>
+          Flyway V3__auth.sql • Spring Security 6.2
+        </span>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-surface-container-high text-tertiary font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+          RBAC Policy Engine Activo
+        </span>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-surface tracking-tight">Administración de Roles y Control de Acceso (RBAC)</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-3xl mt-0.5">
+        Gestión centralizada de credenciales criptográficas Bcrypt, asignación multisede por Branch ID y privilegios granulares para la plataforma KlinikPro desarrollada por CytoHelix.
+      </p>
+</div>
+<!-- Acciones Rápidas -->
+<div class="flex flex-wrap items-center gap-space-sm self-start xl:self-auto">
+<button class="h-10 px-space-md rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-headline-sm text-headline-sm flex items-center gap-2 transition-all shadow-sm" id="btn-export-matrix" type="button">
+<span class="material-symbols-outlined text-[19px]">download</span>
+<span>Exportar Auditoría</span>
+</button>
+<button class="h-10 px-space-md rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-headline-sm text-headline-sm flex items-center gap-2 transition-all shadow-sm" id="btn-open-role-modal" type="button">
+<span class="material-symbols-outlined text-[19px]">security</span>
+<span>+ Crear Rol Personalizado</span>
+</button>
+<button class="h-10 px-space-lg rounded-xl bg-primary hover:bg-primary-container text-on-primary font-headline-sm text-headline-sm flex items-center gap-2 transition-all shadow-md" id="btn-open-user-modal" type="button">
+<span class="material-symbols-outlined text-[20px]">person_add</span>
+<span>+ Nuevo Usuario / Especialista</span>
+</button>
+</div>
+</div>
+<!-- Tarjetas de Resumen de Roles RBAC del Sistema -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-lg mb-space-xl">
+<!-- Card ADMIN -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform"></div>
+<div class="flex items-start justify-between mb-space-md">
+<div class="w-10 h-10 rounded-xl bg-surface-container-high text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">admin_panel_settings</span>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-bold">ROLE_ADMIN</span>
+</div>
+<div class="flex items-baseline justify-between mb-1">
+<span class="font-headline-md text-headline-md text-on-surface">Administrador</span>
+<span class="font-metric-num text-metric-num text-primary">2 <span class="font-label-sm text-label-sm text-outline font-normal">activos</span></span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md line-clamp-2">
+        Control total de tenant, configuración global de sucursales, auditoría contable y revocación de JWTs.
+      </p>
+<div class="pt-space-sm flex items-center justify-between font-label-sm text-label-sm text-outline">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[15px] text-tertiary">check_circle</span> 2FA Forzoso</span>
+<span class="text-primary font-semibold cursor-pointer hover:underline">Ver permisos →</span>
+</div>
+</div>
+<!-- Card COORDINADOR -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-24 h-24 bg-secondary-container/10 rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform"></div>
+<div class="flex items-start justify-between mb-space-md">
+<div class="w-10 h-10 rounded-xl bg-secondary-fixed/30 text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">supervised_user_circle</span>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-secondary-fixed/40 text-on-secondary-fixed font-bold">ROLE_COORD</span>
+</div>
+<div class="flex items-baseline justify-between mb-1">
+<span class="font-headline-md text-headline-md text-on-surface">Coordinador</span>
+<span class="font-metric-num text-metric-num text-secondary">4 <span class="font-label-sm text-label-sm text-outline font-normal">activos</span></span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md line-clamp-2">
+        Supervisión de agendas clínicas, gestión de boxes, aprobación de altas médicas y cierre diario de caja.
+      </p>
+<div class="pt-space-sm flex items-center justify-between font-label-sm text-label-sm text-outline">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[15px] text-tertiary">domain</span> Multi-Box Sede</span>
+<span class="text-secondary font-semibold cursor-pointer hover:underline">Ver permisos →</span>
+</div>
+</div>
+<!-- Card FISIO / Especialista -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-24 h-24 bg-tertiary-fixed/20 rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform"></div>
+<div class="flex items-start justify-between mb-space-md">
+<div class="w-10 h-10 rounded-xl bg-surface-container-high text-tertiary flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">medical_services</span>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-bold">ROLE_FISIO</span>
+</div>
+<div class="flex items-baseline justify-between mb-1">
+<span class="font-headline-md text-headline-md text-on-surface">Fisioterapeuta</span>
+<span class="font-metric-num text-metric-num text-tertiary">14 <span class="font-label-sm text-label-sm text-outline font-normal">activos</span></span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md line-clamp-2">
+        Acceso clínico a notas SOAP, historial kinésico, registro biométrico, y emisión de pautas terapéuticas.
+      </p>
+<div class="pt-space-sm flex items-center justify-between font-label-sm text-label-sm text-outline">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[15px] text-tertiary">lock</span> Aislado por Paciente</span>
+<span class="text-tertiary font-semibold cursor-pointer hover:underline">Ver permisos →</span>
+</div>
+</div>
+<!-- Card RECEPCION -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-24 h-24 bg-surface-dim/40 rounded-bl-full pointer-events-none group-hover:scale-110 transition-transform"></div>
+<div class="flex items-start justify-between mb-space-md">
+<div class="w-10 h-10 rounded-xl bg-surface-container-high text-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">point_of_sale</span>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-bold">ROLE_RECEPCION</span>
+</div>
+<div class="flex items-baseline justify-between mb-1">
+<span class="font-headline-md text-headline-md text-on-surface">Recepción / Caja</span>
+<span class="font-metric-num text-metric-num text-primary-container">6 <span class="font-label-sm text-label-sm text-outline font-normal">activos</span></span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md line-clamp-2">
+        Recepción de pacientes, cobro de copagos y bonos Fonasa/Isapre, gestión de citas e impresión de comprobantes.
+      </p>
+<div class="pt-space-sm flex items-center justify-between font-label-sm text-label-sm text-outline">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[15px] text-tertiary">check_circle</span> 2FA Forzoso</span>
+<span class="text-primary-container font-semibold cursor-pointer hover:underline">Ver permisos →</span>
+</div>
+</div>
+</div>
+<!-- Panel Integrado: Formulario de Usuario + Matriz Granular RBAC -->
+<div class="p-space-xl rounded-xl bg-surface-container-lowest shadow-sm mb-space-xl">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between pb-space-lg mb-space-lg">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-xl bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">badge</span>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Provisionamiento &amp; Matriz Granular de Privilegios</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Configuración de credenciales de acceso Spring Security y persistencia relacional con PostgreSQL.
+          </p>
+</div>
+</div>
+<div class="flex items-center gap-space-sm mt-space-md lg:mt-0">
+<span class="font-label-sm text-label-sm px-2 py-1 rounded bg-surface-container-low text-outline font-mono">schema: cytohelix_iam_v3</span>
+<button class="h-9 px-space-md rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors" type="button">
+          Cargar Template por Rol
+        </button>
+</div>
+</div>
+<!-- Campos del Usuario -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-space-md mb-space-xl">
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Nombre y Apellidos</label>
+<input class="h-9 px-space-md rounded-xl bg-surface-container-low text-on-surface font-body-sm text-body-sm focus:outline-none focus:bg-surface-container focus:ring-1 focus:ring-primary transition-all" placeholder="Ej: Dr. Fernando Ruiz" type="text" value="Dra. Sarah Jenkins"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Correo Institucional (Username)</label>
+<div class="relative">
+<input class="w-full h-9 pl-space-md pr-8 rounded-xl bg-surface-container-low text-on-surface font-body-sm text-body-sm focus:outline-none focus:bg-surface-container focus:ring-1 focus:ring-primary transition-all" placeholder="usuario@klinikpro.com" type="email" value="s.jenkins@cytohelix.med"/>
+<span class="material-symbols-outlined absolute right-2.5 top-2 text-[16px] text-tertiary">verified_user</span>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Bcrypt Hash / Credencial</label>
+<div class="relative">
+<input class="w-full h-9 px-space-md rounded-xl bg-surface-container-low text-on-surface font-body-sm text-body-sm focus:outline-none focus:bg-surface-container focus:ring-1 focus:ring-primary transition-all" placeholder="Generar password" type="password" value="••••••••••••••••"/>
+<button class="absolute right-2 top-2 text-outline hover:text-primary transition-colors" title="Regenerar temporal" type="button">
+<span class="material-symbols-outlined text-[16px]">sync_lock</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Rol Asignado (Spring Role)</label>
+<select class="h-9 px-space-md rounded-xl bg-surface-container-low text-on-surface font-body-sm text-body-sm focus:outline-none focus:bg-surface-container focus:ring-1 focus:ring-primary transition-all">
+<option selected="">ROLE_ADMIN (Director)</option>
+<option>ROLE_COORD (Coordinación)</option>
+<option>ROLE_FISIO (Especialista)</option>
+<option>ROLE_RECEPCION (Frontdesk)</option>
+</select>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Sucursal (Branch Tenant ID)</label>
+<select class="h-9 px-space-md rounded-xl bg-surface-container-low text-on-surface font-body-sm text-body-sm focus:outline-none focus:bg-surface-container focus:ring-1 focus:ring-primary transition-all">
+<option selected="">Sucursal Norte #01 (Principal)</option>
+<option>Sucursal Sur #02 (Rehabilitación)</option>
+<option>Corporativo CytoHelix Global</option>
+</select>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Especialidad Clínica</label>
+<input class="h-9 px-space-md rounded-xl bg-surface-container-low text-on-surface font-body-sm text-body-sm focus:outline-none focus:bg-surface-container focus:ring-1 focus:ring-primary transition-all" placeholder="Ej: Traumatología, Suelo Pélvico" type="text" value="Dirección Médica &amp; Fisiatría"/>
+</div>
+</div>
+<!-- Matriz de Permisos Granulares -->
+<div class="bg-surface-container-low rounded-xl p-space-md mb-space-lg">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between pb-space-sm mb-space-md">
+<div>
+<span class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary">rule</span>
+            Matriz de Permisos Granulares por Entidad
+          </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Control fino de operaciones CRUD y auditoría para este perfil</span>
+</div>
+<div class="flex items-center gap-space-xs mt-2 sm:mt-0">
+<button class="px-2.5 py-1 rounded bg-surface-container-high hover:bg-surface text-on-surface font-label-sm text-label-sm transition-colors" id="btn-select-all" type="button">Marcar Todos</button>
+<button class="px-2.5 py-1 rounded bg-surface-container-high hover:bg-surface text-on-surface font-label-sm text-label-sm transition-colors" id="btn-clear-all" type="button">Limpiar</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-sm text-body-sm">
+<thead>
+<tr class="text-outline font-label-sm text-label-sm uppercase tracking-wider bg-surface-container/60">
+<th class="py-2.5 px-space-md rounded-l-lg">Módulo Funcional</th>
+<th class="py-2.5 px-space-sm text-center">Ver / Lectura</th>
+<th class="py-2.5 px-space-sm text-center">Crear / Alta</th>
+<th class="py-2.5 px-space-sm text-center">Modificar / Editar</th>
+<th class="py-2.5 px-space-sm text-center">Eliminar / Revocar</th>
+<th class="py-2.5 px-space-sm text-center rounded-r-lg">Exportar / Print</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container font-body-sm text-body-sm text-on-surface">
+<!-- Fila Pacientes -->
+<tr class="hover:bg-surface-container/40 transition-colors">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[18px] text-primary">people</span>
+<div>
+<span class="font-headline-sm text-headline-sm block">Directorio de Pacientes</span>
+<span class="font-label-sm text-label-sm text-outline">Padrón de afiliados, datos sociodemográficos y contactos de urgencia</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-sm text-center">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-0 accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-3 px-space-sm text-center">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-0 accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-3 px-space-sm text-center">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-0 accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-3 px-space-sm text-center">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-0 accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-3 px-space-sm text-center">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-0 accent-primary cursor-pointer" type="checkbox"/>
+</td>
+</tr>
+<!-- Fila Agenda de Citas -->
+<tr class="hover:bg-surface-container/40 transition-colors">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[18px] text-secondary">calendar_clock</span>
+<div>
+<span class="font-headline-sm text-headline-sm block">Agenda y Asignación de Boxes</span>
+<span class="font-label-sm text-label-sm text-outline">Calendarios por box kinésico, sobrecupos y bloqueos de agenda</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-sm text-center">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-0 accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-3 px-space-sm text-center">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-0 accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-3 px-space-sm text-center">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-0 accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-3 px-space-sm text-center">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-0 accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-3 px-space-sm text-center">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-0 accent-primary cursor-pointer" type="checkbox"/>
+</td>
+</tr>
+<!-- Fila Ficha Clínica & SOAP -->
+<tr class="hover:bg-surface-container/40 transition-colors">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[18px] text-tertiary">history_edu</span>
+<div>
+<span class="font-headline-sm text-headline-sm block">Ficha Clínica &amp; Notas SOAP</span>
+<span class="font-label-sm text-label-sm text-outline">Evoluciones fisioterapéuticas, biometría articular y recetas</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-sm text-center">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-0 accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-3 px-space-sm text-center">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-0 accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-3 px-space-sm text-center">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-0 accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-3 px-space-sm text-center">
+<input class="w-4 h-4 rounded text-primary focus:ring-0 accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-3 px-space-sm text-center">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-0 accent-primary cursor-pointer" type="checkbox"/>
+</td>
+</tr>
+<!-- Fila Caja & Facturación -->
+<tr class="hover:bg-surface-container/40 transition-colors">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[18px] text-primary-container">receipt_long</span>
+<div>
+<span class="font-headline-sm text-headline-sm block">Caja, POS &amp; Boletas Electrónicas</span>
+<span class="font-label-sm text-label-sm text-outline">Recaudación, bonos de previsión, anulación de pagos y DTE SII</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-sm text-center">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-0 accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-3 px-space-sm text-center">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-0 accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-3 px-space-sm text-center">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-0 accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-3 px-space-sm text-center">
+<input class="w-4 h-4 rounded text-primary focus:ring-0 accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-3 px-space-sm text-center">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-0 accent-primary cursor-pointer" type="checkbox"/>
+</td>
+</tr>
+<!-- Fila Reportes & Analítica -->
+<tr class="hover:bg-surface-container/40 transition-colors">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[18px] text-secondary">analytics</span>
+<div>
+<span class="font-headline-sm text-headline-sm block">Analítica de Rendimiento &amp; BI</span>
+<span class="font-label-sm text-label-sm text-outline">Tasas de deserción kinésica, productividad por profesional y EBITDA</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-sm text-center">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-0 accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-3 px-space-sm text-center">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-0 accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-3 px-space-sm text-center">
+<input class="w-4 h-4 rounded text-primary focus:ring-0 accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-3 px-space-sm text-center">
+<input class="w-4 h-4 rounded text-primary focus:ring-0 accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-3 px-space-sm text-center">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-0 accent-primary cursor-pointer" type="checkbox"/>
+</td>
+</tr>
+<!-- Fila Configuración del Sistema -->
+<tr class="hover:bg-surface-container/40 transition-colors">
+<td class="py-3 px-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[18px] text-error">tune</span>
+<div>
+<span class="font-headline-sm text-headline-sm block">Configuración Maestra &amp; Seguridad</span>
+<span class="font-label-sm text-label-sm text-outline">Parámetros Spring Security, sucursales, endpoints API e integraciones</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-space-sm text-center">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-0 accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-3 px-space-sm text-center">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-0 accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-3 px-space-sm text-center">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-0 accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-3 px-space-sm text-center">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-0 accent-primary cursor-pointer" type="checkbox"/>
+</td>
+<td class="py-3 px-space-sm text-center">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-0 accent-primary cursor-pointer" type="checkbox"/>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Acciones de Persistencia -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-space-md pt-space-xs">
+<div class="flex items-center gap-2 text-outline font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-tertiary">lock_reset</span>
+<span>Requiere firma de auditoría por el usuario autenticado (ID: 001-SARAH)</span>
+</div>
+<div class="flex items-center gap-space-sm w-full sm:w-auto justify-end">
+<button class="h-9 px-space-md rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-headline-sm text-headline-sm transition-colors" type="button">
+          Descartar Cambios
+        </button>
+<button class="h-9 px-space-lg rounded-xl bg-primary hover:bg-primary-container text-on-primary font-headline-sm text-headline-sm flex items-center gap-1.5 shadow-sm transition-colors" id="btn-save-user-profile" type="button">
+<span class="material-symbols-outlined text-[18px]">save</span>
+<span>Guardar &amp; Aplicar Permisos</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Directorio de Usuarios Activos -->
+<div class="p-space-xl rounded-xl bg-surface-container-lowest shadow-sm mb-space-xl">
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md pb-space-lg mb-space-md">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Directorio de Usuarios y Especialistas Clínicos</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          26 usuarios activos registrados en el clúster multi-tenant CytoHelix KlinikPro.
+        </p>
+</div>
+<!-- Filtros Dinámicos -->
+<div class="flex flex-wrap items-center gap-space-sm">
+<div class="relative min-w-[220px]">
+<span class="material-symbols-outlined absolute left-2.5 top-2.5 text-outline text-[18px]">search</span>
+<input class="w-full h-9 pl-9 pr-space-md rounded-xl bg-surface-container-low text-on-surface placeholder-outline font-body-sm text-body-sm focus:outline-none focus:bg-surface-container transition-all" id="filter-user-search" placeholder="Filtrar por nombre, ID o email..." type="text"/>
+</div>
+<select class="h-9 px-space-md rounded-xl bg-surface-container-low text-on-surface font-body-sm text-body-sm focus:outline-none focus:bg-surface-container transition-all" id="filter-role-select">
+<option value="ALL">Todos los Roles</option>
+<option value="ADMIN">ADMIN</option>
+<option value="COORDINADOR">COORDINADOR</option>
+<option value="FISIO">FISIO</option>
+<option value="RECEPCION">RECEPCION</option>
+</select>
+<select class="h-9 px-space-md rounded-xl bg-surface-container-low text-on-surface font-body-sm text-body-sm focus:outline-none focus:bg-surface-container transition-all" id="filter-branch-select">
+<option value="ALL">Todas las Sucursales</option>
+<option value="NORTE">Sucursal Norte #01</option>
+<option value="SUR">Sucursal Sur #02</option>
+<option value="CORP">Corporativo CytoHelix</option>
+</select>
+</div>
+</div>
+<!-- Tabla de Usuarios -->
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-sm text-body-sm">
+<thead>
+<tr class="text-outline font-label-sm text-label-sm uppercase tracking-wider bg-surface-container-low">
+<th class="py-3 px-space-md rounded-l-lg">Usuario / Especialista</th>
+<th class="py-3 px-space-md">Rol RBAC</th>
+<th class="py-3 px-space-md">Sucursal Asignada</th>
+<th class="py-3 px-space-md">Último Acceso (IP &amp; Timestamp)</th>
+<th class="py-3 px-space-md">Estado</th>
+<th class="py-3 px-space-md text-right rounded-r-lg">Acciones</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container">
+<!-- Usuario 1: Dra. Sarah Jenkins -->
+<tr class="hover:bg-surface-container-low/60 transition-colors user-row" data-branch="NORTE" data-role="ADMIN">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-md">
+<img class="w-10 h-10 rounded-full object-cover shadow-sm" data-alt="Portrait photography of a female medical director in laboratory coat with stethoscope, clinical clinic environment, soft lighting, professional and focused." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAn5Fy-RYwXVnmyfvELbpbzrmkTIPEvjZRbRepHgqFVbr2GV9_EcU9_HasCJhIt2drKLW8R8A0hlNhmu_LDzuCFT6FV_1HPm7nO9ouecyrTa53dUs9UyF9_ezIKfn2OxYOAzgDX_MkPL8rLMidTd5T1ezw-mDz77sLX-pWy4_5nUuKChDBnHmw3UeVQp_DVHHhegAHe4Eo6yBtB0LzEEWFAccKx-2wzlmlfYaIiarMkyUpKU20BJbC_"/>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface">Dra. Sarah Jenkins</span>
+<span class="material-symbols-outlined text-primary text-[16px]" title="Verificada por CytoHelix IAM">verified</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">s.jenkins@cytohelix.med • Reg: MED-9942</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="font-label-sm text-label-sm px-2.5 py-1 rounded-full bg-surface-container-high text-primary font-semibold">
+                ROLE_ADMIN
+              </span>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-outline">domain</span>
+<span>Sucursal Norte #01</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Tenant: cytohelix-norte</span>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-on-surface">Hace 12 min (Activa)</span>
+<span class="font-label-sm text-label-sm text-outline font-mono">190.22.45.101 • Santiago, CL</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-surface-container text-tertiary font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-container"></span> Activo
+              </span>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-on-surface-variant flex items-center justify-center transition-colors" title="Editar permisos" type="button">
+<span class="material-symbols-outlined text-[18px]">edit_note</span>
+</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-error flex items-center justify-center transition-colors" title="Revocar token JWT" type="button">
+<span class="material-symbols-outlined text-[18px]">key_off</span>
+</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-on-surface-variant flex items-center justify-center transition-colors" title="Opciones avanzadas" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Usuario 2: Dr. Carlos Mendoza -->
+<tr class="hover:bg-surface-container-low/60 transition-colors user-row" data-branch="NORTE" data-role="COORDINADOR">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-md">
+<img class="w-10 h-10 rounded-full object-cover shadow-sm" data-alt="Portrait photography of an experienced male medical coordinator in a modern clinical rehabilitation office with clipboard and tablet, clean cyan accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuABiLPL8pXSx0FhEY7k20Jm1R8_yJD8DmFOj2Sh-KzEXrzsAlnzM2aCQ1xuufdRbbuSDJYtAws1c98nVIiZDmxJeapg68Mbqe41CbQfIG30B_1FOgAGAgsILjpMZ2HoN6OT1fmanACxns4hgBYqHjCDXVpWfMARH7TCmisAYwGAN-RgfeZXey0LnrTA9LRwYqWqTvtohH1UxStqYyNmuG_JdVCgtCpwEYLDvxJql7FlVBGbSNGPc-AZ"/>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface">Dr. Carlos Mendoza</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">c.mendoza@klinikpro.com • Reg: KIN-5521</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="font-label-sm text-label-sm px-2.5 py-1 rounded-full bg-secondary-fixed/40 text-on-secondary-fixed font-semibold">
+                ROLE_COORD
+              </span>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-outline">domain</span>
+<span>Sucursal Norte #01</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Boxes Asignados: 01 al 06</span>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-on-surface">Hoy 08:30 AM</span>
+<span class="font-label-sm text-label-sm text-outline font-mono">190.22.45.105 • LAN Box Coord</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-surface-container text-tertiary font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-container"></span> Activo
+              </span>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-on-surface-variant flex items-center justify-center transition-colors" title="Editar permisos" type="button">
+<span class="material-symbols-outlined text-[18px]">edit_note</span>
+</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-error flex items-center justify-center transition-colors" title="Revocar token JWT" type="button">
+<span class="material-symbols-outlined text-[18px]">key_off</span>
+</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-on-surface-variant flex items-center justify-center transition-colors" title="Opciones avanzadas" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Usuario 3: Dr. Manuel Ceballos -->
+<tr class="hover:bg-surface-container-low/60 transition-colors user-row" data-branch="SUR" data-role="FISIO">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-md">
+<img class="w-10 h-10 rounded-full object-cover shadow-sm" data-alt="Portrait photography of a smiling young male sports physiotherapist wearing dark teal uniform in a modern kinetic gymnasium setting with rehab equipment in background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXXHeQDBXCbColJzkVt1jk0_sMhbJHGqoVPCkmXDiCg5i6rOkSngODz4GL8OLMzVSOeGR7gsIGDZPyca8uHpbO72DlOZJX9FnwBfVxupwesJvk186qlrC8ZRDcFU7MyYne4C6f9MbvqImqyLHGAx1rjs0Y8ee1w-mQt41cBUMZ1r2XDm9IVa1BS6a11nf68lZoOgBebFvrl-buX4GsnJnnl6yAv2esLu8zARM6dIRNHdGMKrIwLLJr"/>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface">Dr. Manuel Ceballos</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">m.ceballos@klinikpro.com • Especialista Deportivo</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="font-label-sm text-label-sm px-2.5 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-semibold">
+                ROLE_FISIO
+              </span>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-outline">domain</span>
+<span>Sucursal Sur #02</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Box de Kinesiología B-04</span>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-on-surface">Ayer 19:40 PM</span>
+<span class="font-label-sm text-label-sm text-outline font-mono">186.104.22.18 • Móvil Tablet</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-surface-container text-tertiary font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-container"></span> Activo
+              </span>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-on-surface-variant flex items-center justify-center transition-colors" title="Editar permisos" type="button">
+<span class="material-symbols-outlined text-[18px]">edit_note</span>
+</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-error flex items-center justify-center transition-colors" title="Revocar token JWT" type="button">
+<span class="material-symbols-outlined text-[18px]">key_off</span>
+</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-on-surface-variant flex items-center justify-center transition-colors" title="Opciones avanzadas" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Usuario 4: Laura Gómez -->
+<tr class="hover:bg-surface-container-low/60 transition-colors user-row" data-branch="NORTE" data-role="RECEPCION">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-md">
+<img class="w-10 h-10 rounded-full object-cover shadow-sm" data-alt="Portrait photography of a friendly female receptionist at modern medical clinic counter with computer monitor and clean minimalist front desk background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBasuwHFjFv9MSP5JKQOMAXkM6V56tR1f21n6q2V0Lb2iG9l_0FgxCO4BJUT3HQKk9y3LRSWPeSEpgKdevh9t9G5sWzqk6pBNIxVmCHKuVcLc6web3VLNSr0e8PA8rhI2pophHHii8nInV7fOf7KoVewxji2TzhiF_X0HvtEvVDt-avKpHO4PBps5j93NbCPDOz4gdWTwU1bvPfHzHmJjQ43eXgBOdwdUsq2oeGGiE7WUVom5O3oOkL"/>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface">Laura Gómez</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">l.gomez@klinikpro.com • Admisión &amp; Caja</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="font-label-sm text-label-sm px-2.5 py-1 rounded-full bg-surface-container text-on-surface-variant font-semibold">
+                ROLE_RECEPCION
+              </span>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-outline">domain</span>
+<span>Sucursal Norte #01</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Caja Terminal 01</span>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-on-surface">Hoy 07:55 AM</span>
+<span class="font-label-sm text-label-sm text-outline font-mono">190.22.45.110 • LAN POS</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-surface-container text-tertiary font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-container"></span> Activo
+              </span>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-on-surface-variant flex items-center justify-center transition-colors" title="Editar permisos" type="button">
+<span class="material-symbols-outlined text-[18px]">edit_note</span>
+</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-on-surface-variant hover:text-error flex items-center justify-center transition-colors" title="Revocar token JWT" type="button">
+<span class="material-symbols-outlined text-[18px]">key_off</span>
+</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-on-surface-variant flex items-center justify-center transition-colors" title="Opciones avanzadas" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Usuario 5: Dr. Rodrigo Valenzuela (Vacaciones) -->
+<tr class="hover:bg-surface-container-low/60 transition-colors user-row" data-branch="CORP" data-role="FISIO">
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-surface-container-high text-primary flex items-center justify-center font-bold">
+                  RV
+                </div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface">Dr. Rodrigo Valenzuela</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">r.valenzuela@cytohelix.med • Kinesiología Avanzada</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="font-label-sm text-label-sm px-2.5 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-semibold">
+                ROLE_FISIO
+              </span>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-outline">domain</span>
+<span>Corporativo CytoHelix</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Investigación Clínica</span>
+</td>
+<td class="py-3.5 px-space-md">
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-on-surface">14 Nov 2024</span>
+<span class="font-label-sm text-label-sm text-outline font-mono">200.72.19.45 • Sesión Expirada</span>
+</div>
+</td>
+<td class="py-3.5 px-space-md">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-surface-container-high text-outline font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span> En Vacaciones
+              </span>
+</td>
+<td class="py-3.5 px-space-md text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-on-surface-variant flex items-center justify-center transition-colors" title="Editar permisos" type="button">
+<span class="material-symbols-outlined text-[18px]">edit_note</span>
+</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-on-surface-variant flex items-center justify-center transition-colors" title="Restablecer credenciales" type="button">
+<span class="material-symbols-outlined text-[18px]">lock_reset</span>
+</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-on-surface-variant flex items-center justify-center transition-colors" title="Opciones avanzadas" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Paginación de Tabla -->
+<div class="flex items-center justify-between pt-space-lg mt-space-md text-outline font-label-sm text-label-sm">
+<span>Mostrando 5 de 26 especialistas registrados</span>
+<div class="flex items-center gap-1">
+<button class="w-8 h-8 rounded-lg bg-surface-container-low hover:bg-surface-container flex items-center justify-center transition-colors disabled:opacity-40" disabled="">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-primary text-on-primary font-bold flex items-center justify-center">1</button>
+<button class="w-8 h-8 rounded-lg bg-surface-container-low hover:bg-surface-container flex items-center justify-center text-on-surface transition-colors">2</button>
+<button class="w-8 h-8 rounded-lg bg-surface-container-low hover:bg-surface-container flex items-center justify-center text-on-surface transition-colors">3</button>
+<button class="w-8 h-8 rounded-lg bg-surface-container-low hover:bg-surface-container flex items-center justify-center text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Sección de Seguridad y Políticas JWT del Backend -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-lg mb-space-xl">
+<!-- Card Configuración Token JWT -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-space-sm mb-space-md">
+<div class="w-9 h-9 rounded-xl bg-surface-container text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">token</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Configuración JWT &amp; Expiración</h3>
+<span class="font-label-sm text-label-sm text-outline">Firma HMAC-SHA512 con clave rotativa</span>
+</div>
+</div>
+<div class="space-y-space-sm mb-space-md">
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-low">
+<span class="font-body-sm text-body-sm text-on-surface">Vida de Access Token</span>
+<span class="font-label-sm text-label-sm font-mono px-2 py-0.5 rounded bg-surface-container-high text-primary font-bold">8 Horas (28800s)</span>
+</div>
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-low">
+<span class="font-body-sm text-body-sm text-on-surface">Rotación Refresh Token</span>
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-tertiary font-bold">
+<span class="material-symbols-outlined text-[15px]">autorenew</span> Automática (Sliding)
+            </span>
+</div>
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-low">
+<span class="font-body-sm text-body-sm text-on-surface">Algoritmo Criptográfico</span>
+<span class="font-label-sm text-label-sm font-mono text-outline">Bcrypt (Cost Factor 12)</span>
+</div>
+</div>
+</div>
+<div class="pt-space-sm flex items-center justify-between text-outline font-label-sm text-label-sm">
+<span>Última rotación de Secret: 01 Nov</span>
+<button class="text-primary font-semibold hover:underline">Configurar Parámetros</button>
+</div>
+</div>
+<!-- Card 2FA Forzoso & Restricciones -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-space-sm mb-space-md">
+<div class="w-9 h-9 rounded-xl bg-surface-container text-tertiary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">phonelink_lock</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Políticas de 2FA &amp; Multi-Factor</h3>
+<span class="font-label-sm text-label-sm text-outline">Obligatoriedad basada en criticidad</span>
+</div>
+</div>
+<div class="space-y-space-sm mb-space-md">
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-low">
+<div>
+<span class="font-body-sm text-body-sm text-on-surface block">Módulo Financiero / Caja</span>
+<span class="font-label-sm text-label-sm text-outline">Roles: ADMIN y RECEPCION</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-bold">FORZOSO</span>
+</div>
+<div class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-low">
+<div>
+<span class="font-body-sm text-body-sm text-on-surface block">Especialistas Kinésicos</span>
+<span class="font-label-sm text-label-sm text-outline">Rol: FISIO (Acceso a Ficha)</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">OPCIONAL (TOTP)</span>
+</div>
+</div>
+</div>
+<div class="pt-space-sm flex items-center justify-between text-outline font-label-sm text-label-sm">
+<span>Cumplimiento Ley Datos Médicos 20.584</span>
+<span class="material-symbols-outlined text-tertiary text-[18px]">verified</span>
+</div>
+</div>
+<!-- Card Auditoría & Blacklist JWT Activa -->
+<div class="p-space-lg rounded-xl bg-surface-container-lowest shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-space-sm mb-space-md">
+<div class="w-9 h-9 rounded-xl bg-surface-container text-error flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">security_update_warning</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Revocación y Blacklist Redis</h3>
+<span class="font-label-sm text-label-sm text-outline">Invalidación inmediata de sesiones</span>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-low mb-space-md">
+<div class="flex items-center justify-between mb-2">
+<span class="font-body-sm text-body-sm text-on-surface">Sesiones activas en clúster</span>
+<span class="font-metric-num text-metric-num text-primary">28</span>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden mb-2">
+<div class="bg-primary h-full rounded-full" style="width: 32%"></div>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Capacidad segura: hasta 250 sesiones concurrentes</span>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<button class="h-9 px-space-md rounded-xl bg-error-container text-on-error-container font-headline-sm text-headline-sm hover:opacity-90 transition-opacity flex items-center gap-1.5 w-full justify-center" id="btn-purge-sessions" type="button">
+<span class="material-symbols-outlined text-[17px]">power_settings_new</span>
+<span>Forzar Cierre de Sesiones Inactivas</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Modal Diálogo: Creación Rápida de Rol Personalizado (Oculto por defecto, toggle JS) -->
+<div class="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm hidden items-center justify-center p-space-md" id="role-modal">
+<div class="w-full max-w-lg bg-surface-container-lowest rounded-2xl shadow-xl p-space-xl overflow-hidden transform transition-all">
+<div class="flex items-center justify-between pb-space-md mb-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-xl bg-surface-container text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">add_moderator</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Crear Rol Personalizado</h3>
+<span class="font-label-sm text-label-sm text-outline">Nuevo perfil en la tabla auth_roles</span>
+</div>
+</div>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-outline hover:text-on-surface flex items-center justify-center transition-colors" id="btn-close-role-modal" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="space-y-space-md mb-space-lg">
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Identificador Técnico (Spring Authority)</label>
+<input class="h-9 px-space-md rounded-xl bg-surface-container-low text-on-surface font-body-sm text-body-sm uppercase focus:outline-none focus:bg-surface-container focus:ring-1 focus:ring-primary" placeholder="Ej: ROLE_KINESIOLOGO_JEFE" type="text"/>
+<span class="font-label-sm text-label-sm text-outline">Debe comenzar con el prefijo ROLE_</span>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Nombre Visible / Etiqueta</label>
+<input class="h-9 px-space-md rounded-xl bg-surface-container-low text-on-surface font-body-sm text-body-sm focus:outline-none focus:bg-surface-container focus:ring-1 focus:ring-primary" placeholder="Ej: Kinesiólogo Jefe de Sucursal" type="text"/>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Heredar Permisos Base de</label>
+<select class="h-9 px-space-md rounded-xl bg-surface-container-low text-on-surface font-body-sm text-body-sm focus:outline-none focus:bg-surface-container focus:ring-1 focus:ring-primary">
+<option>ROLE_FISIO (Especialista Clínico)</option>
+<option>ROLE_COORD (Coordinador)</option>
+<option>ROLE_RECEPCION (Frontdesk)</option>
+<option>Sin herencia (Plantilla vacía)</option>
+</select>
+</div>
+<div class="flex flex-col gap-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant">Descripción Operativa</label>
+<textarea class="p-space-sm rounded-xl bg-surface-container-low text-on-surface font-body-sm text-body-sm focus:outline-none focus:bg-surface-container focus:ring-1 focus:ring-primary resize-none" placeholder="Define el alcance clínico y administrativo de este rol..." rows="2"></textarea>
+</div>
+</div>
+<div class="flex items-center justify-end gap-space-sm">
+<button class="h-9 px-space-md rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-headline-sm text-headline-sm transition-colors" id="btn-cancel-role-modal" type="button">
+          Cancelar
+        </button>
+<button class="h-9 px-space-lg rounded-xl bg-primary hover:bg-primary-container text-on-primary font-headline-sm text-headline-sm flex items-center gap-1 transition-colors" id="btn-confirm-create-role" type="button">
+<span class="material-symbols-outlined text-[18px]">check</span>
+<span>Guardar Rol</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Toast de Notificación Micro-interacción -->
+<div class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-space-sm px-space-lg py-space-md rounded-xl bg-on-surface text-on-primary shadow-xl" id="toast-rbac">
+<span class="material-symbols-outlined text-tertiary-fixed text-[20px]">verified</span>
+<span class="font-body-sm text-body-sm" id="toast-rbac-message">Cambios aplicados exitosamente.</span>
+</div>
+</div>
+<script>
+  // Lógica interactiva en Vanilla JS para filtrado, modales y microinteracciones
+  (function () {
+    const searchInput = document.getElementById('filter-user-search');
+    const roleSelect = document.getElementById('filter-role-select');
+    const branchSelect = document.getElementById('filter-branch-select');
+    const userRows = document.querySelectorAll('.user-row');
+
+    function filterUsers() {
+      const search = (searchInput.value || '').toLowerCase().trim();
+      const role = roleSelect.value;
+      const branch = branchSelect.value;
+
+      userRows.forEach(row => {
+        const rowRole = row.getAttribute('data-role');
+        const rowBranch = row.getAttribute('data-branch');
+        const textContent = row.textContent.toLowerCase();
+
+        const matchSearch = textContent.includes(search);
+        const matchRole = (role === 'ALL' || rowRole === role);
+        const matchBranch = (branch === 'ALL' || rowBranch === branch);
+
+        if (matchSearch && matchRole && matchBranch) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    }
+
+    if (searchInput) searchInput.addEventListener('input', filterUsers);
+    if (roleSelect) roleSelect.addEventListener('change', filterUsers);
+    if (branchSelect) branchSelect.addEventListener('change', filterUsers);
+
+    // Toast interactivo
+    function showToast(message) {
+      const toast = document.getElementById('toast-rbac');
+      const toastMsg = document.getElementById('toast-rbac-message');
+      if (!toast || !toastMsg) return;
+      toastMsg.textContent = message;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      setTimeout(() => {
+        toast.classList.add('translate-y-20', 'opacity-0');
+        toast.classList.remove('translate-y-0', 'opacity-100');
+      }, 3500);
+    }
+
+    // Modal de Creación de Rol
+    const roleModal = document.getElementById('role-modal');
+    const openRoleModalBtn = document.getElementById('btn-open-role-modal');
+    const closeRoleModalBtn = document.getElementById('btn-close-role-modal');
+    const cancelRoleModalBtn = document.getElementById('btn-cancel-role-modal');
+    const confirmCreateRoleBtn = document.getElementById('btn-confirm-create-role');
+
+    function toggleRoleModal(show) {
+      if (!roleModal) return;
+      if (show) {
+        roleModal.classList.remove('hidden');
+        roleModal.classList.add('flex');
+      } else {
+        roleModal.classList.add('hidden');
+        roleModal.classList.remove('flex');
+      }
+    }
+
+    if (openRoleModalBtn) openRoleModalBtn.addEventListener('click', () => toggleRoleModal(true));
+    if (closeRoleModalBtn) closeRoleModalBtn.addEventListener('click', () => toggleRoleModal(false));
+    if (cancelRoleModalBtn) cancelRoleModalBtn.addEventListener('click', () => toggleRoleModal(false));
+
+    if (confirmCreateRoleBtn) {
+      confirmCreateRoleBtn.addEventListener('click', () => {
+        toggleRoleModal(false);
+        showToast('Nuevo Rol RBAC registrado en el catálogo de CytoHelix.');
+      });
+    }
+
+    // Controles de Matriz de Permisos (Marcar todos / Limpiar)
+    const selectAllBtn = document.getElementById('btn-select-all');
+    const clearAllBtn = document.getElementById('btn-clear-all');
+    const matrixCheckboxes = document.querySelectorAll('tbody input[type="checkbox"]');
+
+    if (selectAllBtn) {
+      selectAllBtn.addEventListener('click', () => {
+        matrixCheckboxes.forEach(cb => cb.checked = true);
+        showToast('Todos los privilegios han sido concedidos.');
+      });
+    }
+
+    if (clearAllBtn) {
+      clearAllBtn.addEventListener('click', () => {
+        matrixCheckboxes.forEach(cb => cb.checked = false);
+        showToast('Matriz de privilegios limpiada.');
+      });
+    }
+
+    // Botones de acción principales
+    const saveProfileBtn = document.getElementById('btn-save-user-profile');
+    if (saveProfileBtn) {
+      saveProfileBtn.addEventListener('click', () => {
+        showToast('Credenciales y privilegios sincronizados con PostgreSQL Flyway V3.');
+      });
+    }
+
+    const openUserModalBtn = document.getElementById('btn-open-user-modal');
+    if (openUserModalBtn) {
+      openUserModalBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 320, behavior: 'smooth' });
+        showToast('Formulario de alta enfocado. Complete los datos.');
+      });
+    }
+
+    const purgeSessionsBtn = document.getElementById('btn-purge-sessions');
+    if (purgeSessionsBtn) {
+      purgeSessionsBtn.addEventListener('click', () => {
+        showToast('Tokens inactivos revocados exitosamente en Redis.');
+      });
+    }
+
+    const exportBtn = document.getElementById('btn-export-matrix');
+    if (exportBtn) {
+      exportBtn.addEventListener('click', () => {
+        showToast('Generando reporte PDF/CSV de auditoría de accesos...');
+      });
+    }
+  })();
+</script></main></div></body></html>

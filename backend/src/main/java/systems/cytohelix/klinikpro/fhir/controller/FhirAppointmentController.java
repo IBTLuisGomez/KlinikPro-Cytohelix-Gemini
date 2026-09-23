@@ -55,4 +55,11 @@ public class FhirAppointmentController {
         var command = mapper.toUpsertCommand(fhirAppointment);
         return mapper.toFhir(appointmentService.upsertFromFhir(command));
     }
+
+    @org.springframework.web.bind.annotation.PutMapping("/{id}")
+    public FhirAppointment update(@PathVariable UUID id, @RequestBody FhirAppointment fhirAppointment) {
+        // En una implementacion estricta se deberia verificar que el id del path coincida con el payload.
+        var command = mapper.toUpsertCommand(fhirAppointment);
+        return mapper.toFhir(appointmentService.upsertFromFhir(command));
+    }
 }

@@ -33,7 +33,7 @@ describe('KlinikPro API E2E (JWT)', () => {
   let authB = {};
   let patientIdA = '';
   // Practitioner insertado en bd por defecto en nuestro entorno dev
-  const practitionerIdA = '333e4567-e89b-12d3-a456-426614174000';
+  let practitionerIdA;
 
   beforeAll(async () => {
     try {
@@ -50,12 +50,14 @@ describe('KlinikPro API E2E (JWT)', () => {
   test('Test 1: Creando paciente en Tenant A', async () => {
     const res = await httpRequest('/fhir/Patient', 'POST', {
       resourceType: 'Patient',
-      active: true,
       name: [{ use: 'official', text: 'Automated Patient A' }]
     }, authA);
     expect([200, 201]).toContain(res.status);
     patientIdA = res.data.id;
     expect(patientIdA).toBeDefined();
+
+    const resPrac = await httpRequest('/fhir/Practitioner', 'GET', null, authA);
+    practitionerIdA = resPrac.data.entry[0].resource.id;
   });
 
   test('Test 2: Verificando aislamiento RLS en Tenant B', async () => {
@@ -126,19 +128,24 @@ describe('KlinikPro API E2E (JWT)', () => {
     });
   });
 
-  describe('Caja y Finanzas (Fase 3)', () => {
-    test('Test 6: Realizar un Cobro en Caja y Facturación Automática', async () => {
-      // Usamos el endpoint REST customizado para caja (no FHIR puro)
-      const res = await httpRequest('/api/finances/pos/pay', 'POST', {
+  describe('Caja y Finanzas (Fase 6)', () => {
+    test('Test 6: Realizar un Cobro en Caja (Income)', async () => {
+      // Primero, abrir la caja
+      await httpRequest('/api/pos/register/open', 'POST', {
+        initialAmount: 50000.00
+      }, authA);
+
+      // Luego realizar el cobro
+      const res = await httpRequest('/api/pos/checkout', 'POST', {
         patientId: patientIdA,
         amount: 1500.50,
-        paymentMethod: 'CARD'
+        paymentMethod: 'CASH',
+        concept: 'Consulta General'
       }, authA);
       
       if(res.status >= 400) console.log("Test 6 Error:", res.error);
       expect([200, 201]).toContain(res.status);
-      expect(res.data.status).toBe('PAID');
-      expect(res.data.totalAmount).toBe(1500.50);
+      expect(res.data.netAmount).toBe(1500.50);
       expect(res.data.id).toBeDefined();
     });
 
@@ -149,6 +156,23 @@ describe('KlinikPro API E2E (JWT)', () => {
       expect(res.data.ingresosHoy).toBeGreaterThanOrEqual(1500.50); // Mínimo lo que acabamos de cobrar
       expect(res.data.pacientesHoy).toBeDefined();
       expect(res.data.citasPendientes).toBeDefined();
+    });
+    test('Test 8: Guardar Nota Clinica', async () => {
+      const res = await httpRequest('/api/clinical/notes', 'POST', {
+        patientId: patientIdA,
+        practitionerId: practitionerIdA,
+        subjective: 'Dolor de cabeza severo',
+        objective: 'Presion arterial 140/90',
+        assessment: 'Hipertension leve',
+        plan: 'Reposo y medicacion',
+        status: 'SIGNED'
+      }, authA);
+      
+      if(res.status >= 400) console.log("Test 8 Error:", res.error);
+      expect([200, 201]).toContain(res.status);
+      expect(res.data.id).toBeDefined();
+      expect(res.data.status).toBe('SIGNED');
+      expect(res.data.subjective).toBe('Dolor de cabeza severo');
     });
   });
 });
