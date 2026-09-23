@@ -24,6 +24,9 @@ public record PatientUpsertCommand(
         LocalDate nacimiento,
         UUID especialistaId,
         UUID tratanteId,
-        Boolean active
+        Boolean active,
+        Boolean aseguradora,
+        Boolean derivacion,
+        String notas
 ) {
 }

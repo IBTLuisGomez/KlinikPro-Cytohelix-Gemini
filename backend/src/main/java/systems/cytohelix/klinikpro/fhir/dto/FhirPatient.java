@@ -30,6 +30,7 @@ public record FhirPatient(
         List<ContactPoint> telecom,
         LocalDate birthDate,
         List<Reference> generalPractitioner,
-        Reference managingOrganization
+        Reference managingOrganization,
+        List<systems.cytohelix.klinikpro.fhir.common.Extension> extension
 ) {
 }

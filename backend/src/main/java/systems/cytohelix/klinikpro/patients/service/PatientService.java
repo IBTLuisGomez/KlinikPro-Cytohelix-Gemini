@@ -107,6 +107,9 @@ public class PatientService extends AbstractTenantScopedService {
                 .especialistaId(cmd.especialistaId())
                 .tratanteId(cmd.tratanteId())
                 .active(cmd.active() == null || cmd.active())
+                .aseguradora(cmd.aseguradora() != null ? cmd.aseguradora() : false)
+                .derivacion(cmd.derivacion() != null ? cmd.derivacion() : false)
+                .notas(cmd.notas())
                 .build();
 
         return patientRepository.save(patient);
@@ -132,6 +135,15 @@ public class PatientService extends AbstractTenantScopedService {
         patient.setTratanteId(cmd.tratanteId());
         if (cmd.active() != null) {
             patient.setActive(cmd.active());
+        }
+        if (cmd.aseguradora() != null) {
+            patient.setAseguradora(cmd.aseguradora());
+        }
+        if (cmd.derivacion() != null) {
+            patient.setDerivacion(cmd.derivacion());
+        }
+        if (cmd.notas() != null) {
+            patient.setNotas(cmd.notas());
         }
     }
 

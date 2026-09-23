@@ -48,6 +48,13 @@ public class PatientFhirMapper {
             generalPractitioner.add(Reference.to("Practitioner", patient.getTratanteId()));
         }
 
+        List<systems.cytohelix.klinikpro.fhir.common.Extension> extensions = new ArrayList<>();
+        extensions.add(systems.cytohelix.klinikpro.fhir.common.Extension.ofBoolean("http://cytohelix.systems/fhir/StructureDefinition/patient-aseguradora", patient.isAseguradora()));
+        extensions.add(systems.cytohelix.klinikpro.fhir.common.Extension.ofBoolean("http://cytohelix.systems/fhir/StructureDefinition/patient-derivacion", patient.isDerivacion()));
+        if (patient.getNotas() != null && !patient.getNotas().isBlank()) {
+            extensions.add(systems.cytohelix.klinikpro.fhir.common.Extension.ofString("http://cytohelix.systems/fhir/StructureDefinition/patient-notas", patient.getNotas()));
+        }
+
         return new FhirPatient(
                 "Patient",
                 patient.getId().toString(),
@@ -58,7 +65,8 @@ public class PatientFhirMapper {
                 telecom.isEmpty() ? null : telecom,
                 patient.getNacimiento(),
                 generalPractitioner.isEmpty() ? null : generalPractitioner,
-                Reference.to("Organization", patient.getTenantId())
+                Reference.to("Organization", patient.getTenantId()),
+                extensions
         );
     }
 
@@ -78,10 +86,24 @@ public class PatientFhirMapper {
 
         UUID especialistaId = practitionerIdAt(fhirPatient, 0);
         UUID tratanteId = practitionerIdAt(fhirPatient, 1);
+        
+        Boolean aseguradora = getExtensionBoolean(fhirPatient, "http://cytohelix.systems/fhir/StructureDefinition/patient-aseguradora");
+        Boolean derivacion = getExtensionBoolean(fhirPatient, "http://cytohelix.systems/fhir/StructureDefinition/patient-derivacion");
+        String notas = getExtensionString(fhirPatient, "http://cytohelix.systems/fhir/StructureDefinition/patient-notas");
 
         return new PatientUpsertCommand(
                 id, codigo, nombre, telefono, email, fhirPatient.birthDate(),
-                especialistaId, tratanteId, fhirPatient.active());
+                especialistaId, tratanteId, fhirPatient.active(), aseguradora, derivacion, notas);
+    }
+    
+    private Boolean getExtensionBoolean(FhirPatient fhirPatient, String url) {
+        if (fhirPatient.extension() == null) return null;
+        return fhirPatient.extension().stream().filter(e -> url.equals(e.url())).map(systems.cytohelix.klinikpro.fhir.common.Extension::valueBoolean).findFirst().orElse(null);
+    }
+    
+    private String getExtensionString(FhirPatient fhirPatient, String url) {
+        if (fhirPatient.extension() == null) return null;
+        return fhirPatient.extension().stream().filter(e -> url.equals(e.url())).map(systems.cytohelix.klinikpro.fhir.common.Extension::valueString).findFirst().orElse(null);
     }
 
     private String nombreDe(HumanName name) {

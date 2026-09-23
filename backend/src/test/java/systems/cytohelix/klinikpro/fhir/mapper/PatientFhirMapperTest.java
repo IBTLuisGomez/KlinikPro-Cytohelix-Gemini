@@ -77,6 +77,7 @@ class PatientFhirMapperTest {
                 List.of(ContactPoint.phone("3300000000"), ContactPoint.email("carlos@example.com")),
                 LocalDate.of(1985, 1, 1),
                 List.of(Reference.to("Practitioner", especialistaId)),
+                null,
                 null
         );
 
@@ -98,7 +99,7 @@ class PatientFhirMapperTest {
         FhirPatient fhirPatient = new FhirPatient(
                 "Patient", null, null, null, null,
                 List.of(HumanName.ofText("Paciente Nuevo")),
-                null, null, null, null);
+                null, null, null, null, null);
 
         PatientUpsertCommand cmd = mapper.toUpsertCommand(fhirPatient);
 
