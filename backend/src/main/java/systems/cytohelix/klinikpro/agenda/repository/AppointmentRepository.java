@@ -15,13 +15,16 @@ import java.util.UUID;
 public interface AppointmentRepository extends JpaRepository<Appointment, UUID> {
 
     /**
-     * Choque de horario: mismo practitioner + fecha + hora, ignorando citas
-     * canceladas — replica "sameSlot" del prototipo (KlinikPro.html,
-     * submitCita). Ver AppointmentService.
+     * Choque de horario: buscamos todas las citas del practitioner ese día
+     * para verificar solapamiento de duraciones (hora a hora_fin).
      */
-    List<Appointment> findByBranchIdAndPractitionerIdAndFechaAndHoraAndEstadoNot(
-            UUID branchId, UUID practitionerId, LocalDate fecha, LocalTime hora, AppointmentStatus estadoDistintoDe);
+    List<Appointment> findByBranchIdAndPractitionerIdAndFechaAndEstadoNot(
+            UUID branchId, UUID practitionerId, LocalDate fecha, AppointmentStatus estadoDistintoDe);
 
     /** Historial de citas de un paciente en la sucursal actual — usado por GET /fhir/Patient/{id}/$everything. */
     List<Appointment> findByBranchIdAndPatientId(UUID branchId, UUID patientId);
+
+    long countByBranchIdAndFecha(UUID branchId, LocalDate fecha);
+    
+    long countByBranchIdAndFechaAndEstado(UUID branchId, LocalDate fecha, AppointmentStatus estado);
 }

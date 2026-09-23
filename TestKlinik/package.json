@@ -1,0 +1,14 @@
+{
+  "name": "klinikpro-test",
+  "version": "1.0.0",
+  "description": "Pruebas E2E para KlinikPro",
+  "main": "api.test.js",
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand --testTimeout=30000",
+    "test:watch": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watch --testTimeout=30000"
+  },
+  "dependencies": {
+    "jest": "^29.7.0"
+  },
+  "type": "module"
+}

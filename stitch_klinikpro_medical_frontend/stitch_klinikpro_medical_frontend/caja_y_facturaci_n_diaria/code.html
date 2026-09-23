@@ -1,0 +1,584 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><title>KlinikProVF</title><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-primary":"#81d1f0","outline-variant":"#bec8cd","on-primary":"#ffffff","on-surface":"#131b2e","on-tertiary-fixed-variant":"#005236","surface-container":"#eaedff","on-primary-fixed":"#001f29","tertiary":"#005f40","on-tertiary-fixed":"#002113","surface-dim":"#d2d9f4","surface-variant":"#dae2fd","secondary-container":"#57dffe","on-secondary-fixed":"#001f26","on-error":"#ffffff","on-primary-fixed-variant":"#004d62","on-tertiary":"#ffffff","primary":"#005a71","tertiary-container":"#007a53","on-error-container":"#93000a","surface-container-lowest":"#ffffff","on-secondary-fixed-variant":"#004e5c","surface-tint":"#006781","surface-container-low":"#f2f3ff","primary-fixed-dim":"#81d1f0","secondary-fixed-dim":"#4cd7f6","on-secondary":"#ffffff","tertiary-fixed-dim":"#4edea3","surface-container-high":"#e2e7ff","surface-bright":"#faf8ff","tertiary-fixed":"#6ffbbe","secondary":"#00687a","outline":"#6f787d","on-tertiary-container":"#a3ffd0","on-secondary-container":"#006172","error-container":"#ffdad6","inverse-on-surface":"#eef0ff","primary-fixed":"#b9eaff","on-surface-variant":"#3f484c","surface":"#faf8ff","primary-container":"#0e7490","error":"#ba1a1a","inverse-surface":"#283044","secondary-fixed":"#acedff","background":"#faf8ff","surface-container-highest":"#dae2fd","on-background":"#131b2e","on-primary-container":"#d3f1ff"},borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},spacing:{"space-sm":"0.5rem","gutter-desktop":"1.5rem","gutter":"1rem","space-xs":"0.25rem","margin-desktop":"2rem","space-xl":"2rem","space-lg":"1.25rem","margin":"1rem","space-md":"0.75rem"},fontFamily:{"body-lg":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"metric-num":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"],"display-lg-mobile":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"],"display-lg":["Plus Jakarta Sans"]},fontSize:{"body-lg":["15px",{lineHeight:"22px",fontWeight:"400"}],"headline-lg":["24px",{lineHeight:"32px",letterSpacing:"-0.015em",fontWeight:"600"}],"headline-md":["20px",{lineHeight:"28px",letterSpacing:"-0.01em",fontWeight:"600"}],"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.02em",fontWeight:"600"}],"body-md":["14px",{lineHeight:"20px",fontWeight:"400"}],"metric-num":["22px",{lineHeight:"26px",letterSpacing:"-0.01em",fontWeight:"700"}],"headline-sm":["16px",{lineHeight:"24px",letterSpacing:"-0.005em",fontWeight:"600"}],"display-lg-mobile":["28px",{lineHeight:"36px",letterSpacing:"-0.02em",fontWeight:"700"}],"body-sm":["13px",{lineHeight:"18px",fontWeight:"400"}],"label-sm":["11px",{lineHeight:"14px",letterSpacing:"0.03em",fontWeight:"600"}],"display-lg":["36px",{lineHeight:"44px",letterSpacing:"-0.02em",fontWeight:"700"}]}}}};</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest z-50 flex flex-col shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="p-space-lg flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="KlinikPro Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XgMAMo22t2nLCTiihS-UnBZwY49cnr5IAbcw9MdbfK_GR5I4qdP6jwxKsKWTs-wEh8B5arcm9kHcplC4ZWeDXpn3ZFoDCc2NQCodtbEMp56AkHndm7ETZ-VrwFa4-2y2i4hiZeIOOyt9t0E5sDZzhHnm0wSA96BUoVfdwju-cG_XAlVgiQiyyZP2WmTRCDyeneisAIMmvrxLUPeNlYNcxqWKUGfsQZnTvwCQvQtqsN3eBbA_CpMVuuzFs"><div class="flex flex-col"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-on-surface">KlinikPro</span><span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded-full bg-surface-container-high text-primary">VF</span></div><span class="font-label-sm text-label-sm text-outline">Enterprise Health</span></div></div></div><div class="px-space-md mb-space-md"><div class="p-space-sm rounded-xl bg-surface-container-low flex flex-col gap-1 cursor-pointer hover:bg-surface-container transition-colors"><div class="flex items-center justify-between text-outline"><span class="font-label-sm text-label-sm uppercase tracking-wider">Sede Activa</span><span class="material-symbols-outlined text-[16px]">expand_more</span></div><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-[18px] text-primary">domain</span><span class="font-headline-sm text-headline-sm text-on-surface truncate">Clínica Cytohelix</span></div><span class="font-body-sm text-body-sm text-on-surface-variant truncate">Sucursal Norte #01</span></div></div><nav class="flex-1 px-space-md flex flex-col gap-space-xs overflow-y-auto" data-active-classes="bg-primary-container text-on-primary font-headline-sm"><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">grid_view</span><span class="font-headline-sm text-headline-sm">Dashboard</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="pacientes" href="#"><span class="material-symbols-outlined text-[20px]">group</span><span class="font-headline-sm text-headline-sm">Pacientes</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="agenda-y-citas" href="#"><span class="material-symbols-outlined text-[20px]">calendar_month</span><span class="font-headline-sm text-headline-sm">Agenda y Citas</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="ficha-clinica" href="#"><span class="material-symbols-outlined text-[20px]">clinical_notes</span><span class="font-headline-sm text-headline-sm">Ficha Clínica</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="caja-y-facturacion" href="#"><span class="material-symbols-outlined text-[20px]">receipt_long</span><span class="font-headline-sm text-headline-sm">Caja y Facturación</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="configuracion-auth" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span class="font-headline-sm text-headline-sm">Configuración / Auth</span></a></nav><div class="p-space-md mt-auto bg-surface-container-low"><div class="flex items-center justify-between p-space-sm rounded-xl bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] mb-space-xs"><div class="flex flex-col"><span class="font-label-sm text-label-sm text-outline uppercase">Nivel de Acceso</span><div class="flex items-center gap-1.5 mt-0.5"><span class="w-2 h-2 rounded-full bg-tertiary-container"></span><span class="font-headline-sm text-headline-sm text-on-surface">ADMIN / COORD</span></div></div><a class="p-space-xs rounded-lg hover:bg-surface-container text-outline hover:text-error transition-colors flex items-center justify-center" data-path="login" href="#" title="Cerrar sesión"><span class="material-symbols-outlined text-[20px]">logout</span></a></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl z-40 shadow-[0_1px_8px_rgba(0,0,0,0.04)] flex items-center justify-between px-space-xl gap-space-lg"><div class="flex-1 max-w-xl"><div class="relative flex items-center"><span class="material-symbols-outlined absolute left-space-md text-outline text-[20px]">search</span><input class="w-full h-9 pl-10 pr-space-md rounded-xl bg-surface-container-low text-on-surface placeholder-outline font-body-sm text-body-sm focus:outline-none focus:bg-surface-container transition-colors" placeholder="Buscar paciente por DNI, nombre o código #0000..." type="text"></div></div><div class="flex items-center gap-space-md"><div class="hidden xl:flex items-center gap-2 px-space-md py-1 rounded-full bg-surface-container text-tertiary"><span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span><span class="font-label-md text-label-md">Sucursal Activa - Conexión PostgreSQL OK</span></div><div class="flex items-center gap-space-xs"><button class="h-9 px-space-md rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-headline-sm text-headline-sm flex items-center gap-1 transition-colors" type="button"><span class="material-symbols-outlined text-[18px]">person_add</span><span class="">+ Paciente</span></button><button class="h-9 px-space-md rounded-xl bg-primary hover:bg-primary-container text-on-primary font-headline-sm text-headline-sm flex items-center gap-1 shadow-[0_1px_8px_rgba(0,0,0,0.04)] transition-colors" type="button"><span class="material-symbols-outlined text-[18px]">add_circle</span><span class="">+ Nueva Cita</span></button></div><div class="relative flex items-center"><button aria-label="Notificaciones" class="w-9 h-9 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest"></span></button></div><div class="flex items-center gap-space-sm pl-space-sm"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUAXt3jGRPraXQotcH_lotg3nBB7mdzhgyjuqs5u8pA2IgTAx5i5FYloF0YC4SO_cV-eyJ-g2E-Dtorz-bN8LGcI8EE-xNI7ayx2QgXa5lJX53QL6IhD_Wrq-O7Wt-GTIksHxNwMHRWK_GPGo5EezZuH4Wdor7qzvMWSRtuip_LvrA_0_muDMI4sae8hRvEVlmH0y17Whmvzr5G8rqjQdeaQc8kcKJFy0Rydjf4b9ovcMBBYwVjTHM"><div class="hidden md:flex flex-col"><span class="font-headline-sm text-headline-sm text-on-surface leading-tight">Dra. Sarah Jenkins</span><span class="font-label-sm text-label-sm text-outline leading-tight">Director Médico</span></div></div></div></header><main class="w-full pt-16 bg-surface min-h-screen px-space-xl py-space-xl"><div class="flex flex-col w-full gap-space-lg">
+<!-- Operational Header & Shift Status Banner -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md p-space-lg bg-surface-container-lowest rounded-xl shadow-sm">
+<div class="flex flex-col sm:flex-row sm:items-center gap-space-md">
+<!-- Clinic Branch Switcher Pill -->
+<div class="flex items-center gap-space-xs px-space-md py-1.5 rounded-full bg-surface-container-low text-on-surface">
+<span class="material-symbols-outlined text-primary text-[18px]">location_on</span>
+<span class="font-headline-sm text-headline-sm">Sucursal Norte #01</span>
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-container mx-1"></span>
+<span class="font-label-sm text-label-sm text-tertiary">Caja Principal</span>
+</div>
+<div class="h-6 w-px bg-surface-container hidden sm:block"></div>
+<!-- Active Shift & Operator Info -->
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">badge</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface">Turno Mañana</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container font-label-sm text-label-sm text-primary">08:00 - 15:00</span>
+</div>
+<span class="font-body-sm text-body-sm text-outline">Responsable: <strong class="text-on-surface">Laura Gómez</strong> (Recepción / Facturación)</span>
+</div>
+</div>
+</div>
+<!-- Main Financial Actions -->
+<div class="flex items-center gap-space-sm">
+<button class="h-9 px-space-md rounded-xl bg-surface-container text-on-surface hover:bg-surface-container-high font-headline-sm text-headline-sm flex items-center gap-1.5 transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px] text-error">lock_clock</span>
+<span class="">Cerrar Arqueo de Caja</span>
+</button>
+<button class="h-9 px-space-lg rounded-xl bg-primary-container text-on-primary hover:bg-primary font-headline-sm text-headline-sm flex items-center gap-1.5 transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">add_card</span>
+<span class="">+ Nuevo Cobro / Ingreso</span>
+</button>
+</div>
+</div>
+<!-- 4 Core Financial KPI Cards (Bento Style) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<!-- KPI 1: Saldo Inicial -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Saldo Inicial</span>
+<span class="font-metric-num text-metric-num text-on-surface mt-1">$200.00</span>
+</div>
+<div class="w-9 h-9 rounded-xl bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
+</div>
+</div>
+<div class="mt-space-sm flex items-center justify-between pt-space-xs">
+<span class="font-body-sm text-body-sm text-outline">Fondo fijo en efectivo</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-primary font-label-sm text-label-sm">Apertura 08:00</span>
+</div>
+</div>
+<!-- KPI 2: Total Cobrado Hoy -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-tertiary uppercase tracking-wider">Total Cobrado Hoy</span>
+<span class="font-metric-num text-metric-num text-on-surface mt-1">$3,420.00</span>
+</div>
+<div class="w-9 h-9 rounded-xl bg-surface-container-low flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[20px]">trending_up</span>
+</div>
+</div>
+<div class="mt-space-sm flex items-center justify-between pt-space-xs">
+<span class="font-body-sm text-body-sm text-on-surface-variant font-headline-sm">24 transacciones</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-tertiary font-label-sm text-label-sm">+18% vs ayer</span>
+</div>
+</div>
+<!-- KPI 3: Egresos y Gastos Menores -->
+<div class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-error uppercase tracking-wider">Egresos / Gastos Menores</span>
+<span class="font-metric-num text-metric-num text-error mt-1">-$180.00</span>
+</div>
+<div class="w-9 h-9 rounded-xl bg-error-container/30 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[20px]">shopping_bag</span>
+</div>
+</div>
+<div class="mt-space-sm flex items-center justify-between pt-space-xs">
+<span class="font-body-sm text-body-sm text-outline">Insumos descartables y aseo</span>
+<span class="px-2 py-0.5 rounded-full bg-error-container/30 text-on-error-container font-label-sm text-label-sm">2 vales</span>
+</div>
+</div>
+<!-- KPI 4: Saldo Neto Cuadrado -->
+<div class="bg-primary-container text-on-primary p-space-md rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-start justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-primary/80 uppercase tracking-wider">Saldo Neto en Caja</span>
+<span class="font-metric-num text-metric-num text-on-primary mt-1">$3,440.00</span>
+</div>
+<div class="w-9 h-9 rounded-xl bg-on-primary/15 flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[20px]">verified</span>
+</div>
+</div>
+<div class="mt-space-sm flex items-center justify-between pt-space-xs text-on-primary/90">
+<span class="font-body-sm text-body-sm truncate">Efe $680 · TPV $1,890 · Transf $870</span>
+<span class="px-2 py-0.5 rounded-full bg-on-primary/20 text-on-primary font-label-sm text-label-sm whitespace-nowrap">Cuadrado</span>
+</div>
+</div>
+</div>
+<!-- Operational Grid (Split 70% / 30%) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- LEFT PANEL: 70% Real-Time Clinical Cash Flow & Invoicing -->
+<div class="lg:col-span-8 flex flex-col gap-space-md">
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-md flex flex-col gap-space-md">
+<!-- Table Control Toolbar -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="font-headline-md text-headline-md text-on-surface">Movimientos de Caja en Vivo</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-primary font-label-sm text-label-sm flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-container animate-pulse"></span>
+              Sincronizado
+            </span>
+</div>
+<!-- Filters -->
+<div class="flex items-center gap-space-xs">
+<div class="relative">
+<select class="h-8 pl-space-sm pr-7 rounded-lg bg-surface-container-low text-on-surface font-body-sm text-body-sm focus:outline-none cursor-pointer appearance-none">
+<option>Todos los métodos</option>
+<option>Efectivo</option>
+<option>Tarjeta TPV</option>
+<option>Transferencia</option>
+</select>
+<span class="material-symbols-outlined absolute right-1.5 top-2 text-[16px] text-outline pointer-events-none">expand_more</span>
+</div>
+<div class="relative">
+<select class="h-8 pl-space-sm pr-7 rounded-lg bg-surface-container-low text-on-surface font-body-sm text-body-sm focus:outline-none cursor-pointer appearance-none">
+<option>Todos los estados</option>
+<option>Pagado</option>
+<option>Facturado</option>
+<option>Pendiente</option>
+</select>
+<span class="material-symbols-outlined absolute right-1.5 top-2 text-[16px] text-outline pointer-events-none">expand_more</span>
+</div>
+<button class="w-8 h-8 rounded-lg bg-surface-container-low hover:bg-surface-container flex items-center justify-center text-on-surface transition-colors" title="Refrescar lista" type="button">
+<span class="material-symbols-outlined text-[18px]">sync</span>
+</button>
+</div>
+</div>
+<!-- High-Density Clinical Transaction Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-sm text-body-sm">
+<thead>
+<tr class="bg-surface-container-low text-outline font-label-sm text-label-sm uppercase tracking-wider">
+<th class="py-2.5 px-3 rounded-l-lg">Folio / Hora</th>
+<th class="py-2.5 px-3">Paciente</th>
+<th class="py-2.5 px-3">Concepto Clínico</th>
+<th class="py-2.5 px-3">Método</th>
+<th class="py-2.5 px-3">Especialista</th>
+<th class="py-2.5 px-3 text-right">Monto</th>
+<th class="py-2.5 px-3 text-center">Estado</th>
+<th class="py-2.5 px-3 text-right rounded-r-lg">Acciones</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-low">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3 px-3">
+<span class="font-headline-sm text-headline-sm text-primary">#REC-1042</span>
+<span class="block font-label-sm text-label-sm text-outline">10:45 AM</span>
+</td>
+<td class="py-3 px-3">
+<span class="font-headline-sm text-headline-sm text-on-surface">Mateo Salazar R.</span>
+<span class="block font-label-sm text-label-sm text-outline">#HC-88219</span>
+</td>
+<td class="py-3 px-3">
+<span class="text-on-surface">Sesión Fisioterapia Integral</span>
+<span class="block font-label-sm text-label-sm text-primary">Kinesiotaping incluido</span>
+</td>
+<td class="py-3 px-3">
+<span class="inline-flex items-center gap-1 font-body-sm text-body-sm text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-tertiary">payments</span>
+                    Efectivo
+                  </span>
+</td>
+<td class="py-3 px-3 text-on-surface-variant font-body-sm">Lic. Diego Arce</td>
+<td class="py-3 px-3 text-right font-headline-sm text-headline-sm text-on-surface">$45.00</td>
+<td class="py-3 px-3 text-center">
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-tertiary font-label-sm text-label-sm inline-flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-container"></span> Pagado
+                  </span>
+</td>
+<td class="py-3 px-3 text-right">
+<div class="inline-flex items-center gap-1">
+<button class="w-7 h-7 rounded-lg bg-surface-container hover:bg-surface-container-high flex items-center justify-center text-on-surface" title="Imprimir Ticket Térmico" type="button">
+<span class="material-symbols-outlined text-[16px]">print</span>
+</button>
+<button class="w-7 h-7 rounded-lg bg-surface-container hover:bg-surface-container-high flex items-center justify-center text-primary" title="Emitir Factura CFDI" type="button">
+<span class="material-symbols-outlined text-[16px]">receipt</span>
+</button>
+<button class="w-7 h-7 rounded-lg bg-surface-container hover:bg-error-container/40 flex items-center justify-center text-error" title="Anular transacción" type="button">
+<span class="material-symbols-outlined text-[16px]">cancel</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3 px-3">
+<span class="font-headline-sm text-headline-sm text-primary">#REC-1041</span>
+<span class="block font-label-sm text-label-sm text-outline">10:20 AM</span>
+</td>
+<td class="py-3 px-3">
+<span class="font-headline-sm text-headline-sm text-on-surface">Valentina Pizarro</span>
+<span class="block font-label-sm text-label-sm text-outline">#HC-74011</span>
+</td>
+<td class="py-3 px-3">
+<span class="text-on-surface">Pack 5 Sesiones Kinesiología</span>
+<span class="block font-label-sm text-label-sm text-outline">Tratamiento Lumbalgia</span>
+</td>
+<td class="py-3 px-3">
+<span class="inline-flex items-center gap-1 font-body-sm text-body-sm text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-primary">credit_card</span>
+                    Tarjeta Visa
+                  </span>
+</td>
+<td class="py-3 px-3 text-on-surface-variant font-body-sm">Lic. Carla Vera</td>
+<td class="py-3 px-3 text-right font-headline-sm text-headline-sm text-on-surface">$180.00</td>
+<td class="py-3 px-3 text-center">
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-primary font-label-sm text-label-sm inline-flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span> Facturado
+                  </span>
+</td>
+<td class="py-3 px-3 text-right">
+<div class="inline-flex items-center gap-1">
+<button class="w-7 h-7 rounded-lg bg-surface-container hover:bg-surface-container-high flex items-center justify-center text-on-surface" title="Imprimir Ticket Térmico" type="button">
+<span class="material-symbols-outlined text-[16px]">print</span>
+</button>
+<button class="w-7 h-7 rounded-lg bg-primary-fixed hover:bg-secondary-fixed flex items-center justify-center text-on-primary-fixed-variant" title="Ver Factura Emitida" type="button">
+<span class="material-symbols-outlined text-[16px]">description</span>
+</button>
+<button class="w-7 h-7 rounded-lg bg-surface-container hover:bg-error-container/40 flex items-center justify-center text-error" title="Anular transacción" type="button">
+<span class="material-symbols-outlined text-[16px]">cancel</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3 px-3">
+<span class="font-headline-sm text-headline-sm text-primary">#REC-1040</span>
+<span class="block font-label-sm text-label-sm text-outline">09:55 AM</span>
+</td>
+<td class="py-3 px-3">
+<span class="font-headline-sm text-headline-sm text-on-surface">Dr. Hernán Castro V.</span>
+<span class="block font-label-sm text-label-sm text-outline">#HC-90412</span>
+</td>
+<td class="py-3 px-3">
+<span class="text-on-surface">Consulta Traumatología Compleja</span>
+<span class="block font-label-sm text-label-sm text-outline">Valoración Posquirúrgica</span>
+</td>
+<td class="py-3 px-3">
+<span class="inline-flex items-center gap-1 font-body-sm text-body-sm text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-secondary">account_balance</span>
+                    Transf. BBVA
+                  </span>
+</td>
+<td class="py-3 px-3 text-on-surface-variant font-body-sm">Dr. Andrés Soria</td>
+<td class="py-3 px-3 text-right font-headline-sm text-headline-sm text-on-surface">$120.00</td>
+<td class="py-3 px-3 text-center">
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-tertiary font-label-sm text-label-sm inline-flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-container"></span> Pagado
+                  </span>
+</td>
+<td class="py-3 px-3 text-right">
+<div class="inline-flex items-center gap-1">
+<button class="w-7 h-7 rounded-lg bg-surface-container hover:bg-surface-container-high flex items-center justify-center text-on-surface" title="Imprimir Ticket Térmico" type="button">
+<span class="material-symbols-outlined text-[16px]">print</span>
+</button>
+<button class="w-7 h-7 rounded-lg bg-surface-container hover:bg-surface-container-high flex items-center justify-center text-primary" title="Emitir Factura CFDI" type="button">
+<span class="material-symbols-outlined text-[16px]">receipt</span>
+</button>
+<button class="w-7 h-7 rounded-lg bg-surface-container hover:bg-error-container/40 flex items-center justify-center text-error" title="Anular transacción" type="button">
+<span class="material-symbols-outlined text-[16px]">cancel</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3 px-3">
+<span class="font-headline-sm text-headline-sm text-primary">#REC-1039</span>
+<span class="block font-label-sm text-label-sm text-outline">09:30 AM</span>
+</td>
+<td class="py-3 px-3">
+<span class="font-headline-sm text-headline-sm text-on-surface">Gabriela Montero</span>
+<span class="block font-label-sm text-label-sm text-outline">#HC-61900</span>
+</td>
+<td class="py-3 px-3">
+<span class="text-on-surface">Infiltración Articular Rodilla</span>
+<span class="block font-label-sm text-label-sm text-outline">Ácido Hialurónico</span>
+</td>
+<td class="py-3 px-3">
+<span class="inline-flex items-center gap-1 font-body-sm text-body-sm text-on-surface">
+<span class="material-symbols-outlined text-[16px] text-primary">credit_card</span>
+                    Tarjeta MC
+                  </span>
+</td>
+<td class="py-3 px-3 text-on-surface-variant font-body-sm">Dra. Sarah Jenkins</td>
+<td class="py-3 px-3 text-right font-headline-sm text-headline-sm text-on-surface">$290.00</td>
+<td class="py-3 px-3 text-center">
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-primary font-label-sm text-label-sm inline-flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span> Facturado
+                  </span>
+</td>
+<td class="py-3 px-3 text-right">
+<div class="inline-flex items-center gap-1">
+<button class="w-7 h-7 rounded-lg bg-surface-container hover:bg-surface-container-high flex items-center justify-center text-on-surface" title="Imprimir Ticket Térmico" type="button">
+<span class="material-symbols-outlined text-[16px]">print</span>
+</button>
+<button class="w-7 h-7 rounded-lg bg-primary-fixed hover:bg-secondary-fixed flex items-center justify-center text-on-primary-fixed-variant" title="Ver Factura Emitida" type="button">
+<span class="material-symbols-outlined text-[16px]">description</span>
+</button>
+<button class="w-7 h-7 rounded-lg bg-surface-container hover:bg-error-container/40 flex items-center justify-center text-error" title="Anular transacción" type="button">
+<span class="material-symbols-outlined text-[16px]">cancel</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5 (Egreso de Caja) -->
+<tr class="bg-error-container/10 hover:bg-error-container/20 transition-colors">
+<td class="py-3 px-3">
+<span class="font-headline-sm text-headline-sm text-error">#EGR-0028</span>
+<span class="block font-label-sm text-label-sm text-outline">09:10 AM</span>
+</td>
+<td class="py-3 px-3">
+<span class="font-headline-sm text-headline-sm text-on-surface">Farmacia Quirúrgica Central</span>
+<span class="block font-label-sm text-label-sm text-outline">RUT: 76.812.330-1</span>
+</td>
+<td class="py-3 px-3">
+<span class="text-error font-headline-sm">Gasto Menor: Insumos Desechables</span>
+<span class="block font-label-sm text-label-sm text-outline">Guantes nitrilo + alcohol estéril</span>
+</td>
+<td class="py-3 px-3">
+<span class="inline-flex items-center gap-1 font-body-sm text-body-sm text-error">
+<span class="material-symbols-outlined text-[16px]">payments</span>
+                    Efectivo
+                  </span>
+</td>
+<td class="py-3 px-3 text-on-surface-variant font-body-sm">Coord. Enfermería</td>
+<td class="py-3 px-3 text-right font-headline-sm text-headline-sm text-error">-$180.00</td>
+<td class="py-3 px-3 text-center">
+<span class="px-2 py-0.5 rounded-full bg-error-container text-on-error-container font-label-sm text-label-sm">
+                    Autorizado
+                  </span>
+</td>
+<td class="py-3 px-3 text-right">
+<div class="inline-flex items-center gap-1">
+<button class="w-7 h-7 rounded-lg bg-surface-container hover:bg-surface-container-high flex items-center justify-center text-on-surface" title="Comprobante Egreso" type="button">
+<span class="material-symbols-outlined text-[16px]">receipt_long</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 6 (Pendiente de cobro) -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-3 px-3">
+<span class="font-headline-sm text-headline-sm text-outline">#REC-1038</span>
+<span class="block font-label-sm text-label-sm text-outline">08:40 AM</span>
+</td>
+<td class="py-3 px-3">
+<span class="font-headline-sm text-headline-sm text-on-surface">Emilio Valenzuela</span>
+<span class="block font-label-sm text-label-sm text-outline">#HC-44910</span>
+</td>
+<td class="py-3 px-3">
+<span class="text-on-surface">Rehabilitación Postura y Columna</span>
+<span class="block font-label-sm text-label-sm text-outline">Sesión Individual</span>
+</td>
+<td class="py-3 px-3">
+<span class="inline-flex items-center gap-1 font-body-sm text-body-sm text-outline">
+<span class="material-symbols-outlined text-[16px]">pending</span>
+                    Por liquidar
+                  </span>
+</td>
+<td class="py-3 px-3 text-on-surface-variant font-body-sm">Lic. Diego Arce</td>
+<td class="py-3 px-3 text-right font-headline-sm text-headline-sm text-on-surface">$50.00</td>
+<td class="py-3 px-3 text-center">
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">
+                    Pendiente
+                  </span>
+</td>
+<td class="py-3 px-3 text-right">
+<div class="inline-flex items-center gap-1">
+<button class="h-7 px-2 rounded-lg bg-primary text-on-primary font-label-sm text-label-sm flex items-center gap-1" type="button">
+<span class="">Cobrar</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination and Summaries -->
+<div class="flex items-center justify-between pt-space-xs text-outline font-label-sm text-label-sm">
+<span class="">Mostrando 6 de 24 movimientos registrados en este turno</span>
+<div class="flex items-center gap-space-xs">
+<button class="px-2 py-1 rounded bg-surface-container text-on-surface font-label-sm" type="button">Anterior</button>
+<span class="px-2 py-1 rounded bg-primary-container text-on-primary font-headline-sm">1</span>
+<button class="px-2 py-1 rounded bg-surface-container text-on-surface font-label-sm" type="button">2</button>
+<button class="px-2 py-1 rounded bg-surface-container text-on-surface font-label-sm" type="button">Siguiente</button>
+</div>
+</div>
+</div>
+<!-- Quick Fast Action Banner for TPV / Fiscal Invoicing -->
+<div class="bg-surface-container p-space-md rounded-xl shadow-sm flex flex-col sm:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-xl bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">point_of_sale</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">Integración con Terminal Bancaria TPV Automática</span>
+<span class="font-body-sm text-body-sm text-outline">Terminal #04-Norte conectada por WebSockets. Listo para cobrar con contactless o chip.</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs shrink-0">
+<span class="px-2.5 py-1 rounded-full bg-surface-container-lowest text-tertiary font-label-sm text-label-sm flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-tertiary-container"></span> Conectado TPV USB/IP
+          </span>
+</div>
+</div>
+</div>
+<!-- RIGHT PANEL: 30% Balance Breakdown, Specialty Distribution & Daily Export -->
+<div class="lg:col-span-4 flex flex-col gap-space-md">
+<!-- Arqueo de Caja & Conciliation Details -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]">fact_check</span>
+<span class="font-headline-md text-headline-md text-on-surface">Arqueo de Turno</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container text-tertiary font-label-sm text-label-sm">
+            0.00 Descuadre
+          </span>
+</div>
+<!-- Cash Count Breakdown -->
+<div class="flex flex-col gap-space-xs bg-surface-container-low p-space-sm rounded-xl">
+<div class="flex items-center justify-between font-headline-sm text-headline-sm text-on-surface">
+<span class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-[16px]">attach_money</span>
+              Efectivo en Caja Físico
+            </span>
+<span class="">$680.00</span>
+</div>
+<div class="grid grid-cols-2 gap-1 text-outline font-label-sm text-label-sm pt-1">
+<span class="">• 10 billetes de $50 ($500)</span>
+<span class="">• 8 billetes de $20 ($160)</span>
+<span class="">• Monedas en rollo: $20.00</span>
+<span class="text-tertiary font-headline-sm">• Total físico: $680.00</span>
+</div>
+</div>
+<!-- Terminal & Transfer Breakdown -->
+<div class="flex flex-col gap-2 font-body-sm text-body-sm">
+<div class="flex items-center justify-between p-space-xs rounded-lg hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[16px]">credit_score</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">TPV Tarjeta Lote #89</span>
+<span class="font-label-sm text-label-sm text-outline">16 transacciones aprobadas</span>
+</div>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface">$1,890.00</span>
+</div>
+<div class="flex items-center justify-between p-space-xs rounded-lg hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[16px]">sync_alt</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface">Transferencias Bancarias</span>
+<span class="font-label-sm text-label-sm text-outline">5 transferencias verificadas</span>
+</div>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface">$870.00</span>
+</div>
+</div>
+<!-- Differential Calculator Indicator -->
+<div class="p-space-sm rounded-xl bg-surface-container flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline uppercase">Diferencia Calculada</span>
+<span class="font-body-sm text-body-sm text-tertiary font-headline-sm">Caja perfectamente cuadrada</span>
+</div>
+<div class="flex items-center gap-1 text-tertiary font-metric-num text-metric-num">
+<span class="">$0.00</span>
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+</div>
+</div>
+</div>
+<!-- Income Distribution by Medical Specialty (SVG Chart Visual) -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<span class="font-headline-md text-headline-md text-on-surface">Ingresos por Especialidad</span>
+<span class="font-label-sm text-label-sm text-outline">Hoy</span>
+</div>
+<div class="flex items-center justify-between gap-space-md py-space-xs">
+<!-- Donut Inline SVG Chart -->
+<div class="relative w-28 h-28 shrink-0 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90" viewBox="0 0 36 36">
+<!-- Background Ring -->
+<circle class="text-surface-container-low" cx="18" cy="18" fill="none" r="15.915" stroke="currentColor" stroke-width="3.5"></circle>
+<!-- Fisioterapia 55% (#0e7490 -> primary-container) -->
+<circle class="text-primary-container" cx="18" cy="18" fill="none" r="15.915" stroke="currentColor" stroke-dasharray="55 45" stroke-dashoffset="0" stroke-width="3.8"></circle>
+<!-- Traumatología 30% (#00687a -> secondary) -->
+<circle class="text-secondary" cx="18" cy="18" fill="none" r="15.915" stroke="currentColor" stroke-dasharray="30 70" stroke-dashoffset="-55" stroke-width="3.8"></circle>
+<!-- Kinesiología 15% (#007a53 -> tertiary-container) -->
+<circle class="text-tertiary-container" cx="18" cy="18" fill="none" r="15.915" stroke="currentColor" stroke-dasharray="15 85" stroke-dashoffset="-85" stroke-width="3.8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+<span class="font-headline-sm text-headline-sm text-on-surface">100%</span>
+<span class="font-label-sm text-label-sm text-outline">Corte</span>
+</div>
+</div>
+<!-- Specialty Legend -->
+<div class="flex flex-col gap-2 w-full font-body-sm text-body-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container"></span>
+<span class="text-on-surface truncate">Fisioterapia</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface">55% <span class="font-body-sm text-outline">($1,881)</span></span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span class="text-on-surface truncate">Traumatología</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface">30% <span class="font-body-sm text-outline">($1,026)</span></span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary-container"></span>
+<span class="text-on-surface truncate">Kinesiología</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface">15% <span class="font-body-sm text-outline">($513)</span></span>
+</div>
+</div>
+</div>
+<!-- Linear visual distribution bar -->
+<div class="w-full h-2 rounded-full bg-surface-container-low overflow-hidden flex">
+<div class="h-full bg-primary-container w-[55%]"></div>
+<div class="h-full bg-secondary w-[30%]"></div>
+<div class="h-full bg-tertiary-container w-[15%]"></div>
+</div>
+</div>
+<!-- Export & Accounting Report Actions -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-md flex flex-col gap-space-sm">
+<div class="flex items-center gap-space-xs text-on-surface">
+<span class="material-symbols-outlined text-primary text-[20px]">download_for_offline</span>
+<span class="font-headline-sm text-headline-sm">Descargas y Auditoría Contable</span>
+</div>
+<p class="font-body-sm text-body-sm text-outline">
+          Genere el expediente oficial de cierre para el departamento contable central con firmas de turno.
+        </p>
+<div class="grid grid-cols-3 gap-space-xs mt-1">
+<button class="h-9 px-space-xs rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md flex flex-col items-center justify-center transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px] text-error">picture_as_pdf</span>
+<span class="">PDF Diario</span>
+</button>
+<button class="h-9 px-space-xs rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md flex flex-col items-center justify-center transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px] text-tertiary">table_view</span>
+<span class="">Excel (.xlsx)</span>
+</button>
+<button class="h-9 px-space-xs rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md flex flex-col items-center justify-center transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px] text-primary">code</span>
+<span class="">CSV ERP</span>
+</button>
+</div>
+<button class="w-full mt-2 h-10 rounded-xl bg-primary text-on-primary hover:bg-primary-container font-headline-sm text-headline-sm flex items-center justify-center gap-2 shadow-sm transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">cloud_download</span>
+<span class="">Descargar Reporte Diario Completo</span>
+</button>
+</div>
+</div>
+</div>
+</div></main></div>
+
+</body></html>

@@ -1,0 +1,417 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><title>KlinikProVF</title><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-primary":"#81d1f0","outline-variant":"#bec8cd","on-primary":"#ffffff","on-surface":"#131b2e","on-tertiary-fixed-variant":"#005236","surface-container":"#eaedff","on-primary-fixed":"#001f29","tertiary":"#005f40","on-tertiary-fixed":"#002113","surface-dim":"#d2d9f4","surface-variant":"#dae2fd","secondary-container":"#57dffe","on-secondary-fixed":"#001f26","on-error":"#ffffff","on-primary-fixed-variant":"#004d62","on-tertiary":"#ffffff","primary":"#005a71","tertiary-container":"#007a53","on-error-container":"#93000a","surface-container-lowest":"#ffffff","on-secondary-fixed-variant":"#004e5c","surface-tint":"#006781","surface-container-low":"#f2f3ff","primary-fixed-dim":"#81d1f0","secondary-fixed-dim":"#4cd7f6","on-secondary":"#ffffff","tertiary-fixed-dim":"#4edea3","surface-container-high":"#e2e7ff","surface-bright":"#faf8ff","tertiary-fixed":"#6ffbbe","secondary":"#00687a","outline":"#6f787d","on-tertiary-container":"#a3ffd0","on-secondary-container":"#006172","error-container":"#ffdad6","inverse-on-surface":"#eef0ff","primary-fixed":"#b9eaff","on-surface-variant":"#3f484c","surface":"#faf8ff","primary-container":"#0e7490","error":"#ba1a1a","inverse-surface":"#283044","secondary-fixed":"#acedff","background":"#faf8ff","surface-container-highest":"#dae2fd","on-background":"#131b2e","on-primary-container":"#d3f1ff"},borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},spacing:{"space-sm":"0.5rem","gutter-desktop":"1.5rem","gutter":"1rem","space-xs":"0.25rem","margin-desktop":"2rem","space-xl":"2rem","space-lg":"1.25rem","margin":"1rem","space-md":"0.75rem"},fontFamily:{"body-lg":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"metric-num":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"],"display-lg-mobile":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"],"display-lg":["Plus Jakarta Sans"]},fontSize:{"body-lg":["15px",{lineHeight:"22px",fontWeight:"400"}],"headline-lg":["24px",{lineHeight:"32px",letterSpacing:"-0.015em",fontWeight:"600"}],"headline-md":["20px",{lineHeight:"28px",letterSpacing:"-0.01em",fontWeight:"600"}],"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.02em",fontWeight:"600"}],"body-md":["14px",{lineHeight:"20px",fontWeight:"400"}],"metric-num":["22px",{lineHeight:"26px",letterSpacing:"-0.01em",fontWeight:"700"}],"headline-sm":["16px",{lineHeight:"24px",letterSpacing:"-0.005em",fontWeight:"600"}],"display-lg-mobile":["28px",{lineHeight:"36px",letterSpacing:"-0.02em",fontWeight:"700"}],"body-sm":["13px",{lineHeight:"18px",fontWeight:"400"}],"label-sm":["11px",{lineHeight:"14px",letterSpacing:"0.03em",fontWeight:"600"}],"display-lg":["36px",{lineHeight:"44px",letterSpacing:"-0.02em",fontWeight:"700"}]}}}};</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest z-50 flex flex-col shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="p-space-lg flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="KlinikPro Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XgMAMo22t2nLCTiihS-UnBZwY49cnr5IAbcw9MdbfK_GR5I4qdP6jwxKsKWTs-wEh8B5arcm9kHcplC4ZWeDXpn3ZFoDCc2NQCodtbEMp56AkHndm7ETZ-VrwFa4-2y2i4hiZeIOOyt9t0E5sDZzhHnm0wSA96BUoVfdwju-cG_XAlVgiQiyyZP2WmTRCDyeneisAIMmvrxLUPeNlYNcxqWKUGfsQZnTvwCQvQtqsN3eBbA_CpMVuuzFs"><div class="flex flex-col"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-on-surface">KlinikPro</span><span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded-full bg-surface-container-high text-primary">VF</span></div><span class="font-label-sm text-label-sm text-outline">Enterprise Health</span></div></div></div><div class="px-space-md mb-space-md"><div class="p-space-sm rounded-xl bg-surface-container-low flex flex-col gap-1 cursor-pointer hover:bg-surface-container transition-colors"><div class="flex items-center justify-between text-outline"><span class="font-label-sm text-label-sm uppercase tracking-wider">Sede Activa</span><span class="material-symbols-outlined text-[16px]">expand_more</span></div><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-[18px] text-primary">domain</span><span class="font-headline-sm text-headline-sm text-on-surface truncate">Clínica Cytohelix</span></div><span class="font-body-sm text-body-sm text-on-surface-variant truncate">Sucursal Norte #01</span></div></div><nav class="flex-1 px-space-md flex flex-col gap-space-xs overflow-y-auto" data-active-classes="bg-primary-container text-on-primary font-headline-sm"><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[20px]">grid_view</span><span class="font-headline-sm text-headline-sm">Dashboard</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="pacientes" href="#"><span class="material-symbols-outlined text-[20px]">group</span><span class="font-headline-sm text-headline-sm">Pacientes</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="agenda-y-citas" href="#"><span class="material-symbols-outlined text-[20px]">calendar_month</span><span class="font-headline-sm text-headline-sm">Agenda y Citas</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="ficha-clinica" href="#"><span class="material-symbols-outlined text-[20px]">clinical_notes</span><span class="font-headline-sm text-headline-sm">Ficha Clínica</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="caja-y-facturacion" href="#"><span class="material-symbols-outlined text-[20px]">receipt_long</span><span class="font-headline-sm text-headline-sm">Caja y Facturación</span></a><a class="flex items-center gap-space-md px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" data-path="configuracion-auth" href="#"><span class="material-symbols-outlined text-[20px]">settings</span><span class="font-headline-sm text-headline-sm">Configuración / Auth</span></a></nav><div class="p-space-md mt-auto bg-surface-container-low"><div class="flex items-center justify-between p-space-sm rounded-xl bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] mb-space-xs"><div class="flex flex-col"><span class="font-label-sm text-label-sm text-outline uppercase">Nivel de Acceso</span><div class="flex items-center gap-1.5 mt-0.5"><span class="w-2 h-2 rounded-full bg-tertiary-container"></span><span class="font-headline-sm text-headline-sm text-on-surface">ADMIN / COORD</span></div></div><a class="p-space-xs rounded-lg hover:bg-surface-container text-outline hover:text-error transition-colors flex items-center justify-center" data-path="login" href="#" title="Cerrar sesión"><span class="material-symbols-outlined text-[20px]">logout</span></a></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl z-40 shadow-[0_1px_8px_rgba(0,0,0,0.04)] flex items-center justify-between px-space-xl gap-space-lg"><div class="flex-1 max-w-xl"><div class="relative flex items-center"><span class="material-symbols-outlined absolute left-space-md text-outline text-[20px]">search</span><input class="w-full h-9 pl-10 pr-space-md rounded-xl bg-surface-container-low text-on-surface placeholder-outline font-body-sm text-body-sm focus:outline-none focus:bg-surface-container transition-colors" placeholder="Buscar paciente por DNI, nombre o código #0000..." type="text"></div></div><div class="flex items-center gap-space-md"><div class="hidden xl:flex items-center gap-2 px-space-md py-1 rounded-full bg-surface-container text-tertiary"><span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span><span class="font-label-md text-label-md">Sucursal Activa - Conexión PostgreSQL OK</span></div><div class="flex items-center gap-space-xs"><button class="h-9 px-space-md rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-headline-sm text-headline-sm flex items-center gap-1 transition-colors" type="button"><span class="material-symbols-outlined text-[18px]">person_add</span><span class="">+ Paciente</span></button><button class="h-9 px-space-md rounded-xl bg-primary hover:bg-primary-container text-on-primary font-headline-sm text-headline-sm flex items-center gap-1 shadow-[0_1px_8px_rgba(0,0,0,0.04)] transition-colors" type="button"><span class="material-symbols-outlined text-[18px]">add_circle</span><span class="">+ Nueva Cita</span></button></div><div class="relative flex items-center"><button aria-label="Notificaciones" class="w-9 h-9 rounded-xl flex items-center justify-center text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest"></span></button></div><div class="flex items-center gap-space-sm pl-space-sm"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUAXt3jGRPraXQotcH_lotg3nBB7mdzhgyjuqs5u8pA2IgTAx5i5FYloF0YC4SO_cV-eyJ-g2E-Dtorz-bN8LGcI8EE-xNI7ayx2QgXa5lJX53QL6IhD_Wrq-O7Wt-GTIksHxNwMHRWK_GPGo5EezZuH4Wdor7qzvMWSRtuip_LvrA_0_muDMI4sae8hRvEVlmH0y17Whmvzr5G8rqjQdeaQc8kcKJFy0Rydjf4b9ovcMBBYwVjTHM"><div class="hidden md:flex flex-col"><span class="font-headline-sm text-headline-sm text-on-surface leading-tight">Dra. Sarah Jenkins</span><span class="font-label-sm text-label-sm text-outline leading-tight">Director Médico</span></div></div></div></header><main class="w-full pt-16 bg-surface min-h-screen px-space-xl py-space-xl"><div class="flex flex-col w-full gap-space-lg">
+<!-- Header Ficha del Paciente (Hero Clínico Compacto con Sombra Suave y Alto Contraste) -->
+<div class="relative w-full rounded-2xl bg-surface-container-lowest p-space-lg shadow-sm flex flex-col gap-space-md">
+<!-- Fila superior: Identidad, Sede y Acciones rápidas -->
+<div class="flex flex-wrap items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="relative">
+<img class="w-16 h-16 rounded-full object-cover shadow-sm ring-4 ring-surface-container-low" data-alt="Close up warm clinical portrait of a 34 year old Hispanic woman named Elena with brown hair tied back, wearing soft teal medical apparel, gentle natural clinic lighting, professional healthcare photography style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGlMiKi6kprkOGMm62Qq1bS09KzbUogOtyHMA17W1ONqxc4X9Mb0vm0CMTWKXF8vR0vj48swMbIR6oNJapnRbsS48hEhgLh5s2RSzAxPXSI5mj1E8cJq_eirMk1179fU56IXmPMmh-JtgypBlZYffXSOioMGQsYhgOZauxxoOqZD0TZM3ItcinLFbI_jraQObqPIz1xslcNr--bGo2vWzxJyhw-011iBCssIwf30E9pZXLWxH33yFX">
+<span class="absolute bottom-0 right-0 w-4 h-4 rounded-full bg-tertiary-container flex items-center justify-center ring-2 ring-surface-container-lowest" title="Paciente en Sala de Tratamiento">
+<span class="w-2 h-2 rounded-full bg-surface-container-lowest"></span>
+</span>
+</div>
+<div class="flex flex-col">
+<div class="flex flex-wrap items-center gap-space-xs">
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Elena Rivas Castillejo</h1>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-bold">#0034</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">domain</span>
+              Sucursal Norte
+            </span>
+</div>
+<div class="flex items-center gap-space-sm mt-1">
+<span class="font-body-sm text-body-sm text-outline">Historia Clínica Digitalizada</span>
+<span class="text-outline">/</span>
+<span class="font-label-md text-label-md text-tertiary font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+              Fase 2: Fortalecimiento Funcional
+            </span>
+</div>
+</div>
+</div>
+<!-- Métricas / Acciones de Cabecera -->
+<div class="flex items-center gap-space-sm">
+<div class="hidden md:flex flex-col text-right pr-space-md">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Médico Asignado</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Dr. Manuel Ceballos (FISIO)</span>
+</div>
+<button class="h-9 px-space-md rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-headline-sm text-headline-sm flex items-center gap-1.5 transition-colors shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">print</span>
+<span class="">Resumen</span>
+</button>
+<button class="h-9 px-space-md rounded-xl bg-primary-container text-on-primary font-headline-sm text-headline-sm flex items-center gap-1.5 hover:opacity-95 transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">emergency</span>
+<span class="">Llamar Contacto</span>
+</button>
+</div>
+</div>
+<!-- Chips Rápidos Biológicos y Alertas Médicas (Crítico: Sin bordes duros, fondos de estado) -->
+<div class="flex flex-wrap items-center gap-space-sm pt-space-xs">
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container text-on-surface font-label-md text-label-md shadow-xs">
+<span class="material-symbols-outlined text-[16px] text-outline">cake</span>
+<span class="">34 años</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container text-on-surface font-label-md text-label-md shadow-xs">
+<span class="material-symbols-outlined text-[16px] text-outline">female</span>
+<span class="">Femenino</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container text-on-surface font-label-md text-label-md shadow-xs">
+<span class="material-symbols-outlined text-[16px] text-error font-bold">bloodtype</span>
+<span class="">O Rh (+)</span>
+</div>
+<!-- Alerta Roja Alergias -->
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-error-container text-on-error-container font-label-md text-label-md shadow-xs animate-pulse">
+<span class="material-symbols-outlined text-[16px]">warning</span>
+<span class="font-bold">Alergias: Penicilina, Ibuprofeno</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md">
+<span class="material-symbols-outlined text-[16px] text-secondary">contact_phone</span>
+<span class="">Urgencia: Carlos Rivas (Esposo) - +34 682 994 120</span>
+</div>
+</div>
+<!-- Pestañas de Navegación Clínica -->
+<div class="flex items-center gap-space-xs overflow-x-auto pt-space-sm">
+<button class="px-space-md py-2 rounded-xl bg-primary text-on-primary font-headline-sm text-headline-sm flex items-center gap-2 whitespace-nowrap shadow-sm" type="button">
+<span class="material-symbols-outlined text-[18px]">timeline</span>
+<span class="">Evolución y Sesiones</span>
+</button>
+<button class="px-space-md py-2 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-headline-sm text-headline-sm flex items-center gap-2 whitespace-nowrap transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">menu_book</span>
+<span class="">Anamnesis / Historia Médica</span>
+</button>
+<button class="px-space-md py-2 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-headline-sm text-headline-sm flex items-center gap-2 whitespace-nowrap transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">fitness_center</span>
+<span class="">Plan de Tratamiento y Ejercicios</span>
+</button>
+<button class="px-space-md py-2 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-headline-sm text-headline-sm flex items-center gap-2 whitespace-nowrap transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">radiology</span>
+<span class="">Imágenes y Diagnóstico</span>
+<span class="px-1.5 py-0.2 rounded-full bg-surface-container-highest text-primary font-label-sm text-label-sm">3</span>
+</button>
+<button class="px-space-md py-2 rounded-xl text-on-surface-variant hover:bg-surface-container hover:text-on-surface font-headline-sm text-headline-sm flex items-center gap-2 whitespace-nowrap transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+<span class="">Historial de Pagos</span>
+</button>
+</div>
+</div>
+<!-- Layout Asimétrico 12 Columnas: Panel Principal Clínico (8 Cols) + Métricas & Prescripción Lateral (4 Cols) -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-lg w-full">
+<!-- COLUMNA PRINCIPAL (8 Cols): Sesión Activa, Dolor EVA y Formulario SOAP Estructurado -->
+<div class="xl:col-span-8 flex flex-col gap-space-lg">
+<!-- Tarjeta Sesión Actual y Escala Analógica Visual (EVA) -->
+<div class="rounded-2xl bg-surface-container-lowest p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-md text-label-md font-bold uppercase tracking-wider">En Curso</span>
+<span class="font-label-md text-label-md text-outline">Hoy, 10:30 AM · Box 3</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mt-1">Sesión #4 - Rehabilitación de Ligamento Cruzado Anterior y Menisco</h2>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-outline">Tiempo transcurrido:</span>
+<span class="font-metric-num text-metric-num text-primary">34:12</span>
+</div>
+</div>
+<!-- Monitor Escala de Dolor EVA Interactivo & Progresión Gráfica -->
+<div class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-sm">
+<div class="flex flex-wrap items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]">sentiment_satisfied</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Escala Visual Analógica (EVA)</span>
+</div>
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-1.5 font-label-md text-label-md text-outline">
+<span class="">Sesión 1:</span>
+<span class="font-bold text-error">8/10</span>
+</div>
+<span class="material-symbols-outlined text-[16px] text-tertiary">trending_down</span>
+<div class="flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-headline-sm text-headline-sm">
+<span class="">Actual:</span>
+<span class="font-metric-num text-metric-num" id="eva-score-badge">3/10</span>
+<span class="font-label-sm text-label-sm font-normal">(-62.5%)</span>
+</div>
+</div>
+</div>
+<!-- Selector Interactivo EVA con gradiente suave -->
+<div class="flex flex-col gap-2 pt-2">
+<div class="relative w-full h-3 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-gradient-to-r from-tertiary via-secondary to-error rounded-full transition-all duration-300" id="eva-bar-fill" style="width: 30%;"></div>
+</div>
+<div class="grid grid-cols-10 gap-1 text-center pt-1" id="eva-buttons-container">
+<button class="eva-btn py-1 rounded-lg text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container transition-all" onclick="setEva(1)" type="button">1<span class="block text-[9px] text-outline">Mínimo</span></button>
+<button class="eva-btn py-1 rounded-lg text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container transition-all" onclick="setEva(2)" type="button">2</button>
+<button class="eva-btn py-1 rounded-lg bg-primary-container text-on-primary font-label-sm text-label-sm font-bold shadow-sm transition-all" onclick="setEva(3)" type="button">3<span class="block text-[9px]">Leve</span></button>
+<button class="eva-btn py-1 rounded-lg text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container transition-all" onclick="setEva(4)" type="button">4</button>
+<button class="eva-btn py-1 rounded-lg text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container transition-all" onclick="setEva(5)" type="button">5<span class="block text-[9px] text-outline">Moderado</span></button>
+<button class="eva-btn py-1 rounded-lg text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container transition-all" onclick="setEva(6)" type="button">6</button>
+<button class="eva-btn py-1 rounded-lg text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container transition-all" onclick="setEva(7)" type="button">7<span class="block text-[9px] text-outline">Severo</span></button>
+<button class="eva-btn py-1 rounded-lg text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container transition-all" onclick="setEva(8)" type="button">8</button>
+<button class="eva-btn py-1 rounded-lg text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container transition-all" onclick="setEva(9)" type="button">9</button>
+<button class="eva-btn py-1 rounded-lg text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container transition-all" onclick="setEva(10)" type="button">10<span class="block text-[9px] text-outline">Intolerable</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- Formulario SOAP Estructurado y Clínico -->
+<div class="rounded-2xl bg-surface-container-lowest p-space-lg shadow-sm flex flex-col gap-space-lg">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[24px]">clinical_notes</span>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Registro Clínico SOAP</h3>
+<p class="font-body-sm text-body-sm text-outline">Metodología estandarizada para historial de evolución traumatológica</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-tertiary">cloud_done</span>
+<span class="font-label-sm text-label-sm text-outline">Guardado automático hace 2 min</span>
+</div>
+</div>
+<form class="flex flex-col gap-space-md" onsubmit="event.preventDefault();">
+<!-- S - Subjetivo -->
+<div class="flex flex-col gap-1.5 p-space-md rounded-xl bg-surface-container-low transition-colors focus-within:bg-surface-container">
+<div class="flex items-center justify-between">
+<label class="flex items-center gap-2 font-headline-sm text-headline-sm text-on-surface">
+<span class="w-6 h-6 rounded-lg bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-bold text-label-md">S</span>
+<span class="">Subjetivo (Relato y Sintomatología Percibida)</span>
+</label>
+<span class="font-label-sm text-label-sm text-outline">Sensaciones del paciente</span>
+</div>
+<textarea class="w-full bg-transparent text-on-surface font-body-md text-body-md focus:outline-none resize-none placeholder-outline leading-relaxed" placeholder="Describa la percepción del paciente..." rows="2">Paciente refiere menor dolor al caminar en trayectos urbanos (hasta 20 min continuos). Manifiesta leve rigidez matutina que cede tras primeros 10 minutos de deambulación. Niega episodios de bloqueo articular o sensación de inestabilidad aguda durante la última semana.</textarea>
+</div>
+<!-- O - Objetivo -->
+<div class="flex flex-col gap-1.5 p-space-md rounded-xl bg-surface-container-low transition-colors focus-within:bg-surface-container">
+<div class="flex items-center justify-between">
+<label class="flex items-center gap-2 font-headline-sm text-headline-sm text-on-surface">
+<span class="w-6 h-6 rounded-lg bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-bold text-label-md">O</span>
+<span class="">Objetivo (Exploración Física y Datos Cuantitativos)</span>
+</label>
+<span class="font-label-sm text-label-sm text-outline">Signos comprobables</span>
+</div>
+<textarea class="w-full bg-transparent text-on-surface font-body-md text-body-md focus:outline-none resize-none placeholder-outline leading-relaxed" placeholder="Hallazgos en palpación, movilidad..." rows="3">Rango de flexión rodilla derecha: 115° mediante goniómetro estándar (+10° vs semana anterior). Extensión completa activa 0° sin recurvatum.
+Fuerza cuadricipital (Escala Daniels): 4/5 en vasto medial y recto femoral.
+Test de Lachman leve positivo sin tope blando franco (injerto LCA estable). Signo del témpano negativo. Ausencia de derrame sinovial activo.</textarea>
+</div>
+<!-- A - Evaluación / Análisis -->
+<div class="flex flex-col gap-1.5 p-space-md rounded-xl bg-surface-container-low transition-colors focus-within:bg-surface-container">
+<div class="flex items-center justify-between">
+<label class="flex items-center gap-2 font-headline-sm text-headline-sm text-on-surface">
+<span class="w-6 h-6 rounded-lg bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center font-bold text-label-md">A</span>
+<span class="">Evaluación (Juicio Clínico y Pronóstico)</span>
+</label>
+<span class="font-label-sm text-label-sm text-tertiary font-bold">Fase de Integración Favorable</span>
+</div>
+<textarea class="w-full bg-transparent text-on-surface font-body-md text-body-md focus:outline-none resize-none placeholder-outline leading-relaxed" placeholder="Diagnóstico de situación..." rows="2">Respuesta marcadamente favorable a la terapia de fortalecimiento isométrico con adecuada cicatrización funcional y estabilización capsular. Excelente tolerancia a las cargas mecánicas controladas.</textarea>
+</div>
+<!-- P - Plan de Tratamiento -->
+<div class="flex flex-col gap-1.5 p-space-md rounded-xl bg-surface-container-low transition-colors focus-within:bg-surface-container">
+<div class="flex items-center justify-between">
+<label class="flex items-center gap-2 font-headline-sm text-headline-sm text-on-surface">
+<span class="w-6 h-6 rounded-lg bg-inverse-primary text-on-primary-fixed flex items-center justify-center font-bold text-label-md">P</span>
+<span class="">Plan de Tratamiento (Intervención de Hoy y Ajustes)</span>
+</label>
+<span class="font-label-sm text-label-sm text-outline">Protocolo terapéutico activo</span>
+</div>
+<textarea class="w-full bg-transparent text-on-surface font-body-md text-body-md focus:outline-none resize-none placeholder-outline leading-relaxed" placeholder="Indicaciones inmediatas..." rows="3">1. Electroterapia analgésica TENS convencional a 100Hz en articulación femorotibial durante 20 min.
+2. Crioterapia compressiva al finalizar la sesión (15 min a 10°C).
+3. Ejercicios de propiocepción en domo Bosu: transferencias monopoidales asistidas (3 series x 45 seg).
+4. Reeducación de la marcha con aumento progresivo de carga a 85% del peso corporal.</textarea>
+</div>
+</form>
+<!-- Barra Inferior de Acción Clínica Principal -->
+<div class="flex flex-wrap items-center justify-between gap-space-md pt-space-sm">
+<div class="flex items-center gap-space-xs">
+<button class="h-10 px-space-md rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-headline-sm text-headline-sm flex items-center gap-2 transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px] text-primary">attach_file</span>
+<span class="">Adjuntar Radiografía / Estudio</span>
+</button>
+<button class="h-10 px-space-md rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-headline-sm text-headline-sm flex items-center gap-2 transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px] text-secondary">event_repeat</span>
+<span class="">Programar Siguiente Sesión</span>
+</button>
+</div>
+<div class="flex items-center gap-space-sm">
+<button class="h-10 px-space-xl rounded-xl bg-tertiary text-on-tertiary font-headline-sm text-headline-sm flex items-center gap-2 hover:opacity-95 shadow-md transition-all" type="button">
+<span class="material-symbols-outlined text-[20px]">draw</span>
+<span class="">Firmar y Guardar Nota Clínica</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- COLUMNA LATERAL DERECHA (4 Cols): Mediciones Biométricas, Imagen Diagnóstica y Prescripción Domiciliaria -->
+<div class="xl:col-span-4 flex flex-col gap-space-lg">
+<!-- Registro de Mediciones Biométricas (Goniometría, Fuerza, Inflamación) -->
+<div class="rounded-2xl bg-surface-container-lowest p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">straighten</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Mediciones Biométricas</h3>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-bold px-2 py-0.5 rounded-full bg-surface-container">Sesión 4</span>
+</div>
+<!-- Tarjetas compactas de métricas -->
+<div class="flex flex-col gap-space-sm">
+<!-- Goniometría -->
+<div class="p-space-sm rounded-xl bg-surface-container-low flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Flexión Rodilla Der.</span>
+<div class="flex items-baseline gap-1.5 mt-0.5">
+<span class="font-metric-num text-metric-num text-on-surface">115°</span>
+<span class="font-label-sm text-label-sm text-tertiary font-bold flex items-center">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span> +10° vs S3
+                </span>
+</div>
+<span class="font-body-sm text-body-sm text-outline">Meta funcional: 130°</span>
+</div>
+<!-- Mini visualización goniométrica en SVG -->
+<div class="w-12 h-12 flex items-center justify-center">
+<svg class="w-10 h-10 text-primary -rotate-90" viewBox="0 0 36 36">
+<path class="text-surface-container-high" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="100, 100" stroke-width="4"></path>
+<path class="text-primary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="88, 100" stroke-width="4"></path>
+</svg>
+</div>
+</div>
+<!-- Fuerza Muscular Cuádriceps -->
+<div class="p-space-sm rounded-xl bg-surface-container-low flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Fuerza Cuadricipital</span>
+<div class="flex items-baseline gap-1.5 mt-0.5">
+<span class="font-metric-num text-metric-num text-on-surface">4 / 5</span>
+<span class="font-label-sm text-label-sm text-tertiary font-bold">Escala Daniels</span>
+</div>
+<span class="font-body-sm text-body-sm text-outline">Vasto interno responde a carga</span>
+</div>
+<div class="flex gap-1">
+<span class="w-2.5 h-6 rounded bg-primary"></span>
+<span class="w-2.5 h-6 rounded bg-primary"></span>
+<span class="w-2.5 h-6 rounded bg-primary"></span>
+<span class="w-2.5 h-6 rounded bg-primary"></span>
+<span class="w-2.5 h-6 rounded bg-surface-container-high"></span>
+</div>
+</div>
+<!-- Perímetro / Inflamación -->
+<div class="p-space-sm rounded-xl bg-surface-container-low flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Perímetro Patelar</span>
+<div class="flex items-baseline gap-1.5 mt-0.5">
+<span class="font-metric-num text-metric-num text-on-surface">37.2 cm</span>
+<span class="font-label-sm text-label-sm text-tertiary font-bold flex items-center">
+<span class="material-symbols-outlined text-[14px]">arrow_downward</span> -0.8 cm
+                </span>
+</div>
+<span class="font-body-sm text-body-sm text-outline">Lado contralateral (izq): 36.5 cm</span>
+</div>
+<span class="material-symbols-outlined text-[28px] text-tertiary">water_drop</span>
+</div>
+</div>
+<button class="w-full h-8 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md flex items-center justify-center gap-1 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">add</span>
+<span class="">Añadir Métrica (Dinamometría / Test Y)</span>
+</button>
+</div>
+<!-- Estudio Radiológico / Imagen Diagnóstica Activa -->
+<div class="rounded-2xl bg-surface-container-lowest p-space-lg shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">radiology</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Estudio Comparativo</h3>
+</div>
+<span class="font-label-sm text-label-sm text-outline">RMN Control 14/10</span>
+</div>
+<div class="relative w-full h-44 rounded-xl overflow-hidden group cursor-pointer shadow-inner">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="High contrast medical magnetic resonance imaging scan of a human knee joint showing anterior cruciate ligament reconstruction tunnel and intact cartilage, clean grayscale radiology diagnostic display" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBn0-zkxTLLDmRUoClhh49RmWEyWHYpyDbUnzHSfvWKXdMPQp9EgdO9IkiGwusmQN4ofn1lF8qhiCENb9M6drSryOcAgbYK-5b7u59plI4c4PjRyOorhMaX8b9HN346uK1eYdCfa1R-lAj4k6fKhPel5mxYgLOWQbROLMwpDuAEboOKWP58emOPx15DtMyu91_wtOVU4iTQS45qaGEtnP629IqrkKEIJ2UM_jlD_qlcM_Aqon7c8oMX">
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/80 via-transparent to-transparent flex flex-col justify-end p-space-sm text-on-primary">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-primary font-bold">RMN Rodilla Derecha Sagital T2</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest/20 backdrop-blur-md text-on-primary text-[10px] font-semibold">Túnel Óseo OK</span>
+</div>
+<span class="font-body-sm text-body-sm text-inverse-on-surface opacity-90 text-[11px]">Injerto autólogo con neovacularización activa</span>
+</div>
+</div>
+</div>
+<!-- Prescripción de Ejercicios Domiciliarios -->
+<div class="rounded-2xl bg-surface-container-lowest p-space-lg shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">home_health</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Pauta Domiciliaria</h3>
+</div>
+<button class="text-primary font-label-md text-label-md font-bold hover:underline flex items-center gap-0.5" type="button">
+<span class="material-symbols-outlined text-[16px]">send_to_mobile</span>
+<span class="">Enviar App</span>
+</button>
+</div>
+<div class="flex flex-col gap-space-sm">
+<!-- Ejercicio 1 -->
+<div class="flex items-start gap-space-sm p-space-sm rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors">
+<img class="w-12 h-12 rounded-lg object-cover shadow-xs flex-shrink-0" data-alt="Physiotherapy exercise isometric quadriceps contraction with a rolled towel under the knee on a clinical treatment mat, bright serene environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBF5CHUDM_Jzs466Mk4qkF3iqjFMYMzmy-CeWdJWy0ZTnloqsmmabjNUdakSdtnpJfzkeIcrE7--tT5Jt6_v4NU34cIR_7JTQ1PTsU28im0U-tHNJ-LS05sL3hP1xr0GKkStadkBkD69zRHUtb8imQ4AZ9RbrQlWaiNpZ8SuOXxVBr1Qh2M26Go73-GNvhP-ElQ7O-8fBUIJTh2OCwUySx2omxLLbupGGEBA4-XibmmtsgZrP-YOq05">
+<div class="flex flex-col flex-1 min-w-0">
+<span class="font-headline-sm text-headline-sm text-on-surface truncate">Isométrico Cuádriceps con Toalla</span>
+<span class="font-body-sm text-body-sm text-outline truncate">3 series x 15 reps (mantener 6 seg)</span>
+<span class="font-label-sm text-label-sm text-tertiary mt-0.5">2 veces al día</span>
+</div>
+<button class="text-outline hover:text-on-surface p-1" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+<!-- Ejercicio 2 -->
+<div class="flex items-start gap-space-sm p-space-sm rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors">
+<img class="w-12 h-12 rounded-lg object-cover shadow-xs flex-shrink-0" data-alt="Rehabilitation heel slide exercise on smooth wooden surface for knee flexion progression, patient wearing athletic clothes in modern clinic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1EG5CcyGp3PjB4ZeZyxqZIs1pfhCcIh1gQobazBqGSWyFZa2yZgmjtGRXXbUrnrxDJSkIa8jnlYED8J2NmFc8E78qy9YdB6N_12ZE_a9CLiAc-EmOA5y6lQe2vVLx9ggSjrLJ0Jp_y5eNqQZFETtwUywRq26E_1zxtE89Pmxx2YXQFsdANt4UzpGSUaiMTPM3fY-NHU0ayc8b0-IvcDTu3jqhJjGjcZRnhxp-96IaZbN5g8PI6kl8">
+<div class="flex flex-col flex-1 min-w-0">
+<span class="font-headline-sm text-headline-sm text-on-surface truncate">Deslizamiento de Talón en Pared</span>
+<span class="font-body-sm text-body-sm text-outline truncate">Buscar 115° de flexión asistida</span>
+<span class="font-label-sm text-label-sm text-primary mt-0.5">Post-calentamiento</span>
+</div>
+<button class="text-outline hover:text-on-surface p-1" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+<!-- Ejercicio 3 -->
+<div class="flex items-start gap-space-sm p-space-sm rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center flex-shrink-0 text-primary">
+<span class="material-symbols-outlined text-[24px]">ac_unit</span>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<span class="font-headline-sm text-headline-sm text-on-surface truncate">Protocolo Frío Criogel</span>
+<span class="font-body-sm text-body-sm text-outline truncate">15 minutos post-ejercicio</span>
+<span class="font-label-sm text-label-sm text-outline mt-0.5">Con elevación de extremidad</span>
+</div>
+<button class="text-outline hover:text-on-surface p-1" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</div>
+</div>
+<button class="w-full h-8 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md flex items-center justify-center gap-1 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">library_add</span>
+<span class="">Asignar Nuevo Ejercicio</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  function setEva(value) {
+    const bar = document.getElementById('eva-bar-fill');
+    const badge = document.getElementById('eva-score-badge');
+    const container = document.getElementById('eva-buttons-container');
+    
+    if (bar && badge && container) {
+      bar.style.width = (value * 10) + '%';
+      badge.textContent = value + '/10';
+      
+      const buttons = container.querySelectorAll('.eva-btn');
+      buttons.forEach((btn, index) => {
+        if (index + 1 === value) {
+          btn.className = 'eva-btn py-1 rounded-lg bg-primary-container text-on-primary font-label-sm text-label-sm font-bold shadow-sm transition-all';
+        } else {
+          btn.className = 'eva-btn py-1 rounded-lg text-on-surface-variant font-label-sm text-label-sm hover:bg-surface-container transition-all';
+        }
+      });
+    }
+  }
+</script></main></div>
+
+</body></html>

@@ -1,197 +1,343 @@
 import React, { useEffect, useState } from 'react';
 import { fetchApi } from '../api/client';
-import { Calendar as CalendarIcon, Clock, User, Plus } from 'lucide-react';
+import { X, UserPlus, Clock } from 'lucide-react';
+import { Calendar, dateFnsLocalizer, Views } from 'react-big-calendar';
+import { format, parse, startOfWeek, getDay } from 'date-fns';
+import { es } from 'date-fns/locale';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
+
+const locales = {
+  'es': es,
+};
+
+const localizer = dateFnsLocalizer({
+  format,
+  parse,
+  startOfWeek,
+  getDay,
+  locales,
+});
 
 export default function AgendaPage() {
-  const [appointments, setAppointments] = useState<any[]>([]);
-  const [showForm, setShowForm] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
-
-  // Form State
+  const [events, setEvents] = useState<any[]>([]);
+  const [patientsList, setPatientsList] = useState<any[]>([]);
+  
+  // Modal / Form state
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedSlot, setSelectedSlot] = useState<{ start: Date, end: Date } | null>(null);
+  
+  // Form fields
   const [patientId, setPatientId] = useState('');
-  const [time, setTime] = useState('10:00');
-  const [description, setDescription] = useState('Consulta General');
+  const [status, setStatus] = useState('booked');
+  const [note, setNote] = useState('');
+  const [saving, setSaving] = useState(false);
+  
+  const [selectedEventId, setSelectedEventId] = useState<string | null>(null);
 
-  const loadAppointments = async () => {
+  const loadAgenda = async () => {
     try {
-      const data = await fetchApi('/fhir/Appointment');
-      if (data && data.entry) {
-        setAppointments(data.entry.map((e: any) => e.resource));
-      }
+      const aptData = await fetchApi('/Appointment');
+      const patData = await fetchApi('/Patient');
+      
+      const pList = patData.entry ? patData.entry.map((e:any) => e.resource) : [];
+      setPatientsList(pList);
+
+      const parsedEvents = (aptData.entry || []).map((e: any) => {
+        const apt = e.resource;
+        const pRef = apt.participant?.find((p:any) => p.actor?.reference?.startsWith('Patient/'));
+        const pId = pRef ? pRef.actor.reference.split('/')[1] : null;
+        const p = pList.find((x:any) => x.id === pId);
+        const title = p ? p.name?.[0]?.text || 'Paciente' : 'Desconocido';
+
+        return {
+          id: apt.id,
+          title: `${title} (${apt.status})`,
+          start: new Date(apt.start),
+          end: new Date(apt.end),
+          resource: apt
+        };
+      });
+      setEvents(parsedEvents);
     } catch (err) {
-      console.error("Error loading appointments:", err);
+      console.error(err);
     }
   };
 
   useEffect(() => {
-    loadAppointments();
+    loadAgenda();
   }, []);
+
+  const handleSelectSlot = (slotInfo: { start: Date, end: Date }) => {
+    setSelectedEventId(null);
+    setPatientId('');
+    setStatus('booked');
+    setNote('');
+    setSelectedSlot({ start: slotInfo.start, end: slotInfo.end });
+    setIsModalOpen(true);
+  };
+
+  const handleSelectEvent = (event: any) => {
+    setSelectedEventId(event.id);
+    setSelectedSlot({ start: event.start, end: event.end });
+    
+    const r = event.resource;
+    setStatus(r.status);
+    setNote(r.description || '');
+    
+    const pRef = r.participant?.find((p:any) => p.actor?.reference?.startsWith('Patient/'));
+    if (pRef) {
+      setPatientId(pRef.actor.reference.split('/')[1]);
+    } else {
+      setPatientId('');
+    }
+    
+    setIsModalOpen(true);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!selectedSlot || !patientId) return;
+    setSaving(true);
     
-    // Create start datetime (UTC offset handling simplified for prototype)
-    const startDateTime = new Date(`${selectedDate}T${time}:00`).toISOString();
-
-    const payload = {
-      resourceType: "Appointment",
-      status: "booked",
-      start: startDateTime,
-      description: description,
-      participant: [
-        {
-          actor: { reference: `Patient/${patientId}` },
-          status: "accepted"
-        }
-      ]
-    };
+    // Buscar el nombre del paciente para enviarlo en el FHIR request
+    const p = patientsList.find(x => x.id === patientId);
+    const pName = p ? p.name?.[0]?.text || 'Paciente' : 'Paciente';
 
     try {
-      await fetchApi('/fhir/Appointment', {
+      const payload: any = {
+        resourceType: 'Appointment',
+        status: status,
+        start: selectedSlot.start.toISOString(),
+        end: selectedSlot.end.toISOString(),
+        description: note,
+        participant: [
+          {
+            actor: { reference: `Patient/${patientId}`, display: pName },
+            status: 'accepted'
+          },
+          {
+            actor: { reference: `Practitioner/practitioner-1`, display: 'Médico' }, // hardcoded medico for now
+            status: 'accepted'
+          }
+        ]
+      };
+
+      if (selectedEventId) {
+        payload.id = selectedEventId;
+      }
+
+      await fetchApi('/Appointment', {
         method: 'POST',
         body: JSON.stringify(payload)
       });
-      setShowForm(false);
-      loadAppointments();
-    } catch (err) {
-      console.error("Error saving appointment:", err);
-      alert("Error al guardar cita. Revisa posibles colisiones de horario.");
+      
+      await loadAgenda();
+      setIsModalOpen(false);
+    } catch (err: any) {
+      alert("Error: " + (err.message || 'Conflicto de agenda.'));
+    } finally {
+      setSaving(false);
     }
   };
 
-  // Filter appointments for selected date
-  const dayAppointments = appointments.filter(app => {
-    if (!app.start) return false;
-    const appDate = new Date(app.start).toISOString().split('T')[0];
-    return appDate === selectedDate;
-  }).sort((a, b) => new Date(a.start).getTime() - new Date(b.start).getTime());
+  const handleDelete = async () => {
+    if (!selectedEventId) return;
+    if (!confirm('¿Cancelar esta cita?')) return;
+    try {
+      await fetchApi(`/Appointment/${selectedEventId}`, { method: 'DELETE' });
+      await loadAgenda();
+      setIsModalOpen(false);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  // Custom event styles
+  const eventPropGetter = (event: any) => {
+    const status = event.resource.status;
+    let bg = '#0E7490'; // primary-container
+    let text = '#ffffff';
+    let border = '#0E7490';
+
+    if (status === 'fulfilled') {
+      bg = '#ECFDF5'; // success bg
+      text = '#047857'; // success text
+      border = '#A7F3D0';
+    } else if (status === 'waitlist') {
+      bg = '#FFFBEB'; // warning bg
+      text = '#B45309'; // warning text
+      border = '#FDE68A';
+    } else if (status === 'cancelled') {
+      bg = '#FEF2F2'; // error bg
+      text = '#B91C1C';
+      border = '#FECACA';
+    }
+
+    return {
+      style: {
+        backgroundColor: bg,
+        color: text,
+        border: `1px solid ${border}`,
+        fontWeight: '600',
+        fontSize: '11px',
+      }
+    };
+  };
 
   return (
-    <section className="panel active">
-      <div className="page-head">
+    <div className="flex flex-col h-[calc(100vh-6rem)] animate-fade-in">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
         <div>
-          <div className="page-title">Agenda</div>
-          <div className="page-desc">Citas y validación anti-colisiones</div>
+          <h1 className="font-headline-lg text-on-surface">Agenda Médica</h1>
+          <p className="font-body-sm text-outline">Planificación de consultas y control de disponibilidad clínica.</p>
+        </div>
+        <div className="flex gap-2">
+          <span className="px-3 py-1 bg-primary/10 text-primary border border-primary/20 rounded-full font-label-sm flex items-center gap-1">
+            <span className="w-2 h-2 rounded-full bg-primary"></span>
+            Confirmada
+          </span>
+          <span className="px-3 py-1 bg-[#ECFDF5] text-[#047857] border border-[#A7F3D0] rounded-full font-label-sm flex items-center gap-1">
+            <span className="w-2 h-2 rounded-full bg-[#047857]"></span>
+            Finalizada
+          </span>
+          <span className="px-3 py-1 bg-[#FFFBEB] text-[#B45309] border border-[#FDE68A] rounded-full font-label-sm flex items-center gap-1">
+            <span className="w-2 h-2 rounded-full bg-[#B45309]"></span>
+            En Espera
+          </span>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        
-        {/* Left Column: Calendar Date Selection & List */}
-        <div className="lg:col-span-1 space-y-6">
-          <div className="card">
-            <div className="card-header">
-              <div className="card-title">
-                <CalendarIcon className="ic" /> Disponibilidad
-              </div>
-            </div>
-            <div className="form-group">
-              <label>Seleccionar Día</label>
-              <input 
-                type="date" 
-                value={selectedDate} 
-                onChange={e => setSelectedDate(e.target.value)}
-                style={{ width: '100%', maxWidth: '100%' }}
-              />
-            </div>
-          </div>
+      <div className="flex-1 bg-surface-container-lowest rounded-2xl border border-outline-variant/30 shadow-sm p-4 overflow-hidden">
+        <Calendar
+          localizer={localizer}
+          events={events}
+          startAccessor="start"
+          endAccessor="end"
+          style={{ height: '100%' }}
+          defaultView={Views.WEEK}
+          views={['month', 'week', 'day']}
+          selectable
+          onSelectSlot={handleSelectSlot}
+          onSelectEvent={handleSelectEvent}
+          messages={{
+            next: "Siguiente",
+            previous: "Atrás",
+            today: "Hoy",
+            month: "Mes",
+            week: "Semana",
+            day: "Día"
+          }}
+          eventPropGetter={eventPropGetter}
+        />
+      </div>
 
-          <div className="card">
-            <div className="card-header">
-              <div className="card-title">
-                Citas del día
-              </div>
-              <button className="btn btn-secondary btn-sm flex items-center gap-1" onClick={() => setShowForm(!showForm)}>
-                <Plus size={16} /> Nueva
+      {/* Modal Citas */}
+      {isModalOpen && selectedSlot && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-on-surface/40 backdrop-blur-sm animate-fade-in">
+          <div className="bg-surface-container-lowest rounded-2xl shadow-xl w-full max-w-md overflow-hidden">
+            <div className="flex items-center justify-between p-5 border-b border-outline-variant/30 bg-surface-container-low/50">
+              <h2 className="font-headline-sm text-on-surface flex items-center gap-2">
+                <span className="material-symbols-outlined text-primary text-[20px]">
+                  {selectedEventId ? 'edit_calendar' : 'calendar_add_on'}
+                </span>
+                {selectedEventId ? 'Modificar Cita' : 'Programar Nueva Cita'}
+              </h2>
+              <button onClick={() => setIsModalOpen(false)} className="p-1 text-outline hover:text-error rounded-full transition-colors">
+                <X className="w-5 h-5" />
               </button>
             </div>
             
-            <div className="space-y-4">
-              {dayAppointments.length === 0 ? (
-                <div className="empty-state">
-                  <p>No hay citas agendadas para este día.</p>
+            <form onSubmit={handleSubmit} className="p-6 space-y-4">
+              <div className="flex items-center gap-3 p-3 bg-surface-container-low rounded-lg border border-outline-variant/30 text-sm">
+                <Clock className="w-5 h-5 text-primary" />
+                <div className="flex flex-col">
+                  <span className="font-semibold text-on-surface capitalize">
+                    {format(selectedSlot.start, "EEEE d 'de' MMMM", { locale: es })}
+                  </span>
+                  <span className="text-outline text-xs">
+                    {format(selectedSlot.start, 'HH:mm')} - {format(selectedSlot.end, 'HH:mm')} hrs
+                  </span>
                 </div>
-              ) : (
-                dayAppointments.map(app => {
-                  const timeStr = new Date(app.start).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-                  const patientRef = app.participant?.find((p:any) => p.actor?.reference?.startsWith('Patient/'));
-                  const patientId = patientRef?.actor?.reference?.split('/')[1] || 'Desconocido';
-                  
-                  return (
-                    <div key={app.id} className="p-4 rounded-lg bg-surface-dim border-l-4 border-primary">
-                      <div className="flex items-center gap-2 mb-1">
-                        <Clock size={14} className="text-primary" />
-                        <span className="text-sm font-bold text-slate-800">{timeStr}</span>
-                      </div>
-                      <p className="text-sm font-medium text-slate-800 mb-1">{app.description}</p>
-                      <div className="flex items-center gap-2 text-xs text-slate-500">
-                        <User size={12} /> Paciente ID: {patientId.substring(0,8)}...
-                      </div>
-                    </div>
-                  );
-                })
-              )}
-            </div>
+              </div>
+
+              <div>
+                <label className="block font-label-sm text-outline mb-1.5">Paciente Citado</label>
+                <div className="relative">
+                  <UserPlus className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-outline" />
+                  <select 
+                    required
+                    value={patientId}
+                    onChange={(e) => setPatientId(e.target.value)}
+                    className="w-full pl-9 pr-4 py-2.5 bg-surface-container-lowest border border-outline-variant rounded-lg text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary appearance-none"
+                  >
+                    <option value="">Seleccione un paciente...</option>
+                    {patientsList.map(p => (
+                      <option key={p.id} value={p.id}>
+                        {p.name?.[0]?.text || 'Sin nombre'}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label className="block font-label-sm text-outline mb-1.5">Estado Clínico</label>
+                <select 
+                  value={status}
+                  onChange={(e) => setStatus(e.target.value)}
+                  className="w-full px-3 py-2.5 bg-surface-container-lowest border border-outline-variant rounded-lg text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary appearance-none"
+                >
+                  <option value="booked">Confirmada (Booked)</option>
+                  <option value="waitlist">En Espera / Triaje (Waitlist)</option>
+                  <option value="fulfilled">Atendida / Finalizada (Fulfilled)</option>
+                  <option value="cancelled">Cancelada (Cancelled)</option>
+                </select>
+              </div>
+              
+              <div>
+                <label className="block font-label-sm text-outline mb-1.5">Motivo / Notas de Triaje</label>
+                <textarea 
+                  value={note}
+                  onChange={(e) => setNote(e.target.value)}
+                  className="w-full px-3 py-2.5 bg-surface-container-lowest border border-outline-variant rounded-lg text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary resize-none"
+                  placeholder="Ej. Chequeo general..."
+                  rows={2}
+                />
+              </div>
+
+              <div className="pt-4 flex justify-between gap-3 border-t border-outline-variant/30 mt-6">
+                {selectedEventId ? (
+                  <button 
+                    type="button" 
+                    onClick={handleDelete}
+                    className="px-4 py-2 text-sm font-semibold text-error hover:bg-error/10 rounded-lg transition-colors flex items-center gap-1"
+                  >
+                    Cancelar Cita
+                  </button>
+                ) : (
+                  <div></div>
+                )}
+                <div className="flex gap-2">
+                  <button 
+                    type="button" 
+                    onClick={() => setIsModalOpen(false)}
+                    className="px-4 py-2 text-sm font-semibold text-outline hover:text-on-surface transition-colors"
+                  >
+                    Volver
+                  </button>
+                  <button 
+                    type="submit" 
+                    disabled={saving}
+                    className="px-6 py-2 bg-primary text-on-primary rounded-lg text-sm font-semibold hover:bg-primary-container transition-colors disabled:opacity-50 flex items-center gap-2"
+                  >
+                    {saving ? 'Guardando...' : 'Confirmar Agenda'}
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
-
-        {/* Right Column: Form */}
-        <div className="lg:col-span-2">
-          {showForm ? (
-            <div className="card">
-              <div className="card-header">
-                <div className="card-title">Agendar Nueva Cita</div>
-              </div>
-              <form onSubmit={handleSubmit}>
-                <div className="form-grid">
-                  <div className="form-group span2">
-                    <label>ID del Paciente (UUID)*</label>
-                    <input 
-                      type="text" 
-                      required 
-                      placeholder="Ej. f47ac10b-58cc-..." 
-                      value={patientId}
-                      onChange={e => setPatientId(e.target.value)}
-                    />
-                    <span className="hint">En la versión final esto será un autocompletado por nombre.</span>
-                  </div>
-                  <div className="form-group">
-                    <label>Hora*</label>
-                    <input 
-                      type="time" 
-                      required 
-                      value={time}
-                      onChange={e => setTime(e.target.value)}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label>Servicio / Descripción*</label>
-                    <input 
-                      type="text" 
-                      required 
-                      value={description}
-                      onChange={e => setDescription(e.target.value)}
-                    />
-                  </div>
-                </div>
-                <div className="form-actions" style={{ marginTop: '20px' }}>
-                  <button type="submit" className="btn btn-primary">Agendar (Validar Colisiones)</button>
-                  <button type="button" className="btn btn-ghost" onClick={() => setShowForm(false)}>Cancelar</button>
-                </div>
-              </form>
-            </div>
-          ) : (
-            <div className="card h-full flex flex-col items-center justify-center p-12 text-center text-slate-400">
-              <CalendarIcon size={48} className="mb-4 opacity-50" />
-              <h3 className="text-lg font-medium text-slate-600 mb-2">Motor Anti-colisiones Activo</h3>
-              <p className="text-sm max-w-md mx-auto">
-                Selecciona "Nueva" para agendar una cita. El backend validará automáticamente que el horario no se traslape con otras citas confirmadas del mismo especialista.
-              </p>
-            </div>
-          )}
-        </div>
-
-      </div>
-    </section>
+      )}
+    </div>
   );
 }

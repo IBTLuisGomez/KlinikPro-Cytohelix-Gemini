@@ -117,12 +117,12 @@ class FhirTenantIsolationIT {
                 .tenantId(tenantA.getId()).branchId(branchA.getId())
                 .patientId(patientA.getId()).patientLabel(patientA.getNombre())
                 .fecha(LocalDate.now().plusDays(1)).hora(LocalTime.of(9, 0))
-                .estado(AppointmentStatus.Pendiente).build());
+                .estado(AppointmentStatus.Programada).build());
         appointmentB = appointmentRepository.save(Appointment.builder()
                 .tenantId(tenantB.getId()).branchId(branchB.getId())
                 .patientId(patientB.getId()).patientLabel(patientB.getNombre())
                 .fecha(LocalDate.now().plusDays(1)).hora(LocalTime.of(9, 0))
-                .estado(AppointmentStatus.Pendiente).build());
+                .estado(AppointmentStatus.Programada).build());
 
         // "ADMIN" y un userId aleatorio bastan: el filtro no valida contra app_users.
         tokenA = jwtService.generateToken(UUID.randomUUID(), tenantA.getId(), branchA.getId(), "ADMIN");

@@ -26,6 +26,7 @@ public record FhirAppointment(
         Meta meta,
         String status,
         OffsetDateTime start,
+        OffsetDateTime end,
         String description,
         List<Participant> participant
 ) {

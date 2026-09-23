@@ -6,6 +6,8 @@ import systems.cytohelix.klinikpro.agenda.domain.Appointment;
 import systems.cytohelix.klinikpro.agenda.domain.AppointmentStatus;
 import systems.cytohelix.klinikpro.agenda.dto.AppointmentUpsertCommand;
 import systems.cytohelix.klinikpro.agenda.repository.AppointmentRepository;
+import systems.cytohelix.klinikpro.agenda.repository.PractitionerBlockRepository;
+import systems.cytohelix.klinikpro.agenda.repository.PractitionerScheduleRepository;
 import systems.cytohelix.klinikpro.core.exception.BusinessConflictException;
 import systems.cytohelix.klinikpro.core.exception.ResourceNotFoundException;
 import systems.cytohelix.klinikpro.core.exception.ValidationException;
@@ -13,6 +15,8 @@ import systems.cytohelix.klinikpro.tenancy.service.AbstractTenantScopedService;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
@@ -34,9 +38,15 @@ import java.util.UUID;
 public class AppointmentService extends AbstractTenantScopedService {
 
     private final AppointmentRepository appointmentRepository;
+    private final PractitionerScheduleRepository scheduleRepository;
+    private final PractitionerBlockRepository blockRepository;
 
-    public AppointmentService(AppointmentRepository appointmentRepository) {
+    public AppointmentService(AppointmentRepository appointmentRepository,
+                              PractitionerScheduleRepository scheduleRepository,
+                              PractitionerBlockRepository blockRepository) {
         this.appointmentRepository = appointmentRepository;
+        this.scheduleRepository = scheduleRepository;
+        this.blockRepository = blockRepository;
     }
 
     @Transactional(readOnly = true)
@@ -75,10 +85,11 @@ public class AppointmentService extends AbstractTenantScopedService {
 
             boolean slotChanged = !Objects.equals(existing.getPractitionerId(), cmd.practitionerId())
                     || !Objects.equals(existing.getFecha(), cmd.fecha())
-                    || !Objects.equals(existing.getHora(), cmd.hora());
+                    || !Objects.equals(existing.getHora(), cmd.hora())
+                    || !Objects.equals(existing.getHoraFin(), cmd.horaFin());
             AppointmentStatus nuevoEstado = cmd.estado() != null ? cmd.estado() : existing.getEstado();
             if (slotChanged && cmd.practitionerId() != null && nuevoEstado != AppointmentStatus.Cancelada) {
-                checkNoConflict(branchId, cmd.practitionerId(), cmd.fecha(), cmd.hora(), existing.getId());
+                checkNoConflict(branchId, cmd.practitionerId(), cmd.fecha(), cmd.hora(), cmd.horaFin(), existing.getId());
             }
 
             applyCommand(existing, cmd);
@@ -86,19 +97,18 @@ public class AppointmentService extends AbstractTenantScopedService {
         }
 
         // fecha/hora/patientLabel son NOT NULL en la tabla (ver V5__agenda.sql) y
-        // siempre obligatorios al crear en el prototipo (submitCita) — se valida
-        // aqui explicitamente para no dejar que un valor faltante llegue como
-        // violacion de constraint sin traducir en Hibernate. ValidationException
-        // se traduce a 422 + OperationOutcome en FhirExceptionHandler (Parcela 4.2).
+        // siempre obligatorios al crear en el prototipo (submitCita)
         if (cmd.fecha() == null || cmd.hora() == null) {
             throw ValidationException.required("fecha y hora son obligatorias para crear una cita.");
         }
         if (cmd.patientLabel() == null || cmd.patientLabel().isBlank()) {
             throw ValidationException.required("patientLabel (nombre del paciente) es obligatorio para crear una cita.");
         }
+        
+        LocalTime newHoraFin = cmd.horaFin() != null ? cmd.horaFin() : cmd.hora().plusMinutes(30);
 
         if (cmd.practitionerId() != null) {
-            checkNoConflict(branchId, cmd.practitionerId(), cmd.fecha(), cmd.hora(), null);
+            checkNoConflict(branchId, cmd.practitionerId(), cmd.fecha(), cmd.hora(), newHoraFin, null);
         }
 
         Appointment appointment = Appointment.builder()
@@ -113,35 +123,61 @@ public class AppointmentService extends AbstractTenantScopedService {
                 .practitionerLabel(cmd.practitionerLabel())
                 .fecha(cmd.fecha())
                 .hora(cmd.hora())
-                .estado(AppointmentStatus.Pendiente)
+                .horaFin(newHoraFin)
+                .estado(AppointmentStatus.Programada)
                 .build();
 
         return appointmentRepository.save(appointment);
     }
 
     private void checkNoConflict(UUID branchId, UUID practitionerId, LocalDate fecha,
-                                  LocalTime hora, UUID excludeAppointmentId) {
-        List<Appointment> conflicts = appointmentRepository
-                .findByBranchIdAndPractitionerIdAndFechaAndHoraAndEstadoNot(
-                        branchId, practitionerId, fecha, hora, AppointmentStatus.Cancelada);
-        boolean hayConflicto = conflicts.stream()
-                .anyMatch(a -> excludeAppointmentId == null || !a.getId().equals(excludeAppointmentId));
+                                  LocalTime horaInicio, LocalTime horaFin, UUID excludeAppointmentId) {
+        if (horaFin == null) horaFin = horaInicio.plusMinutes(30);
+
+        // 1. Validar que la cita esté dentro del horario laboral del médico
+        // dia_semana de Java es 1=Lunes, 7=Domingo, al igual que nuestra base de datos.
+        int diaSemana = fecha.getDayOfWeek().getValue();
+        List<systems.cytohelix.klinikpro.agenda.domain.PractitionerSchedule> horarios = 
+            scheduleRepository.findByPractitionerIdAndDiaSemana(practitionerId, diaSemana);
+        
+        if (!horarios.isEmpty()) {
+            final LocalTime finalHoraFinForSchedule = horaFin;
+            boolean dentroDeHorario = horarios.stream().anyMatch(h -> 
+                (horaInicio.equals(h.getHoraInicio()) || horaInicio.isAfter(h.getHoraInicio())) &&
+                (finalHoraFinForSchedule.equals(h.getHoraFin()) || finalHoraFinForSchedule.isBefore(h.getHoraFin()))
+            );
+            if (!dentroDeHorario) {
+                throw new BusinessConflictException("El especialista no atiende en el horario solicitado para este día.");
+            }
+        }
+
+        // 2. Validar que no haya bloqueos de vacaciones/recesos
+        OffsetDateTime startUtc = OffsetDateTime.of(fecha, horaInicio, ZoneOffset.UTC);
+        OffsetDateTime endUtc = OffsetDateTime.of(fecha, horaFin, ZoneOffset.UTC);
+        List<systems.cytohelix.klinikpro.agenda.domain.PractitionerBlock> bloqueos = 
+            blockRepository.findOverlappingBlocks(practitionerId, startUtc, endUtc);
+        
+        if (!bloqueos.isEmpty()) {
+            throw new BusinessConflictException("El especialista tiene un bloqueo de agenda (vacaciones/receso) en este horario.");
+        }
+        
+        // 3. Validar solapamientos de citas previas
+        List<Appointment> dayAppointments = appointmentRepository
+                .findByBranchIdAndPractitionerIdAndFechaAndEstadoNot(
+                        branchId, practitionerId, fecha, AppointmentStatus.Cancelada);
+                        
+        final LocalTime finalHoraFin = horaFin;
+        
+        boolean hayConflicto = dayAppointments.stream()
+                .filter(a -> excludeAppointmentId == null || !a.getId().equals(excludeAppointmentId))
+                .anyMatch(a -> horaInicio.isBefore(a.getHoraFin()) && finalHoraFin.isAfter(a.getHora()));
+                
         if (hayConflicto) {
             throw new BusinessConflictException(
-                    "Ya existe una cita para ese especialista en la misma fecha y hora en esta sucursal.");
+                    "Ya existe una cita para este especialista que se solapa con el horario solicitado.");
         }
     }
 
-    
-    //  * Actualizacion parcial deliberada: un campo ausente (null) en el comando
-    //  * significa "no tocar", NUNCA "borrar". Importante sobre todo para
-    //  * telefono/service*/practitioner* — un cliente que solo llama a esto para
-    //  * cambiar el estado (equivalente a setCitaEstado del prototipo) no
-    //  * deberia poder borrar sin querer quien atendio la cita con un payload
-    //  * parcial. patientLabel/fecha/hora ademas son NOT NULL en BD (ver
-    //  * V5__agenda.sql), asi que ignorarlos cuando vienen null es obligatorio,
-    //  * no solo conveniente.
-    
     private void applyCommand(Appointment appointment, AppointmentUpsertCommand cmd) {
         if (cmd.patientId() != null) {
             appointment.setPatientId(cmd.patientId());
@@ -169,6 +205,9 @@ public class AppointmentService extends AbstractTenantScopedService {
         }
         if (cmd.hora() != null) {
             appointment.setHora(cmd.hora());
+        }
+        if (cmd.horaFin() != null) {
+            appointment.setHoraFin(cmd.horaFin());
         }
         if (cmd.estado() != null) {
             appointment.setEstado(cmd.estado());

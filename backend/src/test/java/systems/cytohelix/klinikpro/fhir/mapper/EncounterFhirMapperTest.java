@@ -18,7 +18,7 @@ class EncounterFhirMapperTest {
     private final EncounterFhirMapper mapper = new EncounterFhirMapper();
 
     @Test
-    void mapeaCitaCompletadaAEncounterFinished() {
+    void mapeaCitaFinalizadaAEncounterFinished() {
         UUID appointmentId = UUID.randomUUID();
         UUID patientId = UUID.randomUUID();
         UUID practitionerId = UUID.randomUUID();
@@ -34,7 +34,7 @@ class EncounterFhirMapperTest {
                 .practitionerLabel("Dr. Juan Perez")
                 .fecha(LocalDate.of(2026, 9, 20))
                 .hora(LocalTime.of(10, 30))
-                .estado(AppointmentStatus.Completada)
+                .estado(AppointmentStatus.Finalizada)
                 .updatedAt(OffsetDateTime.now())
                 .build();
 
@@ -63,7 +63,7 @@ class EncounterFhirMapperTest {
                 .patientLabel("Walk-in sin registrar")
                 .fecha(LocalDate.of(2026, 9, 20))
                 .hora(LocalTime.of(9, 0))
-                .estado(AppointmentStatus.Completada)
+                .estado(AppointmentStatus.Finalizada)
                 .updatedAt(OffsetDateTime.now())
                 .build();
 

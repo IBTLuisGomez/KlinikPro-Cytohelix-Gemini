@@ -54,6 +54,18 @@ INSERT INTO branch (id, tenant_id, name) VALUES ('bbbbb222-2222-2222-2222-222222
 
 ---
 
+### Opción 1: Tests Automatizados (Jest)
+1. Abre tu terminal en `TestKlinik`
+2. Instala dependencias con `npm install` (solo la primera vez).
+3. Corre el comando:
+   ```bash
+   npm run test
+   ```
+4. O si usas VSCode, usa la extensión de Testing o el panel "Run & Debug" para ejecutar los tests de `api.test.js` visualmente.
+5. El script se autenticará como Tenant A y B, y probará la creación de pacientes, el aislamiento de la base de datos (RLS) y la prevención de colisiones del motor de agenda (anti-collision).
+
+---
+
 ## Prueba 4: Flujo POS Básico
 1. Ve a la pestaña **Caja**.
 2. Verifica que las sub-pestañas "Ingresos", "Gastos" y "Arqueo" cambian correctamente las vistas del panel (probando el enrutamiento y estado de React).

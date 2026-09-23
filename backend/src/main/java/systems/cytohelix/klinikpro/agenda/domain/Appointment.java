@@ -75,10 +75,13 @@ public class Appointment {
     @Column(nullable = false)
     private LocalTime hora;
 
+    @Column(name = "hora_fin", nullable = false)
+    private LocalTime horaFin;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 16)
     @Builder.Default
-    private AppointmentStatus estado = AppointmentStatus.Pendiente;
+    private AppointmentStatus estado = AppointmentStatus.Programada;
 
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)

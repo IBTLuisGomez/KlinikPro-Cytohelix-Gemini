@@ -28,30 +28,35 @@ import java.util.UUID;
 public class AppointmentFhirMapper {
 
     private static final Map<AppointmentStatus, String> TO_FHIR_STATUS = Map.of(
-            AppointmentStatus.Pendiente, "booked",
-            AppointmentStatus.Completada, "fulfilled",
-            AppointmentStatus.Cancelada, "cancelled"
+            AppointmentStatus.Programada, "booked",
+            AppointmentStatus.Confirmada, "booked",
+            AppointmentStatus.EnEspera, "arrived",
+            AppointmentStatus.EnAtencion, "fulfilled",
+            AppointmentStatus.Finalizada, "fulfilled",
+            AppointmentStatus.Cancelada, "cancelled",
+            AppointmentStatus.NoAsistio, "noshow",
+            AppointmentStatus.Reprogramada, "booked"
     );
 
     private static final Map<String, AppointmentStatus> FROM_FHIR_STATUS = Map.of(
-            "booked", AppointmentStatus.Pendiente,
-            "fulfilled", AppointmentStatus.Completada,
-            "cancelled", AppointmentStatus.Cancelada
+            "booked", AppointmentStatus.Programada,
+            "arrived", AppointmentStatus.EnEspera,
+            "fulfilled", AppointmentStatus.Finalizada,
+            "cancelled", AppointmentStatus.Cancelada,
+            "noshow", AppointmentStatus.NoAsistio
     );
 
     public FhirAppointment toFhir(Appointment appointment) {
         List<Participant> participants = new ArrayList<>();
         if (appointment.getPatientId() != null) {
             participants.add(new Participant(
-                    Reference.to("Patient", appointment.getPatientId(), appointment.getPatientLabel()), "accepted"));
+                    Reference.to("Patient", appointment.getPatientId(), appointment.getPatientLabel()),
+                    "accepted"));
         }
         if (appointment.getPractitionerId() != null) {
             participants.add(new Participant(
-                    Reference.to("Practitioner", appointment.getPractitionerId(), appointment.getPractitionerLabel()), "accepted"));
-        }
-        if (appointment.getServiceId() != null) {
-            participants.add(new Participant(
-                    Reference.to("HealthcareService", appointment.getServiceId(), appointment.getServiceLabel()), "accepted"));
+                    Reference.to("Practitioner", appointment.getPractitionerId(), appointment.getPractitionerLabel()),
+                    "accepted"));
         }
 
         return new FhirAppointment(
@@ -60,6 +65,7 @@ public class AppointmentFhirMapper {
                 Meta.of(appointment.getVersion(), appointment.getUpdatedAt()),
                 TO_FHIR_STATUS.get(appointment.getEstado()),
                 toStartInstant(appointment.getFecha(), appointment.getHora()),
+                toStartInstant(appointment.getFecha(), appointment.getHoraFin()),
                 buildDescription(appointment),
                 participants.isEmpty() ? null : participants
         );
@@ -67,47 +73,41 @@ public class AppointmentFhirMapper {
 
     public AppointmentUpsertCommand toUpsertCommand(FhirAppointment fhirAppointment) {
         UUID id = fhirAppointment.id() == null ? null : UUID.fromString(fhirAppointment.id());
-
+        
         UUID patientId = null;
         String patientLabel = null;
         UUID practitionerId = null;
         String practitionerLabel = null;
-        UUID serviceId = null;
-        String serviceLabel = null;
-
+        
         if (fhirAppointment.participant() != null) {
-            for (Participant participant : fhirAppointment.participant()) {
-                Reference actor = participant.actor();
-                if (actor == null || actor.reference() == null) {
-                    continue;
-                }
-                String reference = actor.reference();
-                UUID referencedId = parseId(reference);
-                if (reference.startsWith("Patient/")) {
-                    patientId = referencedId;
-                    patientLabel = actor.display();
-                } else if (reference.startsWith("Practitioner/")) {
-                    practitionerId = referencedId;
-                    practitionerLabel = actor.display();
-                } else if (reference.startsWith("HealthcareService/")) {
-                    serviceId = referencedId;
-                    serviceLabel = actor.display();
+            for (Participant p : fhirAppointment.participant()) {
+                if (p.actor() != null && p.actor().reference() != null) {
+                    if (p.actor().reference().startsWith("Patient/")) {
+                        patientId = UUID.fromString(p.actor().reference().split("/")[1]);
+                        patientLabel = p.actor().display();
+                    } else if (p.actor().reference().startsWith("Practitioner/")) {
+                        practitionerId = UUID.fromString(p.actor().reference().split("/")[1]);
+                        practitionerLabel = p.actor().display();
+                    }
                 }
             }
         }
-        if (patientLabel == null) {
-            // Fallback para walk-ins sin Patient/{id} referenciable — ver
-            // FhirAppointment.description.
-            patientLabel = fhirAppointment.description();
-        }
-
+        
+        UUID serviceId = null;
+        String serviceLabel = fhirAppointment.description();
+        
         LocalDate fecha = fhirAppointment.start() == null ? null : fhirAppointment.start().toLocalDate();
         LocalTime hora = fhirAppointment.start() == null ? null : fhirAppointment.start().toLocalTime();
+        // Fallback: si no mandan 'end', calculamos 30 mins
+        LocalTime horaFin = fhirAppointment.end() == null 
+            ? (hora != null ? hora.plusMinutes(30) : null) 
+            : fhirAppointment.end().toLocalTime();
+
         AppointmentStatus estado = fhirAppointment.status() == null ? null : FROM_FHIR_STATUS.get(fhirAppointment.status());
 
         return new AppointmentUpsertCommand(
                 id, patientId, patientLabel, null, serviceId, serviceLabel,
-                practitionerId, practitionerLabel, fecha, hora, estado);
+                practitionerId, practitionerLabel, fecha, hora, horaFin, estado);
     }
 
     private OffsetDateTime toStartInstant(LocalDate fecha, LocalTime hora) {

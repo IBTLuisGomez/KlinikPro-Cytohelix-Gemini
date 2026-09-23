@@ -37,7 +37,7 @@ public class FhirEncounterController {
     @GetMapping("/{id}")
     public FhirEncounter read(@PathVariable UUID id) {
         Appointment appointment = appointmentService.findByIdForCurrentTenant(id);
-        if (appointment.getEstado() != AppointmentStatus.Completada) {
+        if (appointment.getEstado() != AppointmentStatus.Finalizada) {
             throw new ResourceNotFoundException("Encounter", id.toString());
         }
         return mapper.toFhir(appointment);

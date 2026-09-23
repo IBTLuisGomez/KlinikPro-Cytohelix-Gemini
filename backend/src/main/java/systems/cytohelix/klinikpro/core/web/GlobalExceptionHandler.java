@@ -34,10 +34,16 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<ApiError> handleGeneric(Exception ex) {
-        // No exponemos ex.getMessage() aqui a proposito: errores no anticipados
-        // no deben filtrar detalles internos (stack, SQL, etc.) al cliente.
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body(ApiError.of(500, "Internal Server Error", "Ocurrio un error inesperado"));
+    public ResponseEntity<ApiError> handleException(Exception e) {
+        // En produccion real este log debe ir a tu APM/ELK, jamas esconderlo:
+        org.slf4j.LoggerFactory.getLogger(GlobalExceptionHandler.class).error("Excepcion no manejada 500: ", e);
+        
+        ApiError error = new ApiError(
+                java.time.OffsetDateTime.now(),
+                HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase(),
+                "Ocurrio un error inesperado"
+        );
+        return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

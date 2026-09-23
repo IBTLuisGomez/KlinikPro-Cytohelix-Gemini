@@ -3,9 +3,9 @@ FROM maven:3.9.6-eclipse-temurin-17 AS builder
 WORKDIR /app
 COPY pom.xml .
 # Resolves dependencies (layer caching)
-RUN mvn dependency:go-offline -B
+RUN mvn dependency:go-offline -B -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
 COPY src ./src
-# Compile and package
+ENV MAVEN_OPTS="-Xmx256m -XX:MaxMetaspaceSize=128m"
 RUN mvn clean package -DskipTests
 
 # Stage 2: Run

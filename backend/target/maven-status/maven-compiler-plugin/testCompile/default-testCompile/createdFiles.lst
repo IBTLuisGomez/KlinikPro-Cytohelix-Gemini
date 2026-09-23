@@ -1,0 +1,12 @@
+systems/cytohelix/klinikpro/fhir/mapper/HealthcareServiceFhirMapperTest.class
+systems/cytohelix/klinikpro/fhir/mapper/PatientFhirMapperTest.class
+systems/cytohelix/klinikpro/fhir/bundle/BundleBuilderTest.class
+systems/cytohelix/klinikpro/tenancy/JwtServiceTest.class
+systems/cytohelix/klinikpro/fhir/mapper/AppointmentFhirMapperTest.class
+systems/cytohelix/klinikpro/fhir/mapper/PractitionerFhirMapperTest.class
+systems/cytohelix/klinikpro/fhir/mapper/OrganizationFhirMapperTest.class
+systems/cytohelix/klinikpro/fhir/FhirTenantIsolationIT.class
+systems/cytohelix/klinikpro/fhir/mapper/EncounterFhirMapperTest.class
+systems/cytohelix/klinikpro/fhir/mapper/LocationFhirMapperTest.class
+systems/cytohelix/klinikpro/fhir/bundle/BundleBuilderTest$Fake.class
+systems/cytohelix/klinikpro/fhir/outcome/FhirExceptionHandlerTest.class

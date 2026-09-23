@@ -1,0 +1,265 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_blank" name="shell-type"><title>KlinikProVF - Autenticación</title><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"inverse-primary":"#81d1f0","outline-variant":"#bec8cd","on-primary":"#ffffff","on-surface":"#131b2e","on-tertiary-fixed-variant":"#005236","surface-container":"#eaedff","on-primary-fixed":"#001f29","tertiary":"#005f40","on-tertiary-fixed":"#002113","surface-dim":"#d2d9f4","surface-variant":"#dae2fd","secondary-container":"#57dffe","on-secondary-fixed":"#001f26","on-error":"#ffffff","on-primary-fixed-variant":"#004d62","on-tertiary":"#ffffff","primary":"#005a71","tertiary-container":"#007a53","on-error-container":"#93000a","surface-container-lowest":"#ffffff","on-secondary-fixed-variant":"#004e5c","surface-tint":"#006781","surface-container-low":"#f2f3ff","primary-fixed-dim":"#81d1f0","secondary-fixed-dim":"#4cd7f6","on-secondary":"#ffffff","tertiary-fixed-dim":"#4edea3","surface-container-high":"#e2e7ff","surface-bright":"#faf8ff","tertiary-fixed":"#6ffbbe","secondary":"#00687a","outline":"#6f787d","on-tertiary-container":"#a3ffd0","on-secondary-container":"#006172","error-container":"#ffdad6","inverse-on-surface":"#eef0ff","primary-fixed":"#b9eaff","on-surface-variant":"#3f484c","surface":"#faf8ff","primary-container":"#0e7490","error":"#ba1a1a","inverse-surface":"#283044","secondary-fixed":"#acedff","background":"#faf8ff","surface-container-highest":"#dae2fd","on-background":"#131b2e","on-primary-container":"#d3f1ff"},borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},spacing:{"space-sm":"0.5rem","gutter-desktop":"1.5rem","gutter":"1rem","space-xs":"0.25rem","margin-desktop":"2rem","space-xl":"2rem","space-lg":"1.25rem","margin":"1rem","space-md":"0.75rem"},fontFamily:{"body-lg":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"metric-num":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"],"display-lg-mobile":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"],"display-lg":["Plus Jakarta Sans"]},fontSize:{"body-lg":["15px",{lineHeight:"22px",fontWeight:"400"}],"headline-lg":["24px",{lineHeight:"32px",letterSpacing:"-0.015em",fontWeight:"600"}],"headline-md":["20px",{lineHeight:"28px",letterSpacing:"-0.01em",fontWeight:"600"}],"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.02em",fontWeight:"600"}],"body-md":["14px",{lineHeight:"20px",fontWeight:"400"}],"metric-num":["22px",{lineHeight:"26px",letterSpacing:"-0.01em",fontWeight:"700"}],"headline-sm":["16px",{lineHeight:"24px",letterSpacing:"-0.005em",fontWeight:"600"}],"display-lg-mobile":["28px",{lineHeight:"36px",letterSpacing:"-0.02em",fontWeight:"700"}],"body-sm":["13px",{lineHeight:"18px",fontWeight:"400"}],"label-sm":["11px",{lineHeight:"14px",letterSpacing:"0.03em",fontWeight:"600"}],"display-lg":["36px",{lineHeight:"44px",letterSpacing:"-0.02em",fontWeight:"700"}]}}}};</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased flex items-center justify-center min-h-screen"><main class="w-full flex items-center justify-center p-space-md"><div class="flex flex-col w-full max-w-6xl mx-auto my-auto p-space-sm sm:p-gutter">
+<div class="w-full grid grid-cols-1 lg:grid-cols-12 rounded-xl shadow-xl overflow-hidden bg-surface-container-lowest">
+<!-- Panel Izquierdo / Branding e Infraestructura -->
+<div class="lg:col-span-5 bg-primary text-on-primary p-space-lg lg:p-margin-desktop flex flex-col justify-between relative overflow-hidden">
+<!-- Decoración ambiental sutil -->
+<div class="absolute -right-16 -top-16 w-64 h-64 bg-secondary-container opacity-10 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute -left-12 -bottom-12 w-56 h-56 bg-tertiary-fixed opacity-10 rounded-full blur-2xl pointer-events-none"></div>
+<div class="relative z-10">
+<!-- Logo y Cabecera Institucional -->
+<div class="flex items-center gap-space-md mb-space-lg">
+<div class="w-12 h-12 rounded-lg bg-surface-container-lowest p-space-xs flex items-center justify-center shadow-sm">
+<img alt="KlinikPro Official Logo Emblem" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XgMAMo22t2nLCTiihS-UnBZwY49cnr5IAbcw9MdbfK_GR5I4qdP6jwxKsKWTs-wEh8B5arcm9kHcplC4ZWeDXpn3ZFoDCc2NQCodtbEMp56AkHndm7ETZ-VrwFa4-2y2i4hiZeIOOyt9t0E5sDZzhHnm0wSA96BUoVfdwju-cG_XAlVgiQiyyZP2WmTRCDyeneisAIMmvrxLUPeNlYNcxqWKUGfsQZnTvwCQvQtqsN3eBbA_CpMVuuzFs">
+</div>
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary-fixed">Plataforma Médica</span>
+<h1 class="font-headline-md text-headline-md text-on-primary">KlinikProVF</h1>
+</div>
+</div>
+<div class="space-y-space-sm mb-space-xl">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-secondary text-secondary-fixed font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-fixed animate-pulse"></span>
+            Enterprise Core Ready
+          </span>
+<h2 class="font-headline-lg text-headline-lg text-on-primary">
+            Sistema de Gestión Clínica Integral
+          </h2>
+<p class="font-body-md text-body-md text-primary-fixed opacity-90">
+            Orquestación de diagnósticos, flujo de pacientes y telemetría multi-sede bajo estándares hospitalarios HL7/FHIR y normativa HIPAA.
+          </p>
+</div>
+<!-- Capacidades Activas del Entorno -->
+<div class="space-y-space-md">
+<p class="font-label-sm text-label-sm uppercase tracking-wider text-primary-fixed opacity-75">
+            Arquitectura del Sistema Activa
+          </p>
+<div class="space-y-space-sm">
+<div class="flex items-start gap-space-sm bg-primary-container/40 p-space-sm rounded-lg backdrop-blur-sm">
+<span class="material-symbols-outlined text-secondary-fixed text-lg shrink-0 mt-0.5">verified_user</span>
+<div class="min-w-0">
+<p class="font-headline-sm text-headline-sm text-on-primary">Seguridad JWT Stateless</p>
+<p class="font-body-sm text-body-sm text-primary-fixed opacity-80">Sesiones criptográficas sin estado con rotación automatizada.</p>
+</div>
+</div>
+<div class="flex items-start gap-space-sm bg-primary-container/40 p-space-sm rounded-lg backdrop-blur-sm">
+<span class="material-symbols-outlined text-secondary-fixed text-lg shrink-0 mt-0.5">apartment</span>
+<div class="min-w-0">
+<p class="font-headline-sm text-headline-sm text-on-primary">Soporte Multi-tenant &amp; Multi-sucursal</p>
+<p class="font-body-sm text-body-sm text-primary-fixed opacity-80">Aislamiento lógico de datos por organización médica.</p>
+</div>
+</div>
+<div class="flex items-start gap-space-sm bg-primary-container/40 p-space-sm rounded-lg backdrop-blur-sm">
+<span class="material-symbols-outlined text-secondary-fixed text-lg shrink-0 mt-0.5">admin_panel_settings</span>
+<div class="min-w-0">
+<p class="font-headline-sm text-headline-sm text-on-primary">Control de Roles RBAC</p>
+<p class="font-body-sm text-body-sm text-primary-fixed opacity-80">ADMIN, COORDINADOR, FISIO, RECEPCIÓN en tiempo real.</p>
+</div>
+</div>
+<div class="flex items-start gap-space-sm bg-primary-container/40 p-space-sm rounded-lg backdrop-blur-sm">
+<span class="material-symbols-outlined text-secondary-fixed text-lg shrink-0 mt-0.5">database</span>
+<div class="min-w-0">
+<p class="font-headline-sm text-headline-sm text-on-primary">Persistencia PostgreSQL &amp; JPA</p>
+<p class="font-body-sm text-body-sm text-primary-fixed opacity-80">Pool HikariCP con transacciones ACID resilientes.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Telemetría & Certificación Inferior -->
+<div class="relative z-10 pt-space-lg mt-space-lg border-none flex items-center justify-between font-label-sm text-label-sm text-primary-fixed opacity-85">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-tertiary-fixed">lock</span>
+          SHA-256 Auth Guard
+        </span>
+<span class="">Spring Boot 8081</span>
+</div>
+</div>
+<!-- Panel Derecho / Formulario de Login Multi-tenant -->
+<div class="lg:col-span-7 bg-surface-container-lowest p-space-lg lg:p-margin-desktop flex flex-col justify-between">
+<div>
+<!-- Encabezado de acceso -->
+<div class="mb-space-lg">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Credenciales de Acceso Seguro</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-xs">vpn_key</span>
+              /api/auth/login
+            </span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mt-1">Bienvenido de vuelta</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Inicia sesión con tus credenciales seguras para acceder al expediente.</p>
+</div>
+<form class="space-y-space-md" id="authLoginForm" onsubmit="event.preventDefault(); simulateAuth();">
+<!-- Selectores Multi-tenant & Sucursal (2 columnas) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-space-xs" for="tenantSelect">
+                Clínica / Organización (Tenant ID)
+              </label>
+<div class="relative">
+<select class="w-full h-9 pl-space-sm pr-8 bg-surface-container-low text-on-surface rounded-lg font-body-sm text-body-sm focus:bg-surface-container-lowest outline-none transition-colors appearance-none cursor-pointer" id="tenantSelect">
+<option selected="" value="cytohelix">Clínica Cytohelix Healthcare</option>
+<option value="metropolitana">Hospital Metropolitano Norte</option>
+<option value="san_pedro">Centro Médico San Pedro</option>
+<option value="biogenics">BioGenics Diagnostics Lab</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-2 text-outline pointer-events-none text-base">expand_more</span>
+</div>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-space-xs" for="branchSelect">
+                Sucursal Asignada (Branch ID)
+              </label>
+<div class="relative">
+<select class="w-full h-9 pl-space-sm pr-8 bg-surface-container-low text-on-surface rounded-lg font-body-sm text-body-sm focus:bg-surface-container-lowest outline-none transition-colors appearance-none cursor-pointer" id="branchSelect">
+<option selected="" value="norte">Sucursal Norte (Principal)</option>
+<option value="sur">Sucursal Sur (Fisioterapia)</option>
+<option value="oriente">Torre Médica Oriente</option>
+<option value="lab">Laboratorio Centralizado</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-2 text-outline pointer-events-none text-base">domain</span>
+</div>
+</div>
+</div>
+<!-- Credenciales: Correo y Clave -->
+<div class="space-y-space-sm">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-space-xs" for="emailInput">
+                Correo Electrónico
+              </label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-outline text-base">alternate_email</span>
+<input class="w-full h-9 pl-9 pr-space-sm bg-surface-container-low text-on-surface rounded-lg font-body-md text-body-md focus:bg-surface-container-lowest outline-none transition-colors" id="emailInput" required="" type="email" value="sarah.jenkins@klinikpro.com">
+</div>
+</div>
+<div>
+<div class="flex items-center justify-between mb-space-xs">
+<label class="block font-label-md text-label-md text-on-surface-variant" for="passwordInput">
+                  Contraseña
+                </label>
+<button class="text-primary hover:text-primary-container font-label-sm text-label-sm transition-colors" type="button">
+                  ¿Olvidaste tu contraseña?
+                </button>
+</div>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-outline text-base">lock</span>
+<input class="w-full h-9 pl-9 pr-10 bg-surface-container-low text-on-surface rounded-lg font-body-md text-body-md focus:bg-surface-container-lowest outline-none transition-colors" id="passwordInput" required="" type="password" value="KlinikPro2025*Sec">
+<button class="absolute right-2.5 text-outline hover:text-on-surface transition-colors p-1 flex items-center justify-center" id="togglePasswordBtn" onclick="togglePasswordVisibility()" type="button">
+<span class="material-symbols-outlined text-base" id="passwordEyeIcon">visibility</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Selector de Rol Rápido -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-space-xs">
+              Rol Asignado (Perfiles de Acceso Rápido)
+            </label>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-space-xs">
+<button class="role-pill active-role px-2.5 py-1.5 rounded-lg bg-surface-container-high text-primary font-label-sm text-label-sm text-center flex flex-col items-center gap-0.5 transition-all" onclick="selectRole(this, 'ADMIN')" type="button">
+<span class="font-headline-sm text-label-sm">ADMIN</span>
+<span class="text-[10px] text-outline opacity-80 leading-none">Director</span>
+</button>
+<button class="role-pill px-2.5 py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm text-center flex flex-col items-center gap-0.5 transition-all" onclick="selectRole(this, 'COORDINADOR')" type="button">
+<span class="font-headline-sm text-label-sm">COORDINADOR</span>
+<span class="text-[10px] text-outline opacity-80 leading-none">Gestión</span>
+</button>
+<button class="role-pill px-2.5 py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm text-center flex flex-col items-center gap-0.5 transition-all" onclick="selectRole(this, 'FISIO')" type="button">
+<span class="font-headline-sm text-label-sm">FISIO</span>
+<span class="text-[10px] text-outline opacity-80 leading-none">Especialista</span>
+</button>
+<button class="role-pill px-2.5 py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm text-center flex flex-col items-center gap-0.5 transition-all" onclick="selectRole(this, 'RECEPCION')" type="button">
+<span class="font-headline-sm text-label-sm">RECEPCIÓN</span>
+<span class="text-[10px] text-outline opacity-80 leading-none">Admisión</span>
+</button>
+</div>
+<input id="selectedRoleInput" type="hidden" value="ADMIN">
+</div>
+<!-- Opciones de persistencia -->
+<div class="flex items-center">
+<label class="relative flex items-center gap-2 cursor-pointer select-none">
+<input checked="" class="w-4 h-4 rounded text-primary accent-primary bg-surface-container-low cursor-pointer" type="checkbox">
+<span class="font-body-sm text-body-sm text-on-surface">Mantener sesión iniciada en este dispositivo seguro</span>
+</label>
+</div>
+<!-- Botón de Envío -->
+<div class="pt-space-xs">
+<button class="w-full h-10 px-space-md rounded-lg bg-primary hover:bg-primary-container text-on-primary font-headline-sm text-headline-sm flex items-center justify-center gap-2 shadow-sm transition-all duration-150" id="loginSubmitBtn" type="submit">
+<span class="material-symbols-outlined text-lg">token</span>
+<span class="">Ingresar al Sistema (JWT Auth)</span>
+</button>
+</div>
+</form>
+<!-- Separador de Registro Multi-tenant -->
+<div class="mt-space-lg">
+<div class="relative flex py-1 items-center">
+<div class="flex-grow bg-surface-container-high h-[1px]"></div>
+<span class="flex-shrink mx-4 font-label-sm text-label-sm text-outline uppercase">o</span>
+<div class="flex-grow bg-surface-container-high h-[1px]"></div>
+</div>
+<div class="mt-space-md text-center">
+<a class="inline-flex items-center gap-1.5 font-label-md text-label-md text-primary hover:text-primary-container p-space-xs rounded-lg transition-colors" href="#/api/auth/register">
+<span class="material-symbols-outlined text-base">domain_add</span>
+<span class="">Registrar nueva clínica / tenant (/api/auth/register)</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Pie de página técnico de estado de compilación -->
+<div class="pt-space-lg mt-space-lg border-none flex flex-wrap items-center justify-between gap-y-2 font-label-sm text-label-sm text-outline">
+<span class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+          KlinikProVF v1.2.0 • Spring Boot 8081 • PostgreSQL 16
+        </span>
+<span class="inline-flex items-center gap-1 text-tertiary">
+<span class="material-symbols-outlined text-sm">enhanced_encryption</span>
+          Conexión Cifrada SSL
+        </span>
+</div>
+</div>
+</div>
+</div>
+<script>
+  function togglePasswordVisibility() {
+    const input = document.getElementById('passwordInput');
+    const icon = document.getElementById('passwordEyeIcon');
+    if (input.type === 'password') {
+      input.type = 'text';
+      icon.textContent = 'visibility_off';
+    } else {
+      input.type = 'password';
+      icon.textContent = 'visibility';
+    }
+  }
+
+  function selectRole(button, roleName) {
+    document.querySelectorAll('.role-pill').forEach(btn => {
+      btn.classList.remove('bg-surface-container-high', 'text-primary');
+      btn.classList.add('bg-surface-container-low', 'text-on-surface-variant');
+    });
+    button.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
+    button.classList.add('bg-surface-container-high', 'text-primary');
+    document.getElementById('selectedRoleInput').value = roleName;
+  }
+
+  function simulateAuth() {
+    const btn = document.getElementById('loginSubmitBtn');
+    const originalText = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = '<span class="material-symbols-outlined animate-spin text-lg">sync</span> Autenticando token JWT...';
+    setTimeout(() => {
+      btn.innerHTML = '<span class="material-symbols-outlined text-lg">check_circle</span> ¡Autenticado! Redirigiendo...';
+      btn.classList.remove('bg-primary');
+      btn.classList.add('bg-tertiary');
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+        btn.classList.remove('bg-tertiary');
+        btn.classList.add('bg-primary');
+      }, 1800);
+    }, 900);
+  }
+</script></main>
+
+</body></html>

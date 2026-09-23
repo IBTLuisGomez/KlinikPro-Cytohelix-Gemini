@@ -1,0 +1,11 @@
+/app/src/test/java/systems/cytohelix/klinikpro/fhir/FhirTenantIsolationIT.java
+/app/src/test/java/systems/cytohelix/klinikpro/fhir/bundle/BundleBuilderTest.java
+/app/src/test/java/systems/cytohelix/klinikpro/fhir/mapper/AppointmentFhirMapperTest.java
+/app/src/test/java/systems/cytohelix/klinikpro/fhir/mapper/EncounterFhirMapperTest.java
+/app/src/test/java/systems/cytohelix/klinikpro/fhir/mapper/HealthcareServiceFhirMapperTest.java
+/app/src/test/java/systems/cytohelix/klinikpro/fhir/mapper/LocationFhirMapperTest.java
+/app/src/test/java/systems/cytohelix/klinikpro/fhir/mapper/OrganizationFhirMapperTest.java
+/app/src/test/java/systems/cytohelix/klinikpro/fhir/mapper/PatientFhirMapperTest.java
+/app/src/test/java/systems/cytohelix/klinikpro/fhir/mapper/PractitionerFhirMapperTest.java
+/app/src/test/java/systems/cytohelix/klinikpro/fhir/outcome/FhirExceptionHandlerTest.java
+/app/src/test/java/systems/cytohelix/klinikpro/tenancy/JwtServiceTest.java

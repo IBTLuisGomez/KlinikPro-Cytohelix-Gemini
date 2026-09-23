@@ -38,7 +38,7 @@ class AppointmentFhirMapperTest {
                 .practitionerLabel("Dr. Juan Perez")
                 .fecha(LocalDate.of(2026, 9, 20))
                 .hora(LocalTime.of(10, 30))
-                .estado(AppointmentStatus.Completada)
+                .estado(AppointmentStatus.Finalizada)
                 .updatedAt(OffsetDateTime.now())
                 .build();
 
@@ -64,7 +64,7 @@ class AppointmentFhirMapperTest {
                 .patientLabel("Walk-in sin registrar")
                 .fecha(LocalDate.of(2026, 9, 20))
                 .hora(LocalTime.of(9, 0))
-                .estado(AppointmentStatus.Pendiente)
+                .estado(AppointmentStatus.Programada)
                 .updatedAt(OffsetDateTime.now())
                 .build();
 
@@ -87,6 +87,7 @@ class AppointmentFhirMapperTest {
                 null,
                 "booked",
                 OffsetDateTime.of(2026, 9, 20, 14, 0, 0, 0, java.time.ZoneOffset.UTC),
+                null,
                 "Paciente: Carlos Diaz",
                 List.of(
                         new Participant(Reference.to("Patient", patientId, "Carlos Diaz"), "accepted"),
@@ -102,6 +103,6 @@ class AppointmentFhirMapperTest {
         assertEquals(practitionerId, cmd.practitionerId());
         assertEquals(LocalDate.of(2026, 9, 20), cmd.fecha());
         assertEquals(LocalTime.of(14, 0), cmd.hora());
-        assertEquals(AppointmentStatus.Pendiente, cmd.estado());
+        assertEquals(AppointmentStatus.Programada, cmd.estado());
     }
 }

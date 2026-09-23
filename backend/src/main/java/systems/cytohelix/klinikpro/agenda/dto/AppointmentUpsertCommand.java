@@ -26,6 +26,7 @@ public record AppointmentUpsertCommand(
         String practitionerLabel,
         LocalDate fecha,
         LocalTime hora,
+        LocalTime horaFin,
         AppointmentStatus estado
 ) {
 }

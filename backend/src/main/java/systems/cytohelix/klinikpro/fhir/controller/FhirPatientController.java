@@ -85,7 +85,7 @@ public class FhirPatientController {
         entries.add(new BundleEntry("Patient/" + patient.getId(), mapper.toFhir(patient)));
         for (Appointment appointment : appointments) {
             entries.add(new BundleEntry("Appointment/" + appointment.getId(), appointmentMapper.toFhir(appointment)));
-            if (appointment.getEstado() == AppointmentStatus.Completada) {
+            if (appointment.getEstado() == AppointmentStatus.Finalizada) {
                 entries.add(new BundleEntry("Encounter/" + appointment.getId(), encounterMapper.toFhir(appointment)));
             }
         }

@@ -12,9 +12,11 @@ KlinikPro es una plataforma SaaS Multi-tenant orientada a la gestión clínica. 
 1. **Multi-tenant con Row-Level Security (RLS):** 
    En lugar de separar por esquemas (Schema-per-tenant), KlinikPro utiliza una única base de datos compartida pero impone aislamiento nativo a nivel de filas de PostgreSQL. El backend inyecta automáticamente el ID del Tenant en el contexto de la base de datos para garantizar que los clientes no crucen información.
 2. **Modelo de Datos Híbrido (Relacional + JSONB):**
-   Las finanzas y citas operan como tablas estrictamente relacionales. Sin embargo, los datos clínicos (Expedientes) se manejan mediante el estándar FHIR guardados en columnas JSONB inmutables (Append-only).
-3. **Motor Anti-colisiones:**
-   Lógica dedicada a validar solapamientos de tiempo para evitar que un mismo especialista tenga dos citas cruzadas en la misma sucursal.
+   Las finanzas operan de forma relacional. Sin embargo, los datos clínicos (Expedientes) se manejan mediante el estándar FHIR guardados en columnas JSONB.
+3. **Motor Anti-colisiones y Reglas de Agenda (LogicaAgenda):**
+   Valida solapamientos cruzando la duración real de cada servicio (`hora` a `hora_fin`). Implementa los 8 estados del ciclo de vida de una cita (Programada, Confirmada, EnEspera, EnAtencion, Finalizada, Cancelada, NoAsistio, Reprogramada) e integra soporte para Horarios Médicos y Bloqueos de Vacaciones.
+4. **Testing Automatizado (Jest):**
+   Suite completa de pruebas funcionales (E2E) preparada para validarse a través de la extensión de pruebas de VS Code.
 
 ## Despliegue Local (Entorno de Desarrollo)
 

@@ -8,7 +8,12 @@ package systems.cytohelix.klinikpro.agenda.domain;
  * enums de Postgres y poder agregar estados nuevos con una migracion simple.
  */
 public enum AppointmentStatus {
-    Pendiente,
-    Completada,
-    Cancelada
+    Programada,
+    Confirmada,
+    EnEspera,
+    EnAtencion,
+    Finalizada,
+    Cancelada,
+    NoAsistio,
+    Reprogramada
 }
